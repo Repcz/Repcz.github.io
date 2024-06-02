@@ -41,13 +41,6 @@
   });
 </script>
 
-- [x] 地区分流（香港、美国、日本、台湾、新加坡）
-- [x] 苹果、谷歌、微软、电报、推特分流
-- [x] 流媒体（不支持单独分流）
-- [x] 自动选择最低延迟
-- [ ] 负载均衡
-- [ ] 故障转移
-- [x] 广告屏蔽
 
 ```
 https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml
