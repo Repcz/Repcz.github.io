@@ -50,7 +50,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml
 
 <!-- prettier-ignore -->
 !!! 提示
-    在第100行修改
+    在第102行修改
 
 ```yaml
 proxy-providers:
