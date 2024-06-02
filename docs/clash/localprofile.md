@@ -19,22 +19,33 @@
 <a id="downloadLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml">点击下载文件</a>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const link = document.getElementById('downloadLink');
+    const link = document.getElementById('copyLink');
     link.addEventListener('click', function (event) {
       event.preventDefault();
       const url = this.href;
-      const filename = url.substring(url.lastIndexOf('/') + 1);
       fetch(url)
-        .then(response => response.blob())
-        .then(blob => {
-          const downloadUrl = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = downloadUrl;
-          a.download = filename;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(downloadUrl);
+        .then(response => response.text())
+        .then(text => {
+          const tempTextarea = document.createElement('textarea');
+          tempTextarea.value = text;
+          tempTextarea.style.position = 'fixed';
+          tempTextarea.style.left = '-9999px';
+          document.body.appendChild(tempTextarea);
+          tempTextarea.focus();
+          tempTextarea.select();
+          try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+              alert('文件内容已复制到剪贴板，请手动粘贴！');
+            } else {
+              alert('iOS无法自动复制，请长按链接打开新标签页查看并复内容制！');
+            }
+          } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+            alert('iOS无法自动复制，请长按链接打开新标签页查看并复内容制！');
+          } finally {
+            document.body.removeChild(tempTextarea);
+          }
         })
         .catch(console.error);
     });

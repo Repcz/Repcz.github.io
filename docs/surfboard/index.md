@@ -67,11 +67,11 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
             if (successful) {
               alert('文件内容已复制到剪贴板，请手动粘贴！');
             } else {
-              alert('无法自动复制文件内容，请手动选择文本并复制！');
+              alert('iOS无法自动复制，请长按链接打开新标签页查看并复内容制！');
             }
           } catch (err) {
             console.error('Fallback: Oops, unable to copy', err);
-            alert('无法自动复制文件内容，请手动选择文本并复制！');
+            alert('iOS无法自动复制，请长按链接打开新标签页查看并复内容制！');
           } finally {
             document.body.removeChild(tempTextarea);
           }
