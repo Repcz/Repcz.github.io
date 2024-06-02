@@ -64,12 +64,17 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
           tempTextarea.select();
           try {
             const successful = document.execCommand('copy');
-            const msg = successful ? '文件内容已复制!' : '复制失败！';
-            alert(msg);
+            if (successful) {
+              alert('文件内容已复制到剪贴板，请手动粘贴！');
+            } else {
+              alert('无法自动复制文件内容，请手动选择文本并复制！');
+            }
           } catch (err) {
             console.error('Fallback: Oops, unable to copy', err);
+            alert('无法自动复制文件内容，请手动选择文本并复制！');
+          } finally {
+            document.body.removeChild(tempTextarea);
           }
-          document.body.removeChild(tempTextarea);
         })
         .catch(console.error);
     });
