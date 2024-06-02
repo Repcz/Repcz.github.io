@@ -26,7 +26,7 @@
 ### 11.1 配置文件图标
 ```
 [general]
-profile_img_url = https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/Photo/Lᴜᴄʏ_Logo.webp
+profile_img_url = https://avatars.githubusercontent.com/repcz
 ```
 
 显示在「关联配置」的图标，如：
