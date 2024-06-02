@@ -20,6 +20,20 @@ ClashVerge.yaml
 https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml
 ```
 
+<a id="downloadLink" href="#">Download</a>
+<script>
+  document.getElementById('downloadLink').addEventListener('click', function () {
+    const url = 'https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml';
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'filename';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+</script>
+
+
 ### 2.修改配置 `proxy-providers` 机场订阅地址
 
 <!-- prettier-ignore -->
