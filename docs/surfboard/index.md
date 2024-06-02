@@ -57,11 +57,19 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
         .then(text => {
           const tempTextarea = document.createElement('textarea');
           tempTextarea.value = text;
+          tempTextarea.style.position = 'fixed';
+          tempTextarea.style.left = '-9999px';
           document.body.appendChild(tempTextarea);
+          tempTextarea.focus();
           tempTextarea.select();
-          document.execCommand('copy');
+          try {
+            const successful = document.execCommand('copy');
+            const msg = successful ? '文件内容已复制!' : '复制失败！';
+            alert(msg);
+          } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+          }
           document.body.removeChild(tempTextarea);
-          alert('文件内容已复制!');
         })
         .catch(console.error);
     });
