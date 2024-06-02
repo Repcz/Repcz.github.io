@@ -43,6 +43,8 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
 
 ### 手动添加配置
 
+#### 复制粘贴配置文件
+
 <a id="copyLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Surfboard.conf">点击自动复制文件内容</a>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -70,7 +72,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
 点击 Surfboard  **配置** -右下角➕ - **从零开始** -复制以下配置并粘贴
 
 
-* 修改[Proxy Group]部分并保存
+#### 修改[Proxy Group]部分并保存
 
 将[Proxy Group]中的 `http://your-service-provider` 替换为 机场订阅地址
 
@@ -89,7 +91,7 @@ eg：
 
 ```
 
-* 添加第二个或更多机场至同一个配置
+#### 添加第二个或更多机场至同一个配置
 
 为第二个机场添加一个策略组：
 
