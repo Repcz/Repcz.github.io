@@ -56,7 +56,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
     #
     # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
     #
-    # 最后更新时间: 2024-4-21 20:15
+    # 最后更新时间: 2024-05-29 14:37
     #
     # ================
 
@@ -131,8 +131,6 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
 
     🤖 AI = select, 🚀 手动切换, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇪🇺 欧洲节点, DIRECT, no-alert=0, hidden=0
 
-    📺 哔哩哔哩 = select, DIRECT, 🇭🇰 香港节点, 🇨🇳 台湾节点, no-alert=0, hidden=0
-
     🛑 广告拦截 = select, REJECT, DIRECT, no-alert=0, hidden=0
 
     🐟 兜底分流 = select, 🚀 手动切换, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇪🇺 欧洲节点, DIRECT, no-alert=0, hidden=0
@@ -173,9 +171,6 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
     # 谷歌服务
     RULE-SET,https://github.com/Repcz/Tool/raw/X/Shadowrocket/Rules/YouTube.list,🌌 谷歌服务
     RULE-SET,https://github.com/Repcz/Tool/raw/X/Shadowrocket/Rules/Google.list,🌌 谷歌服务
-
-    # 哔哩哔哩
-    RULE-SET,https://github.com/Repcz/Tool/raw/X/Shadowrocket/Rules/Bilibili.list,📺 哔哩哔哩
 
     # 国际媒体
     RULE-SET,https://github.com/Repcz/Tool/raw/X/Shadowrocket/Rules/ProxyMedia.list,📽️ 国际媒体
