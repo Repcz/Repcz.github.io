@@ -16,7 +16,30 @@
 
 ClashVerge.yaml
 
-<a href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml" download="ClashVerge.yaml">点击下载</a>
+<a id="downloadLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml">下载文件</a>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const link = document.getElementById('downloadLink');
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      const url = this.href;
+      const filename = url.substring(url.lastIndexOf('/') + 1);
+      fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+          const downloadUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = downloadUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(downloadUrl);
+        })
+        .catch(console.error);
+    });
+  });
+</script>
 
 
 ```
