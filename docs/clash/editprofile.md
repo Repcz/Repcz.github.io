@@ -107,7 +107,7 @@ proxy-groups:
 
 <!-- prettier-ignore -->
 !!! 注意
-    符合前面有两个空格，最好不要使用Tab进行缩进，使用英文符号，符合后有空格
+    符合前面有两个空格，最好不要使用Tab进行缩进，使用英文符号，符号后有空格
 
 eg:
 
@@ -245,7 +245,7 @@ rules:
 
 #### 规则类型
 
-以下部分介绍了部分规则类型及其使用方法，Mihomo(ClashMeta)内核的更多详细规则见[虚空终端 WIKI](https://wiki.metacubex.one/config/rules/)
+以下部分介绍了部分规则类型及其使用方法，Mihomo(ClashMeta)内核的更多详细规则见 [Mihomo WIKI](https://wiki.metacubex.one/config/rules/)
 
 - DOMAIN 域名
 
@@ -278,7 +278,7 @@ rules:
 域名关键词规则，如果请求的域名中包含关键字，则会匹配上此规则
 
 
-- GEOSITE (CLashMeta专属)
+- GEOSITE (ClashMeta专属)
 
 域名集合,匹配集合内的域名,具体参考 [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community/tree/master/data)
 
