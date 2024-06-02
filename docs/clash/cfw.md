@@ -14,9 +14,9 @@
 
 ![2](../clash/Photo/cfw2.webp)
 
-3.点击下面按钮，复制里面的配置，在 CFW 弹出的编辑器里，替换原有内容，并保存
+3.点击下面链接自动复制配置，在 CFW 弹出的编辑器里，替换原有内容，并保存
 
-<a id="copyLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Premium/CFW_parser.yaml">点击自动复制文件内容</a>
+<a id="copyLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Premium/CFW_parser.yaml">点击自动复制文件内容（不支持iOS）</a>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const link = document.getElementById('copyLink');
@@ -38,8 +38,6 @@
     });
   });
 </script>
-
-
 
 
 ![3](../clash/Photo/cfw3.webp)

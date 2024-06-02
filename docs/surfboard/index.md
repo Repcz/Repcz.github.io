@@ -45,7 +45,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
 
 #### 复制粘贴配置文件
 
-<a id="copyLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Surfboard.conf">点击自动复制文件内容</a>
+<a id="copyLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Surfboard.conf">点击自动复制文件内容（不支持iOS）</a>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const link = document.getElementById('copyLink');
