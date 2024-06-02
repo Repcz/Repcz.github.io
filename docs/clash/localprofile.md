@@ -14,24 +14,12 @@
 
 ### 1.下载配置文件到本地
 
-ClashVerge.yaml
+ClashVerge.yaml <a href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml" download="ClashVerge.yaml">点击下载</a>
+
 
 ```
 https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml
 ```
-
-<a id="downloadLink" href="#">Download</a>
-<script>
-  document.getElementById('downloadLink').addEventListener('click', function () {
-    const url = 'https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml';
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'filename';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  });
-</script>
 
 
 ### 2.修改配置 `proxy-providers` 机场订阅地址
