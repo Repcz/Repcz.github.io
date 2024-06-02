@@ -37,4 +37,5 @@
 
 * <a href="https://quantumult.app/x/open-app/ui?module=gallery&type=icon&action=add&content=%5B%22https://raw.githubusercontent.com/Twoandz9/TheMagic-Icons/main/TheRaw.json%22%5D">TheMagic@Twoandz9</a>
 * <a href="https://quantumult.app/x/open-app/ui?module=gallery&type=icon&action=add&content=%5B%22https://raw.githubusercontent.com/erdongchanyo/icon/main/edc-airport-icon-gallery.json%22%5D">Edc Airport Icon@ErdongChan</a>
+* <a href="https://quantumult.app/x/open-app/ui?module=gallery&type=icon&action=add&content=%5B%22https://raw.githubusercontent.com/cc63/ICON/main/icons.json%22%5D">纯色@cc63</a>
 
