@@ -61,7 +61,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surfboard/Online_Full_NoAuto.ini
           tempTextarea.select();
           document.execCommand('copy');
           document.body.removeChild(tempTextarea);
-          alert('文件内容已复制粘贴到剪切板!');
+          alert('文件内容已复制!');
         })
         .catch(console.error);
     });
