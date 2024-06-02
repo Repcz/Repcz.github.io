@@ -14,7 +14,9 @@
 
 ### 1.下载配置文件到本地
 
-ClashVerge.yaml <a href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml" download="ClashVerge.yaml">点击下载</a>
+ClashVerge.yaml
+
+<a href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml" download="ClashVerge.yaml">点击下载</a>
 
 
 ```
