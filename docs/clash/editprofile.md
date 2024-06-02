@@ -71,7 +71,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge_③.yaml
 
 <!-- prettier-ignore -->
 !!! 注意
-    修改后的 <<: *select 中的 * 前面有空格
+    修改后的 `<<: *select` 中的 `*` 前面有空格
 
 - `自动选择`策略组对应 `*auto`
 - `手动选择`策略组对应 `*select`
@@ -533,6 +533,8 @@ payload:
 #### use
 
 如果希望在某个策略中但是使用一个或多个代理提供商[`proxy-provider`]，可以使用[`use`]参数：
+
+eg:
 
 ```yaml
 proxy-groups:
