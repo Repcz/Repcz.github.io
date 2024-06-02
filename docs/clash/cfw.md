@@ -32,7 +32,7 @@
           tempTextarea.select();
           document.execCommand('copy');
           document.body.removeChild(tempTextarea);
-          alert('File content copied to clipboard!');
+          alert('文件内容已复制粘贴到剪切板!');
         })
         .catch(console.error);
     });
