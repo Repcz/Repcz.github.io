@@ -28,11 +28,24 @@
         .then(text => {
           const tempTextarea = document.createElement('textarea');
           tempTextarea.value = text;
+          tempTextarea.style.position = 'fixed';
+          tempTextarea.style.left = '-9999px';
           document.body.appendChild(tempTextarea);
+          tempTextarea.focus();
           tempTextarea.select();
-          document.execCommand('copy');
-          document.body.removeChild(tempTextarea);
-          alert('文件内容已复制!');
+          try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+              alert('文件内容已复制到剪贴板，请手动粘贴！');
+            } else {
+              alert('iOS无法自动复制，请长按链接打开新标签页查看并复内容制！');
+            }
+          } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+            alert('iOS无法自动复制，请长按链接打开新标签页查看并复内容制！');
+          } finally {
+            document.body.removeChild(tempTextarea);
+          }
         })
         .catch(console.error);
     });
