@@ -16,6 +16,30 @@
 
 3.点击下面按钮，复制里面的配置，在 CFW 弹出的编辑器里，替换原有内容，并保存
 
+<a id="copyLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Premium/CFW_parser.yaml">点击自动复制文件内容</a>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const link = document.getElementById('copyLink');
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      const url = this.href;
+      fetch(url)
+        .then(response => response.text())
+        .then(text => {
+          const tempTextarea = document.createElement('textarea');
+          tempTextarea.value = text;
+          document.body.appendChild(tempTextarea);
+          tempTextarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempTextarea);
+          alert('File content copied to clipboard!');
+        })
+        .catch(console.error);
+    });
+  });
+</script>
+
+
 ??? note "点击展开,复制配置"
     ```yaml
     # 参考：https://github.com/Fndroid/clash_for_windows_pkg/issues/2193
