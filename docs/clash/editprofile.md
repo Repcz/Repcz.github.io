@@ -176,7 +176,7 @@ proxy-groups:
 
 
 
-### 按需添加代理提供商（proxy-provider）
+### 按需添加代理提供商[`proxy-provider`]
 
 <!-- prettier-ignore -->
 !!! 提示
@@ -201,7 +201,6 @@ proxy-providers:
   Subscribe2: {<<: *p, path: ./proxy-providers/Sub2.yaml, url: http://your-service-provider}
 ```
 
-同时需要修改所有的`use:`参数，建议使用全局替换，将`use: [Subscribe]`替换为`use: [Subscribe, Subscribe2]`
 
 
 ### 按需添加分流规则
@@ -504,3 +503,47 @@ payload:
 10.0.0.0.1/32
 ```
 
+### 使策略组单独使用一个或多个代理提供商[`proxy-provider`]
+
+2024-06-02 更新的配置中引入了 [`include-all`](https://wiki.metacubex.one/config/proxy-groups/#include-all) 参数，效果是 引入所有出站代理[`proxies`]以及代理提供商[`proxy-provider`]
+
+更多相关参数如下，也可参考 [Mihomo Wiki](https://wiki.metacubex.one/config/proxy-groups/)
+
+#### include-all
+
+引入所有出站代理[`proxies`]以及代理提供商[`proxy-provider`]
+
+!!! info ""
+    引入不包含策略组,可在[proxies]引入其他策略组
+
+#### include-all-proxies
+
+引入所有出站代理[`proxies`]
+
+!!! info ""
+    引入不包含策略组,可在[`proxies`]引入其他策略组
+
+#### include-all-providers
+
+引入所有代理提供商[`proxy-provider`]
+
+!!! info ""
+    会使[`use`]参数失效
+
+#### use
+
+如果希望在某个策略中但是使用一个或多个代理提供商[`proxy-provider`]，可以使用[`use`]参数：
+
+```yaml
+proxy-groups:
+
+  - {name: 手动切换, type: select, include-all: ture, proxies: [香港节点, 美国节点, 狮城节点, 日本节点, 台湾节点, 欧洲节点, DIRECT], icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src/assets/image/logo.png}
+```
+
+👇
+
+```yaml
+proxy-groups:
+
+  - {name: 手动切换, type: select, use: [Subscribe], proxies: [香港节点, 美国节点, 狮城节点, 日本节点, 台湾节点, 欧洲节点, DIRECT], icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src/assets/image/logo.png}
+```
