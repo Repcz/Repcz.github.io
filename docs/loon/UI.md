@@ -1,5 +1,9 @@
 # 1. 交互界面(UI)
 
+<!-- prettier-ignore -->
+!!! 注意
+    以下所展示的 UI 可能会随版本更新而变化，请以实际为准。
+
 ### 1.1 Loon 开关 & 分流模式
 
 <img src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/loon/Photo/1.1.webp" width="600">
