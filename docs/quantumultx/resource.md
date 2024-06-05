@@ -108,7 +108,7 @@
 
 
 
-- 整点薯条 [@VirgilClyne](https://github.com/VirgilClyne
+- 整点薯条 [@VirgilClyne](https://github.com/VirgilClyne)
 
     - [🍟 GetSomeFries](https://github.com/VirgilClyne/GetSomeFries): 独立或实验性作品
         - [🍟 Fries: 🌐 通用](https://github.com/VirgilClyne/GetSomeFries/wiki/🌐-通用): 通用设置增强插件/模块
