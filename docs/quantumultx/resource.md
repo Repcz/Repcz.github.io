@@ -94,7 +94,7 @@
     
     [重写地址](https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/rewrite/chongxie.txt)
 
-    
+
 - [番茄小说去广告 @EAlyce](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%22filter_remote%22%20%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2FEAlyce%2Fconf%2Fmain%2FRule%2FFQNovelAdvertising.list%2C%20tag%3D%E7%95%AA%E8%8C%84%E5%B0%8F%E8%AF%B4%E5%8E%BB%E5%B9%BF%E5%91%8A%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dtrue%2C%20enabled%3Dtrue%22%0A%20%20%5D%0A%7D)
 
 #### 功能类重写
@@ -103,7 +103,7 @@
 
 <!-- prettier-ignore -->
 !!! 提示
-    点击商品名称右侧的箭头，仅支持京东12.4.1及以下版本
+    点击商品名称右侧的箭头，仅支持京东 `12.4.1` 及以下版本
 
 
 
