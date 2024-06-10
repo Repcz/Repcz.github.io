@@ -69,6 +69,7 @@ nav:
     - VPS: vps/index.md
     - Sub Store: substore/install.md
     - Subconverter: subconverter/index.md
+    - Mihomo Docker 部署: vps/mihomo.md
     - VPS 测试:
       - ByteVirt Singapore Premium: vps/vps-test/bytevirt-sgp.md
       - 阿里云 香港轻量服务器: vps/vps-test/aliyun-light.md
