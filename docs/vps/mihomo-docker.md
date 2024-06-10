@@ -129,7 +129,7 @@ EOF
 
 如果你的服务器上同时搭建了 `Adguard Home` 服务，`Mihomo` 配置中的dns需修改为 `127.0.0.1:53`,具体以实际监听的端口为准。
 
-## 启动/删除 Mihomo DOcker
+## 启动/删除 Mihomo Docker
 
 1.进入目录
 
