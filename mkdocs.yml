@@ -67,8 +67,8 @@ nav:
     - Sub Store: substore/use.md
   - VPS:
     - VPS: vps/index.md
-    - Sub Store: substore/install.md
-    - Subconverter: subconverter/index.md
+    - Sub Store 部署: substore/install.md
+    - Subconverter 部署: subconverter/index.md
     - Mihomo Docker 部署: vps/mihomo-docker.md
     - VPS 测试:
       - ByteVirt Singapore Premium: vps/vps-test/bytevirt-sgp.md
