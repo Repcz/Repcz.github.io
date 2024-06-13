@@ -16,7 +16,7 @@
 
 `ClashVerge.yaml`
 
-<a id="downloadLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml">点击下载文件</a>
+<a id="downloadLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml">点击下载文件</a>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const link = document.getElementById('downloadLink');
@@ -42,7 +42,7 @@
 </script>
 
 ```
-https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/ClashVerge.yaml
+https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
 ```
 
 
