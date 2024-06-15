@@ -14,7 +14,6 @@ nav:
   - 关于: index.md
   - 代理工具:
     - 申明: proxytool/index.md
-    - 代理软件下载: https://clash-verge-rev.github.io/friendship.html
     - Egern: egern/index.md
     - Mihomo: 
       - Mihomo: clash/index.md
