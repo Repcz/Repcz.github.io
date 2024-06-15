@@ -3,4 +3,6 @@
 <img src="./assets/telegram.svg" alt="TG" width="24" style="position: relative;top: 6px;"> Telegram Channel
 </a>
 
-[各种代理软件下载](https://clash-verge-rev.github.io/friendship.html)
+<a href="https://github.com/Repcz/Tool" target="_blank">
+<img src="./assets/github.svg" alt="TG" width="24" style="position: relative;top: 6px;"> GitHub Repositorie
+</a>
