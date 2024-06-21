@@ -15,17 +15,17 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 1.新建目录
 
 ```bash
-mkdir -p /root/clash_meta
+mkdir -p /root/mihomo
 ```
 
 2.写入 `Docker compose` 文件
 
 ```bash
-cat > /root/clash_meta/docker-compose.yml << EOF
+cat > /root/mihomo/docker-compose.yml << EOF
 services:
   clash:
     container_name: clash-meta
-    image: metacubex/mihomo:v1.18.4  # 最新版用 metacubex/mihomo:Alpha
+    image: metacubex/mihomo:latest  # 最新版用 metacubex/mihomo:Alpha
     restart: always
     pid: host
     ipc: host
@@ -134,7 +134,7 @@ EOF
 1.进入目录
 
 ```bash
-cd /root/clash_meta
+cd /root/mihomo
 ```
 
 2.启动 `Docker compose`
