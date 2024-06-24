@@ -24,7 +24,7 @@ openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout 
 ### 写入 Hysteria 配置文件
 
 ```bash
-cat << EOF > /etc/hysteria/config.yaml
+cat > /etc/hysteria/config.yaml << EOF
 listen: :443 #监听端口，可以自定义
 
 #使用自签证书
@@ -146,7 +146,7 @@ EOF
 ### 写入 Hysteria 配置文件
 
 ```bash
-cat << EOF > /etc/hysteria/config.yaml
+cat > /root/hysteria2/hysteria.yaml << EOF
 listen: :443 #监听端口，可以自定义
 
 #使用自签证书
