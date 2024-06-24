@@ -62,7 +62,7 @@ udpIdleTimeout: 60s
 EOF
 ```
 
-### 启动Hysteria2
+### 重启 Hysteria
 
 ```bash
 systemctl restart hysteria-server.service
