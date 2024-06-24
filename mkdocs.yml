@@ -71,6 +71,7 @@ nav:
     - Sub Store 部署: substore/install.md
     - Subconverter 部署: subconverter/index.md
     - Mihomo Docker 部署: vps/mihomo-docker.md
+    - Hysteria2 Docker 部署: vps/hysteira2.md
     - VPS 测试:
       - ByteVirt Singapore Premium: vps/vps-test/bytevirt-sgp.md
       - 阿里云 香港轻量服务器: vps/vps-test/aliyun-light.md
