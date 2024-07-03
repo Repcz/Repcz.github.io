@@ -145,9 +145,6 @@ proxy-groups:
 
 ### 按需添加代理提供商[`proxy-provider`]
 
-<!-- prettier-ignore -->
-!!! 提示
-    可以参考上方的多机场配置
 
 可以按照如下格式将策略组填写在`proxy-providers`下方
 
