@@ -22,6 +22,7 @@ nav:
         - 下载: clash/download.md
         - 本地配置使用: clash/localprofile.md
         - 自定义本地配置: clash/editprofile.md
+        - 脚本配置使用: clash/scriptprofile.md
         - 在线转换配置: clash/onlineprofile.md
       - Clash for Windows 预处理: clash/cfw.md
     - Loon:
