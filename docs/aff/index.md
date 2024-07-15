@@ -26,15 +26,6 @@
 
 ![aca](../aff/ACA.webp)
 
-### [私房菜](https://cos.cat/ui/#/register?code=pwP8wJIq)
-
-- 流媒体解锁 | 冷门国家
-- 公网中转 SS 节点 | 优化直连 Vless、Hysteria2 节点 | IPLC 专线 SS 节点
-- 直连低倍率节点 | 低倍率 卢森堡 下载节点 | 高倍率专线
-- 送 卷毛鼠 合作 Emby
-
-![sfc](../aff/SFC.webp)
-
 
 ### [XQC Retard](https://www.xqc.best/#/register?code=zwB37FuC)
 
