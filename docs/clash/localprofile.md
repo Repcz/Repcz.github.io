@@ -50,7 +50,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
 
 <!-- prettier-ignore -->
 !!! 提示
-    在第102行修改
+    在第108行修改
 
 ```yaml
 proxy-providers:
