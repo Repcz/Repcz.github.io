@@ -1,7 +1,7 @@
 
 ### 多机场配置
 
-如需要写入更多机场，可以参照下方 [按需添加代理提供商](../clash/editprofile.md?#proxy-provider)
+如需要写入更多机场，可以参照下方 [添加代理提供商](../clash/editprofile.md?#proxy-provider)
 
 
 ### 解除UWP应用回环限制
@@ -10,7 +10,7 @@
 * 全选软件(Ctrl+A)，勾选前方任意选项框，点击工具栏的 **Save Changes**
 
 
-### 按需设置 TUN模式
+### 设置 TUN 模式
 
 
 <!-- prettier-ignore -->
@@ -29,7 +29,7 @@
 
 
 
-### 按需修改策略组类型
+### 修改策略组类型
 
 默认地区/国家策略组，全部为自动选择最低延迟，测试地址为：`http://latency-test.skk.moe/endpoint` , 测试间隔：900秒
 
@@ -67,7 +67,7 @@ proxy-groups:
 
 
 
-### 按需添加策略组
+### 添加策略组
 
 
 如果需要添加**筛选节点用的地区/国家策略组**，可以按照如下格式将策略组填写在`proxy-groups`下方
@@ -143,7 +143,7 @@ proxy-groups:
 
 
 
-### 按需添加代理提供商[`proxy-provider`]
+### 添加代理提供商[`proxy-provider`]
 
 
 可以按照如下格式将策略组填写在`proxy-providers`下方
@@ -167,7 +167,7 @@ proxy-providers:
 
 
 
-### 按需添加分流规则
+### 添加分流规则
 
 
 Clash的规则都在写`rules`下方，其格式如下 (MATCH / IP类规则 除外）
@@ -354,7 +354,7 @@ rules:
 将上面没有匹配到的请求走该策略
 
 
-### 按需添加规则集
+### 添加规则集
 
 规则集添加可以按以下格式进行添加
 
