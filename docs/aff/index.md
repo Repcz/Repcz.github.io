@@ -14,7 +14,6 @@
 - 流媒体解锁
 - 广港、沪日、京德专线 IEPL 专线
 
-
 ![TKV](../aff/TKV.webp)
 
 ### [Academy City Airport](https://www.aca.best/#/register?code=J9Vf5lbX)
@@ -26,9 +25,9 @@
 
 ![aca](../aff/ACA.webp)
 
-
 ### [XQC Retard](https://www.xqc.best/#/register?code=zwB37FuC)
 
 - [Academy City Airport](https://www.aca.best/#/register?code=J9Vf5lbX) 家的公益机场
 - VMESS 协议
 - 目前 0 元购
+- 不保证可用性
