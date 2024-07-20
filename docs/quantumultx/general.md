@@ -87,6 +87,7 @@ running_mode_trigger = filter, filter, LINK_22E171:all_proxy, LINK_22E172:all_di
 ```
 
 可选参数：
+
 - `all_direct` 全部直连
 - `all_proxy` 全部代理
 - `filter` 规则分流
