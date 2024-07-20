@@ -1,28 +1,22 @@
 
 ## 节点延迟测试
 
-    <!-- prettier-ignore -->
-    !!! 注意
-        - 节点延迟低不代表速度快
-        - 部分机场存在劫持，此类节点建议使用不带 `generate_204` 的测试地址
-
+<!-- prettier-ignore -->
+!!! 注意
+    - 节点延迟低不代表速度快
+    - 部分机场存在劫持，此类节点建议使用不带 `generate_204` 的测试地址
 
 === "Quantumult X"
-
-
 
 #### 常用代理节点测试地址
 <!-- prettier-ignore -->
 !!! 注意
     替换时请注释或删除 [general] 下正在使用的 `server_check_url=` 项目
 
-
-
 - [Sukkwa 的整合性测试地址]⁠⁠⁠(https://lab.skk.moe/test-204)
 ```
 server_check_url=http://latency-test.skk.moe/endpoint
 ```
-
 
 - 苹果设备用于检测 Wi-Fi 是否需要认证登陆的链接
 ```
@@ -64,7 +58,6 @@ server_check_url=http://1.1.1.1/generate_204
 !!! 注意
     替换时请注释或删除 [general] 下正在使用的 `network_check_url=` 项目
 
-
 - VIVO
 ```
 network_check_url=http://wifi.vivo.com.cn/generate_204
@@ -93,25 +86,17 @@ network_check_url=http://www.apple.com/library/test/success.html
 network_check_url=http://http://connect.rom.miui.com/generate_204
 ```
 
-
-
-
 === "Loon"
-
-
 
 #### 常用代理节点测试地址
 <!-- prettier-ignore -->
 !!! 注意
     替换时请注释或删除 [General] 下正在使用的 `proxy-test-url =` 项目
 
-
-
 - [Sukkwa 的整合性测试地址]⁠⁠⁠(https://lab.skk.moe/test-204)
 ```
 proxy-test-url = http://latency-test.skk.moe/endpoint
 ```
-
 
 - 苹果设备用于检测 Wi-Fi 是否需要认证登陆的链接
 ```
@@ -181,13 +166,6 @@ internet-test-url = http://www.apple.com/library/test/success.html
 ```
 internet-test-url = http://http://connect.rom.miui.com/generate_204
 ```
-
-
-
-
-
-
-
 
 <script>
 const fileList = [];
