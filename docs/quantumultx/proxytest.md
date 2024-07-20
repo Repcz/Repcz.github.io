@@ -12,45 +12,44 @@
     !!! 注意
         替换时请注释或删除 正在使用的 `server_check_url=` 项目
 
-    ⁠⁠⁠
-    - 苹果设备用于检测 Wi-Fi 是否需要认证登陆的链接
-    
+    * [Sukkwa 的整合性测试地址]⁠⁠⁠(https://lab.skk.moe/test-204)
+    ```
+    server_check_url=http://latency-test.skk.moe/endpoint
+    ```
+
+
+    * 苹果设备用于检测 Wi-Fi 是否需要认证登陆的链接
     ```
     server_check_url=http://www.apple.com/library/test/success.html
     ```
 
-    - Google的网络联通性测试地址
-
+    * Google的网络联通性测试地址
     ```
     server_check_url=http://connectivitycheck.gstatic.com/generate_204
     ```
 
-    - 微软的网络联通性测试地址
-
+    * 微软的网络联通性测试地址
     ```
     server_check_url=http://www.msftconnecttest.com/connecttest.txt
     ```
 
-    - 高通的联通性测试地址
-
+    * 高通的联通性测试地址
     ```
     server_check_url=http://www.qualcomm.cn/generate_204
     ```
 
-    - Cloudflare网络联通性测试地址
+    * Cloudflare网络联通性测试地址
 
     ```
     server_check_url=http://cp.cloudflare.com/generate_204
     ```
     
-    - 谷歌常用网络联通性测试地址
-    
+    * 谷歌常用网络联通性测试地址
     ```
     server_check_url=http://www.gstatic.com/generate_204
     ```
     
-    - 1.1.1.1网络联通性测试地址
-    
+    * 1.1.1.1网络联通性测试地址
     ```
     server_check_url=http://1.1.1.1/generate_204
     ```
@@ -62,22 +61,22 @@
         替换时请注释或删除 正在使用的 `network_check_url=` 项目
 
 
-    - VIVO
+    * VIVO
     ```
     network_check_url=http://wifi.vivo.com.cn/generate_204
     ```
 
-    - HUAWEI
+    * HUAWEI
     ```
     network_check_url=http://connectivitycheck.platform.hicloud.com/generate_204
     ```
 
-    - QUALCOMM
+    * QUALCOMM
     ```
     network_check_url=http://www.qualcomm.cn/generate_204
     ```
 
-    - APPLE
+    * APPLE
     ```
     network_check_url=http://www.apple.com.cn/library/test/success.html
     ```
@@ -85,7 +84,7 @@
     network_check_url=http://www.apple.com/library/test/success.html
     ```
 
-    - XIAOMI
+    * XIAOMI
     ```
     network_check_url=http://http://connect.rom.miui.com/generate_204
     ```
