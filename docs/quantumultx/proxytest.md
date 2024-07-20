@@ -135,7 +135,7 @@
 === "Loon/Surge"
     <!-- prettier-ignore -->
     !!! 注意
-        替换时请注释或删除 正在使用的 `internet-test-url = ` 项目
+        替换时请注释或删除 `[General]` 下正在使用的 `internet-test-url = ` 项目
 
     - VIVO
     ```
