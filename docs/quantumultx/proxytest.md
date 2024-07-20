@@ -5,7 +5,7 @@
     - 部分机场存在劫持，此类节点建议使用不带 `generate_204` 的测试地址
 
 
-## 常用代理节点测试地址
+#### 常用代理节点测试地址
 
 === "Quantumult X"
     <!-- prettier-ignore -->
@@ -97,7 +97,7 @@
     proxy-test-url = http://1.1.1.1/generate_204
     ```
 
-## 常用网络联通性测试地址
+#### 常用网络联通性测试地址
 
 === "Quantumult X"
     <!-- prettier-ignore -->
