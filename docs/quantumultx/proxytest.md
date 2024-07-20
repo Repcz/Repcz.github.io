@@ -8,6 +8,10 @@
 
     #### 常用代理节点测试地址
 
+    <!-- prettier-ignore -->
+    !!! 注意！
+        替换时请注释或删除 正在使用的 `server_check_url=` 项目
+
     ⁠⁠⁠
     * 苹果设备用于检测 Wi-Fi 是否需要认证登陆的链接
     
@@ -51,4 +55,39 @@
     server_check_url=http://1.1.1.1/generate_204
     ```
 
-
+<script>
+const fileList = [];
+const divList = document.querySelectorAll("list item");
+const githubLink = "https://github.com/clash-verge-rev/clash-verge-rev/releases";
+(async () => {
+  const link = "https://api.github.com/repos/clash-verge-rev/clash-verge-rev/releases/latest";
+  const { assets } = await fetch(link).then((r) => r.json());
+  for (const { name, browser_download_url: url } of assets) {
+    fileList.push({ name, url });
+  }
+  for (const div of divList) {
+    const logo = div.getAttribute("logo");
+    const label = div.getAttribute("label");
+    const keyword = div.getAttribute("keyword");
+    const content = div.getAttribute("content");
+    const color = div.getAttribute("color") ?? "44CC11";
+    div.innerHTML = fileList.map(({ name, url }) => {
+      if (name.endsWith(keyword)) {
+        const a = document.createElement("a");
+        a.href = url;
+        const img = document.createElement("img");
+        img.src = `https://img.shields.io/badge/${label}-${content}-${color}?logo=${logo}`;
+        a.appendChild(img);
+        return a.outerHTML;
+      }
+      return "";
+    }).join("");
+  }
+})();
+</script>
+<style>
+list{
+  display: flex;
+  gap: 8px;
+}
+</style>
