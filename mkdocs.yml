@@ -48,7 +48,7 @@ nav:
       - 使用指北:
         - 交互UI: quantumultx/UI.md
         - 节点订阅: quantumultx/node.md
-            - 常用节点延迟: quantumultx/proxytest.md
+          - 常用节点延迟: quantumultx/proxytest.md
         - 规则系统: quantumultx/filter.md
         - 策略组: quantumultx/policy.md
         - DNS & 域名映射: quantumultx/dns.md
