@@ -53,9 +53,6 @@
 !!! 注意
     包含谷歌重定向及部分网页去广告
 
-
-
-
 - [YouTube @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fyoutube.snippet%2C%20tag%3Dyoutube%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
 
 <!-- prettier-ignore -->
@@ -75,7 +72,7 @@
 - [微博国际版 @kwywos](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%22rewrite_remote%22%20%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fgithub.com%2FKeywos%2Frule%2Fraw%2Fmain%2Fscript%2Fweibo_us%2Fwb_us.sgmodule%2C%20tag%3D%E5%BE%AE%E5%8D%9A%E5%9B%BD%E9%99%85%E7%89%88%E5%8E%BB%E5%B9%BF%E5%91%8A%40keywos%40kokoryh%2C%20update-interval%3D172800%2C%20opt-parser%3Dtrue%2C%20enabled%3Dtrue%22%0A%20%20%5D%0A%7D)
 
 - [什么值得买 @ZenmoFeiShi](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%22rewrite_remote%22%20%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FZenmoFeiShi%2FQx%2Fmain%2FSmzdm.snippet%2C%20tag%3D%E4%BB%80%E4%B9%88%E5%80%BC%E5%BE%97%E4%B9%B0%E5%8E%BB%E5%B9%BF%E5%91%8A%40ZenmoFeiShi%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%0A%20%20%5D%0A%7D)
-- [滴滴出行 @ZenmoFeiShi](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fgithub.com%2FRepcz%2FTool%2Fraw%2FX%2FQuantumultX%2FRules%2FDDCX.snippet%2C%20tag%3D%E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FZenmoFeiShi%2FQx%2Fmain%2FDidichuxing.snippet%2C%20tag%3D%E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A%40ZenmoFeiShi%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
+- [滴滴出行 @ZenmoFeiShi](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fgithub.com%2FRepcz%2FTool%2Fraw%2FX%2FQuantumultX%2FRules%2FDDCX.snippet%2C%20tag%3D%E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FZenmoFeiShi%2FQx%2Fmain%2FDidichuxing.snippet%2C%20tag%3D%E6%BB%B4%E6%BB%B4%E5%87%BA%E8%A1%8C%E5%8E%BB%E5%B9%BF%E5%91%8A%40ZenmoFeiShi%2C%20update-interval%3D172800%2C%20opt-parser%3Dtrue%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
 
 <!-- prettier-ignore -->
 !!! 注意
