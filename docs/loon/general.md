@@ -154,7 +154,7 @@ real-ip = *.apple.com,*.icloud.com
 ```
 [General]
 
-# 禁用stun: 是否禁用stun协议的udp数据，禁用后可以有效解决 webrtc 的 ip泄露
+# 是否禁用 stun 协议的 udp 数据，禁用后可以有效解决 webrtc 的 ip泄露
 disable-stun = true
 
 # UDP 回落策略 需 3.2.0+ build(702)
