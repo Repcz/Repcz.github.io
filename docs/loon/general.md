@@ -25,7 +25,7 @@ ipv6 = true
 ```
 
 
-#### 11.1.2 网络接口 `interface-mode`
+#### 11.1.2 网络接口
 
 指定流量使用哪个网络接口进行转发，目前包含三种模式:
 
@@ -51,7 +51,7 @@ interface-mode = Performace
 geoip-url = https://gitlab.com/Masaiki/GeoIP2-CN/-/raw/release/Country.mmdb
 ```
 
-####  11.1.4 绕过路由 `bypass-tun`
+####  11.1.4 绕过路由
 
 目前iOS设备上的流量有两种方式传递给 Loon，分别是 **HTTP Proxy** 和 **TUN**（可以简单理解为虚拟网卡），`bypass-tun` 则和 **TUN** 有关，如果配置了该参数，那么所配置的这些IP段、域名就会不交给 Loon 来处理，系统直接处理
 
@@ -199,7 +199,7 @@ wifi-access-socks5-port = 8898
 
 
 
-#### 11.1.16 连接失败切换 `switch-node-after-failure-times`
+#### 11.1.16 连接失败切换
 
 一个节点连接失败几次后会进行节点切换，默认3次
 
@@ -210,7 +210,7 @@ switch-node-after-failure-times = 3
 
 
 
-#### 11.1.17 SSID工作模式 `ssid-trigger`
+#### 11.1.17 SSID工作模式
 
 当切换到某一特定的WiFi下时改变Loon的流量模式
 - `"loon-wifi5g":DIRECT`，表示在loon-wifi5g这个wifi网络下使用直连模式，
