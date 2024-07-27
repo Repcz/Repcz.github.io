@@ -42,7 +42,7 @@ interface-mode = Performace
 
 #### 11.1.3 GeoIP 数据库
 
-自定义geoip数据库的url，可通过UI更改自动更新时间
+自定义 GeoIP 数据库的地址，可通过UI更改自动更新时间
 
 不填写此参数时，使用 MaxMind 数据库
 
@@ -61,7 +61,7 @@ bypass-tun = 192.168.0.0/16,localhost,*.local
 ```
 
 
-#### 11.1.5 绕过代理 `skip-proxy`
+#### 11.1.5 绕过代理
 
 和上面类似，`skip-proxy`则和 `HTTP Proxy` 有关，如果配置了该参数，那么所配置的这些IP段、域名将不会转发到Loon，而是由系统处理
 
