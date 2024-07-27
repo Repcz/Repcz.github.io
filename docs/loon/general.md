@@ -4,7 +4,7 @@
 
 > 该部分主要包含配置文件中 `[general]`区域下的参数解释以及对应的UI
 
-> 以下搬运至 [Loon官方文档 ](https://loon0x00.github.io/LoonManual/#/cn/general)，不定时更新
+> 以下搬运至 [Loon官方文档 ](https://nsloon.app/docs/General/)，不定时更新
 
 
 <!-- prettier-ignore -->
@@ -53,7 +53,7 @@ geoip-url = https://gitlab.com/Masaiki/GeoIP2-CN/-/raw/release/Country.mmdb
 
 ####  11.1.4 绕过路由 `bypass-tun`
 
-目前iOS设备上的流量有两种方式传递给Loon，分别是 **HTTP Proxy** 和 **TUN**（可以简单理解为虚拟网卡），`bypass-tun`则和 **TUN** 有关，如果配置了该参数，那么所配置的这些IP段、域名就会不交给Loon来处理，系统直接处理
+目前iOS设备上的流量有两种方式传递给 Loon，分别是 **HTTP Proxy** 和 **TUN**（可以简单理解为虚拟网卡），`bypass-tun` 则和 **TUN** 有关，如果配置了该参数，那么所配置的这些IP段、域名就会不交给 Loon 来处理，系统直接处理
 
 ```
 [General]
@@ -63,7 +63,7 @@ bypass-tun = 192.168.0.0/16,localhost,*.local
 
 #### 11.1.5 绕过代理 `skip-proxy`
 
-和上面类似，skip-proxy则和HTTP Proxy有关，如果配置了该参数，那么所配置的这些IP段、域名将不会转发到Loon，而是由系统处理
+和上面类似，`skip-proxy`则和 `HTTP Proxy` 有关，如果配置了该参数，那么所配置的这些IP段、域名将不会转发到Loon，而是由系统处理
 
 不作为默认路由 仅可通过 UI 开启
 
@@ -153,8 +153,11 @@ real-ip = *.apple.com,*.icloud.com
 ```
 [General]
 
-# 禁用stun是否禁用stun协议的udp数据，禁用后可以有效解决webrtc的ip泄露
+# 禁用stun: 是否禁用stun协议的udp数据，禁用后可以有效解决 webrtc 的 ip泄露
 disable-stun = true
+
+# UDP 回落策略 需 3.2.0+ build(702)
+udp-fallback-mode = REJECT
 ```
 
 
@@ -234,6 +237,40 @@ ssid-trigger = "loon-wifi5g":DIRECT,"cellular":PROXY,"default":RULE
 force-http-engine-hosts = *.baid.com,:8080
 ```
 
+#### 11.1.19 域名拒绝行为 & DNS 拒绝行为
+
+
+需 3.2.0+ build(702)
+
+##### 域名拒绝规则执行的阶段
+
+- `DNS`：使用 `LoopbackIP`、`No Answer` 或 `NXDomain` 的方式阻止 DNS 查询以达到拦截请求的目的
+- `Request`：在请求转发阶段拦截请求
+
+<!-- prettier-ignore -->
+!!! 注意
+    在 `HTTP Proxy & TUN` 模式下由于拦截到的系统 DNS 较少，大部分的拦截都会在转发请求阶段进行。
+
+eg：
+
+```
+[General]
+domain-reject-mode = DNS 
+```
+
+##### 在DNS阶段拒绝域名时采用的方式
+
+- `LOOPBACKIP`：回环IP
+- `NOANSWER`：DNS响应为空
+- `NXDOMAIN`：错误码为3的DNS响应
+
+eg：
+
+```
+[General]
+dns-reject-mode = LOOPBACKIP
+```
+
 ### 11.2 外部资源
 
 <img src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/loon/Photo/11.2.webp" width="900">
@@ -244,9 +281,9 @@ force-http-engine-hosts = *.baid.com,:8080
 
 - https://www.nsloon.com/openloon/update?sub=all
 
-Loon 1.1.7版本后新增「下载进度提示」
+Loon 1.1.7 版本后新增「下载进度提示」
 
-Loon 1.1.8版本新增「资源自动更新策略」：可自行更改更新时间及是否隐藏下载进度等设置
+Loon 1.1.8 版本新增「资源自动更新策略」：可自行更改更新时间及是否隐藏下载进度等设置
 
 
 ### 11.3 Apple TV
