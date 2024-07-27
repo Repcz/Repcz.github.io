@@ -138,6 +138,7 @@ resource-parser = https://gitlab.com/sub-store/Sub-Store/-/releases/permalink/la
 但是有时候系统的一些域名会缓存这些假IP，导致关闭Loon后会用这个假的IP直接发起请求，这就会导致一些问题，针对这种情况可以配置`real-ip`来使这些域名返回真实的ip
 
 ```
+[General]
 real-ip = *.apple.com,*.icloud.com
 ```
 
@@ -239,8 +240,9 @@ force-http-engine-hosts = *.baid.com,:8080
 
 #### 11.1.19 域名拒绝行为 & DNS 拒绝行为
 
-
-需 3.2.0+ build(702)
+<!-- prettier-ignore -->
+!!! 注意
+    需 3.2.0+ build(702)
 
 ##### 域名拒绝规则执行的阶段
 
@@ -248,7 +250,7 @@ force-http-engine-hosts = *.baid.com,:8080
 - `Request`：在请求转发阶段拦截请求
 
 <!-- prettier-ignore -->
-!!! 注意
+!!! 说明
     在 `HTTP Proxy & TUN` 模式下由于拦截到的系统 DNS 较少，大部分的拦截都会在转发请求阶段进行。
 
 eg：
@@ -258,11 +260,11 @@ eg：
 domain-reject-mode = DNS 
 ```
 
-##### 在DNS阶段拒绝域名时采用的方式
+##### 在 DNS 阶段拒绝域名时采用的方式
 
-- `LOOPBACKIP`：回环IP
-- `NOANSWER`：DNS响应为空
-- `NXDOMAIN`：错误码为3的DNS响应
+- `LOOPBACKIP`：回环 IP
+- `NOANSWER`：DNS 响应为空
+- `NXDOMAIN`：错误码为 3 的 DNS 响应
 
 eg：
 
