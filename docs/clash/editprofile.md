@@ -142,12 +142,13 @@ proxy-groups:
 
 
 
-### 添加代理提供商[`proxy-provider`]
+### 添加机场订阅
 
 
 可以按照如下格式将策略组填写在`proxy-providers`下方
 
-注意：proxy-provider 的名称前面有两个空格，不要使用Tab进行缩进，使用英文`,` ，符号后有空格
+!!! 注意
+    proxy-provider 的名称前面有两个空格，不要使用Tab进行缩进，使用英文`,` ，符号后有空格
 
 
 ```yaml
@@ -466,7 +467,7 @@ payload:
 10.0.0.0.1/32
 ```
 
-### 使策略组单独使用一个或多个代理提供商[`proxy-provider`]
+### 使策略组单独使用一个或多个机场订阅
 
 2024-06-02 更新的配置中引入了 [`include-all`](https://wiki.metacubex.one/config/proxy-groups/#include-all) 参数，效果是 引入所有出站代理[`proxies`]以及代理提供商[`proxy-provider`]
 
