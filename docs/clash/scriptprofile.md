@@ -19,7 +19,7 @@
 
 ### 2.导入脚本配置
 
-[点击链接](https://github.com/Repcz/Tool/blob/X/Clash/Meta/Verge_Rev_Script.js)，复制文件内容
+[点击链接](https://github.com/Repcz/Tool/blob/X/Clash/Meta/Override.js)，复制文件内容
 
 ![9](../clash/Photo/9.webp)
 
