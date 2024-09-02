@@ -210,6 +210,8 @@ docker compose down
 
 [官方文档](https://v2.hysteria.network/zh/docs/advanced/Port-Hopping/)
 
+来源：https://blog.passall.us/archives/1199
+
 <!-- prettier-ignore -->
 !!! 注意
     `20000:40000` 为跳跃端口，`9443` 为 HY2 监听的端口
