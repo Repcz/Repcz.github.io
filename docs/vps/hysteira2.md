@@ -204,3 +204,28 @@ docker compose up -d
 ```bash
 docker compose down
 ```
+
+## 设置端口跳跃
+
+
+[官方文档](https://v2.hysteria.network/zh/docs/advanced/Port-Hopping/)
+
+<!-- prettier-ignore -->
+!!! 注意
+    `20000:40000` 为跳跃端口，`9443` 为 HY2 监听的端口
+
+```bash
+apt install iptables-persistent
+```
+
+```bash
+iptables -t nat -A PREROUTING -i eth0 -p udp --dport 20000:40000 -j DNAT --to-destination :9443
+```
+
+```bash
+ip6tables -t nat -A PREROUTING -i eth0 -p udp --dport 20000:40000 -j DNAT --to-destination :9443
+```
+
+```bash
+netfilter-persistent save
+```
