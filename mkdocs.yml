@@ -20,11 +20,11 @@ nav:
       - Mihomo: clash/index.md
       - Clash Verge Rev:
         - 下载: clash/verge/download.md
-        - 本地配置使用: clash/verge/localprofile.md
-        - 自定义本地配置: clash/verge/editprofile.md
-        - 脚本配置使用: clash/verge/scriptprofile.md
-        - 在线转换配置: clash/verge/onlineprofile.md
-      - Mihomo Party: clash/party.md
+        - 本地配置使用: clash/verge-localprofile.md
+        - 自定义本地配置: clash/verge-editprofile.md
+        - 脚本配置使用: clash/verge-scriptprofile.md
+        - 在线转换配置: clash/verge-onlineprofile.md
+      - Mihomo Party: clash/party-localprofile.md
       - Clash for Windows 预处理: clash/cfw.md
     - Loon:
       - 入门: loon/index.md
