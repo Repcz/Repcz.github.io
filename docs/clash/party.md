@@ -45,6 +45,7 @@
 https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
 ```
 
+将下载的文件拖入 Mihomo Party 中
 
 ### 2.修改配置 `proxy-providers` 为机场订阅地址
 
