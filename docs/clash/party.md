@@ -82,7 +82,7 @@ Mihomo(ClashMeta) 内核支持解析 base64 格式的订阅，可按照下图提
 
 <!-- prettier-ignore -->
 !!! 注意
-    以下内容仅在 Clash Verge Rev 中进行测试
+    以下内容仅在 Mihomo Party 中进行测试
 
 ### 1.导入机场配置
 
@@ -92,14 +92,20 @@ Mihomo(ClashMeta) 内核支持解析 base64 格式的订阅，可按照下图提
 
 ### 2.导入脚本配置
 
-复制脚本链接
+复制脚本链接,添加至覆写中
 
 ```
-https://github.com/Repcz/Tool/blob/X/Clash/Meta/Override.js
+https://github.com/Repcz/Tool/raw/X/Clash/Meta/Override.js
 ```
 
-
+![4](../clash/Photo/party3.webp)
 
 ### 3.更新并启用配置
+
+选择需要使用脚本覆写的配置，编辑信息，启用该覆写
+
+![5](../clash/Photo/party4.webp)
+
+![6](../clash/Photo/party5.webp)
 
 导入之后需更新配置，并确保启用该配置！
