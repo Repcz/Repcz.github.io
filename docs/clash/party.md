@@ -109,6 +109,8 @@ https://github.com/Repcz/Tool/raw/X/Clash/Meta/Override.js
 ![5](../clash/Photo/party4.webp)
 
 
+覆写选择刚才导入的，并保存
+
 ![6](../clash/Photo/party5.webp)
 
 
