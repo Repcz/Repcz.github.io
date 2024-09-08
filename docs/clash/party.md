@@ -67,11 +67,9 @@ Mihomo(ClashMeta) 内核支持解析 base64 格式的订阅，可按照下图提
 
 ![1](../clash/Photo/1.webp)
 
+![2](../clash/Photo/party1.webp)
 
-<video controls>
-  <source src="../clash/Photo/loacl.webm">
-</video>
-
+![3](../clash/Photo/party2.webp)
 
 
 ## 脚本配置使用方法
@@ -100,9 +98,6 @@ Mihomo(ClashMeta) 内核支持解析 base64 格式的订阅，可按照下图提
 https://github.com/Repcz/Tool/blob/X/Clash/Meta/Override.js
 ```
 
-<video controls>
-  <source src="../clash/Photo/script.webm">
-</video>
 
 
 ### 3.更新并启用配置
