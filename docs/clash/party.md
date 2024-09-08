@@ -1,3 +1,7 @@
+## 下载
+
+[mihomo-party/releases](https://github.com/pompurin404/mihomo-party/releases)
+
 ## 本地配置使用方法
 
 <!-- prettier-ignore -->
@@ -12,9 +16,7 @@
 
 ### 1.下载配置文件到本地
 
-`Mihomo.yaml`
-
-<a id="downloadLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml">点击下载文件</a>
+`Mihomo.yaml`  <a id="downloadLink" href="https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml">点击下载文件</a>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const link = document.getElementById('downloadLink');
@@ -44,7 +46,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
 ```
 
 
-### 2.修改配置 `proxy-providers` 机场订阅地址
+### 2.修改配置 `proxy-providers` 为机场订阅地址
 
 <!-- prettier-ignore -->
 !!! 提示
@@ -109,3 +111,29 @@ https://github.com/Repcz/Tool/raw/X/Clash/Meta/Override.js
 ![6](../clash/Photo/party5.webp)
 
 导入之后需更新配置，并确保启用该配置！
+
+## 自用 Party 设置
+
+<!-- prettier-ignore -->
+!!! 提示
+    Mihomo Party 等 Mihomo GUI 软件，会默认接管 DNS 、嗅探、通用配置等设置，即被 GUI 接管时不会遵从配置文件中的设置。
+
+    DNS、嗅探等可以在 GUI 中关闭接管，但通用配置是强制接管且无法取消！
+
+
+### 内核设置
+
+![7](../clash/Photo/party6.webp)
+
+### 外部资源
+
+![8](../clash/Photo/party7.webp)
+
+
+### GUI 设置
+
+
+![9](../clash/Photo/party8.webp)
+
+![10](../clash/Photo/party9.webp)
+
