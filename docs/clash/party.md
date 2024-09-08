@@ -123,15 +123,20 @@ https://github.com/Repcz/Tool/raw/X/Clash/Meta/Override.js
 
 ### 内核设置
 
+开启 「RTT延迟」、「TCP并发」、「存储FakeIP」、「存储选择节点」
+
 ![7](../clash/Photo/party6.webp)
 
 ### 外部资源
+
+GeoIP 数据模式修改为 `dat`
 
 ![8](../clash/Photo/party7.webp)
 
 
 ### GUI 设置
 
+关闭 「接管DNS」、「接管嗅探」
 
 ![9](../clash/Photo/party8.webp)
 
