@@ -48,7 +48,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
 
 ### 2.修改配置 `proxy-providers` 机场订阅地址
 
-将 `http://your-service-provider` 替换为你的机场订阅地址，如果要添加多个机场，可以参考 [添加代理提供商](../clash/verge-editprofile.md?#proxy-provider)
+将 `http://your-service-provider` 替换为你的机场订阅地址，如果要添加多个机场，可以参考 [添加机场订阅](../clash/verge-editprofile.md?#_1)
 
 
 ```yaml
