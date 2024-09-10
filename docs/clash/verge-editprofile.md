@@ -43,7 +43,7 @@ proxy-providers:
       #additional-suffix: "节点后缀"
 ```
 
-👇
+👇 删除对应的 `#`
 
 ```yaml
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
