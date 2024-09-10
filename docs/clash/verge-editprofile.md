@@ -1,8 +1,4 @@
 
-### 多机场配置
-
-如需要写入更多机场，可以参照下方 [添加代理提供商](../clash/verge-editprofile.md?#proxy-provider)
-
 
 ### 解除UWP应用回环限制
 
@@ -25,6 +21,42 @@
 ![7](../clash/Photo/7.webp)
 
 ![8](../clash/Photo/8.webp)
+
+
+### 添加机场订阅
+
+可以按照如下格式将策略组填写在`proxy-providers`下方
+
+!!! 注意
+    `proxy-provider` 的名称前面有两个空格，不要使用 Tab 进行缩进，使用英文`,` ，符号后有空格
+
+
+```yaml
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
+proxy-providers:
+  Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
+    url: http://your-service-provider
+    <<: *p
+    #override: # 修改节点前后缀时，需移除前方的 "#" 符号
+      #additional-prefix: "节点前缀"
+      #additional-suffix: "节点后缀"
+  #Subscribe2: {url: http://your-service-provider, <<: *p}
+```
+
+👇 移除 `Subscribe2` 前方的 `#`，并修改对应的 `http://your-service-provider` 即可。
+
+```yaml
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
+proxy-providers:
+  Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
+    url: http://your-service-provider
+    <<: *p
+    #override: # 修改节点前后缀时，需移除前方的 "#" 符号
+      #additional-prefix: "节点前缀"
+      #additional-suffix: "节点后缀"
+  Subscribe2: {url: http://your-service-provider, <<: *p}
+```
+
 
 ### 机场节点添加前缀/后缀
 
@@ -170,42 +202,6 @@ proxy-groups:
 ```
 
 
-
-
-### 添加机场订阅
-
-
-可以按照如下格式将策略组填写在`proxy-providers`下方
-
-!!! 注意
-    `proxy-provider` 的名称前面有两个空格，不要使用 Tab 进行缩进，使用英文`,` ，符号后有空格
-
-
-```yaml
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
-proxy-providers:
-  Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
-    url: http://your-service-provider
-    <<: *p
-    #override: # 修改节点前后缀时，需移除前方的 "#" 符号
-      #additional-prefix: "节点前缀"
-      #additional-suffix: "节点后缀"
-  #Subscribe2: {url: http://your-service-provider, <<: *p}
-```
-
-👇 移除 `Subscribe2` 前方的 `#`，并修改对应的 `http://your-service-provider` 即可。
-
-```yaml
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
-proxy-providers:
-  Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
-    url: http://your-service-provider
-    <<: *p
-    #override: # 修改节点前后缀时，需移除前方的 "#" 符号
-      #additional-prefix: "节点前缀"
-      #additional-suffix: "节点后缀"
-  Subscribe2: {url: http://your-service-provider, <<: *p}
-```
 
 
 
