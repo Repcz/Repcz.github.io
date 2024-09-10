@@ -1,7 +1,7 @@
 
 ### 多机场配置
 
-如需要写入更多机场，可以参照下方 [添加代理提供商](../clash/editprofile.md?#proxy-provider)
+如需要写入更多机场，可以参照下方 [添加代理提供商](../clash/verge-editprofile.md?#proxy-provider)
 
 
 ### 解除UWP应用回环限制
@@ -30,7 +30,7 @@
 
 ### 修改策略组类型
 
-默认地区/国家策略组，全部为自动选择最低延迟，测试地址为：`http://latency-test.skk.moe/endpoint` , 测试间隔：900秒
+默认地区/国家策略组，全部为自动选择最低延迟，测试地址为：`http://connectivitycheck.gstatic.com/generate_204` , 测试间隔：1800 秒
 
 * 点击左侧 **配置/订阅** → 找到使用的配置并右键 → **修改配置**
 * 找到第140行 `- {name: 🇭🇰 香港节点, <<: *auto, filter: ...."}`，将 `*auto` 修改为 `*select`；
@@ -152,17 +152,38 @@ proxy-groups:
 
 
 ```yaml
-proxy-providers:
-  Subscribe: {<<: *p, path: ./proxy-providers/Sub.yaml, url: http://your-service-provider}
+  Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
+    url: http://your-service-provider
+    path: ./proxies/Sub.yaml
+    type: http
+    interval: 86400
+    health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}
+    #override: # 修改节点前后缀时，需移除前方的 "#" 符号
+      #additional-prefix: "节点前缀"
+      #additional-suffix: "节点后缀"  
 ```
 
 👇
 
 ```yaml
-proxy-providers:
-  Subscribe: {<<: *p, path: ./proxy-providers/Sub.yaml, url: http://your-service-provider}
-
-  Subscribe2: {<<: *p, path: ./proxy-providers/Sub2.yaml, url: http://your-service-provider}
+  Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
+    url: http://your-service-provider
+    path: ./proxies/Sub.yaml
+    type: http
+    interval: 86400
+    health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}
+    #override: # 修改节点前后缀时，需移除前方的 "#" 符号
+      #additional-prefix: "节点前缀"
+      #additional-suffix: "节点后缀"  
+  Subscribe2: 
+    url: http://your-service-provider
+    path: ./proxies/Sub2.yaml
+    type: http
+    interval: 86400
+    health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}
+    #override: # 修改节点前后缀时，需移除前方的 "#" 符号
+      #additional-prefix: "节点前缀"
+      #additional-suffix: "节点后缀"  
 ```
 
 
