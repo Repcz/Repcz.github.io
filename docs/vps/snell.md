@@ -44,7 +44,9 @@ cat > /root/snelldocker/snell-conf/snell.conf << EOF
 [snell-server]
 listen = 0.0.0.0:65110
 psk = jy7jbw6yFWikg2uS
-ipv6 = false
+ipv6 = true
+tfo = true
+version = 4
 dns = 1.1.1.1, 8.8.8.8, 2001:4860:4860::8888
 EOF
 ```
