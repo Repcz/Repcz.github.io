@@ -47,7 +47,7 @@ psk = jy7jbw6yFWikg2uS
 ipv6 = true
 tfo = true
 version = 4
-dns = 1.1.1.1, 8.8.8.8, 2001:4860:4860::8888
+dns = 1.1.1.1, 8.8.8.8
 EOF
 ```
 
