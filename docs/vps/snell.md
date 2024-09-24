@@ -33,7 +33,7 @@ services:
     volumes:
       - ./snell-conf/snell.conf:/etc/snell-server.conf
     environment:
-      - SNELL_URL=https://dl.nssurge.com/snell/snell-server-v4.1.0-linux-amd64.zip
+      - SNELL_URL=https://dl.nssurge.com/snell/snell-server-v4.1.1-linux-amd64.zip
 EOF
 ```
 
