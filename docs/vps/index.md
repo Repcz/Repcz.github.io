@@ -25,7 +25,7 @@ curl https://raw.githubusercontent.com/ludashi2020/backtrace/main/install.sh -sS
 #### 测速
 
 ```bash
-bash <(curl -sL bash.icu/speedtest)
+bash <(curl -sL https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh)
 ```
 
 
