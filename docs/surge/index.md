@@ -127,12 +127,9 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Surge.conf
 
 ### 添加机场订阅
 
-> 机场订阅本地转换可参考[Sub-Store 教程](https://getupnote.com/share/notes/8SiMnOcwXxZ3xEtK4k2v9Gr3pv32/7522F394-6D73-414E-BE04-1455EDB15B9F)
-
-
 * 双击新导入的配置，确保配置处于启用状态
-* 点击侧边栏的 **策略** 按钮，右键 **手动选择策略组**
-* 将机场订阅填入
+* 点击侧边栏的 **策略** 按钮，右键 **手动选择** 策略组
+* 将机场订阅填入并保存
 
 <img width="600px" src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/surge/Photo/Mac3.webp"/>
 
