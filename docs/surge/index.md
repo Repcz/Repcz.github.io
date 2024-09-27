@@ -135,6 +135,6 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Surge.conf
 
 <img width="600px" src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/surge/Photo/Mac4.webp"/>
 
-<img width="600px" src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/surge/Photo/Mac6.webp"/>
+<img width="600px" src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/surge/Photo/Mac5.webp"/>
 
 
