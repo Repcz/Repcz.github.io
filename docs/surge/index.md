@@ -96,7 +96,7 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Surge/Surge.conf
 
 ## Surge macOS
 
-<a href="https://dl.nssurge.com/mac/v5/Surge-latest.zip"><img width="200px" alt="Download on App Store" src="https://logos-download.com/wp-content/uploads/2016/06/Download_on_the_App_Store_logo.png"/></a>  
+https://dl.nssurge.com/mac/v5/Surge-latest.zip
 
 
 ## 导入配置
