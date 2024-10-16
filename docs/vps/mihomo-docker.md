@@ -23,8 +23,8 @@ mkdir -p /root/mihomo
 ```bash
 cat > /root/mihomo/docker-compose.yml << EOF
 services:
-  clash:
-    container_name: clash-meta
+  mihomo:
+    container_name: mihomo
     image: metacubex/mihomo:latest
     restart: always
     pid: host
@@ -45,6 +45,10 @@ EOF
 
 
 ## 写入 Mihomo 配置
+
+请区分作为 `客户端` 和 `服务端` 的配置文件。
+
+### 客户端配置文件
 
 ```bash
 cat > /root/mihomo/config.yml << EOF
@@ -128,7 +132,72 @@ rules:
   - GEOIP,lan,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,Proxy
-  
+
+EOF
+```
+
+### 服务端配置文件
+
+此配置文件同时搭建 `SS 2022` 和 `hysteria2` 节点，请根据需要自行修改
+
+```bash
+cat > /root/mihomo/config.yml << EOF
+
+mixed-port: 65222 # HTTP(S) 和 SOCKS 代理混合端口
+tcp-concurrent: true # TCP 并发连接所有 IP, 将使用最快握手的 TCP
+allow-lan: false # 允许局域网连接
+ipv6: true # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
+log-level: info # 日志等级 silent/error/warning/info/debug
+
+hosts:
+  "localhost": 127.0.0.1
+
+dns:
+  enable: true
+  listen: :65222 # 开启 DNS 服务器监听
+  ipv6: true # false 将返回 AAAA 的空结果
+  use-hosts: true # 查询 hosts
+  enhanced-mode: redir-host
+  nameserver: [8.8.4.4, 9.9.9.12, 208.67.220.220, 94.140.14.141]
+
+rules:
+  - MATCH,DIRECT
+
+listeners: #搭建代理节点
+
+  - name: SS2022
+    type: shadowsocks
+    port: 65112
+    listen: "::"
+    cipher: 2022-blake3-aes-256-gcm # 2022-blake3-aes-128-gcm/2022-blake3-aes-256-gcm/2022-blake3-chacha20-poly1305
+    password: SaAj4IC+cHEyWoCaUXeNBE+A8DcqKRsOELe4FOuuNJE=
+    udp: true
+    udp-over-tcp: false
+    ip-version: ipv4-prefer
+
+    smux:
+      enabled: true
+      protocol: h2mux
+      max-connections: 0
+      min-streams: 0
+      max-streams: 1
+      statistic: true
+      only-tcp: false
+      padding: true
+
+  - name: hy2
+    type: hysteria2
+    port: 65111
+    listen: 0.0.0.0
+    password: 123456
+    up: 200
+    down: 30
+    masquerade: "https://bing.com"
+    alpn:
+    - h3
+    certificate: ./server.crt
+    private-key: ./server.key
+
 EOF
 ```
 
@@ -140,13 +209,13 @@ EOF
 cd /root/mihomo
 ```
 
-2.启动 `Docker compose`
+2.启动容器
 
 ```bash
 docker compose up -d
 ```
 
-3.或者 停止删除 `Docker compose`
+3.停止删除容器
 
 ```bash
 docker compose down
