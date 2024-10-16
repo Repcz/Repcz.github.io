@@ -154,7 +154,7 @@ hosts:
 
 dns:
   enable: true
-  listen: :65222 # 开启 DNS 服务器监听
+  listen: :65223 # 开启 DNS 服务器监听
   ipv6: true # false 将返回 AAAA 的空结果
   use-hosts: true # 查询 hosts
   enhanced-mode: redir-host
