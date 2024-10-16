@@ -138,7 +138,7 @@ EOF
 
 ### 服务端配置文件
 
-此配置文件同时搭建 `SS 2022` 和 `hysteria2` 节点，请根据需要自行修改
+此配置文件同时搭建 `SS 2022` 和 `hysteria2` 节点，请根据需要自行修改。
 
 ```bash
 cat > /root/mihomo/config.yml << EOF
@@ -169,7 +169,7 @@ listeners: #搭建代理节点
     type: shadowsocks
     port: 65112
     listen: "::"
-    cipher: 2022-blake3-aes-256-gcm # 2022-blake3-aes-128-gcm/2022-blake3-aes-256-gcm/2022-blake3-chacha20-poly1305
+    cipher: 2022-blake3-aes-256-gcm
     password: SaAj4IC+cHEyWoCaUXeNBE+A8DcqKRsOELe4FOuuNJE=
     udp: true
     udp-over-tcp: false
@@ -188,13 +188,11 @@ listeners: #搭建代理节点
   - name: hy2
     type: hysteria2
     port: 65111
-    listen: 0.0.0.0
+    listen: "::"
     password: 123456
     up: 200
     down: 30
     masquerade: "https://bing.com"
-    alpn:
-    - h3
     certificate: ./server.crt
     private-key: ./server.key
 
