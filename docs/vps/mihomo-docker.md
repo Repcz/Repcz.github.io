@@ -201,11 +201,11 @@ listeners: #搭建代理节点
 EOF
 ```
 
-??? note "搭建 Hy2 协议需要生成证书"
+#### 搭建 HY2 节点需自签证书
 
-    ```bash
-    openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /root/mihomo/server.key -out /root/mihomo/server.crt -subj "/CN=bing.com" -days 36500 && sudo chown mihomo /root/mihomo/server.key && sudo chown mihomo /root/mihomo/server.crt
-    ```
+```bash
+openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /root/mihomo/server.key -out /root/mihomo/server.crt -subj "/CN=bing.com" -days 36500 && sudo chown mihomo /root/mihomo/server.key && sudo chown mihomo /root/mihomo/server.crt
+```
 
 ## 启动/删除 Mihomo Docker
 
