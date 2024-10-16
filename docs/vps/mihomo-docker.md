@@ -46,11 +46,7 @@ EOF
 
 ## 写入 Mihomo 配置
 
-<!-- prettier-ignore -->
-!!! 注意
-    `http://your-service-provider`替换为你的节点订阅
-
-    或按需进行修改
+请根据实际情况进行修改
 
 ```bash
 cat > /root/mihomo/config.yaml << EOF
