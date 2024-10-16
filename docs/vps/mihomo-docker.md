@@ -201,7 +201,7 @@ listeners: #搭建代理节点
 EOF
 ```
 
-#### 搭建 HY2 节点需自签证书
+#### 搭建 `hysteria2` 节点需自签证书
 
 ```bash
 openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /root/mihomo/server.key -out /root/mihomo/server.crt -subj "/CN=bing.com" -days 36500 && sudo chown mihomo /root/mihomo/server.key && sudo chown mihomo /root/mihomo/server.crt
