@@ -146,28 +146,49 @@ theme:
 
 # markdown特性设置
 markdown_extensions:
+  - admonition # 提醒框、警告框等
+  - md_in_html # 支持嵌入HTML代码
+  - pymdownx.details # 支持<details>折叠标签
+  - pymdownx.tilde # 支持~表示删除的文本
+  - pymdownx.magiclink # 自动将URL转换为可点击的链接
+
+  - abbr
   - attr_list
+  - def_list
+  - footnotes
   - md_in_html
-  - pymdownx.magiclink
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
+  - pymdownx.caret
+  - pymdownx.betterem
+  - pymdownx.critic
+  - pymdownx.details
   - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
   - pymdownx.snippets
+  - pymdownx.smartsymbols
+  
+  - pymdownx.highlight: # 代码块高亮
+      anchor_linenums: true
+      linenums: true # 显示行号
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true  # 固定标题位置为当前位置
+      toc_depth: 4
+      anchorlink: true
+  # mermaid渲染
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:mermaid2.fence_mermaid_custom
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.arithmatex:
-      generic: true
+          format: !!python/name:pymdownx.superfences.fence_code_format\
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 
 
