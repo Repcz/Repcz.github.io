@@ -142,7 +142,6 @@ EOF
 
 ```bash
 cat > /root/mihomo/config.yml << EOF
-
 mixed-port: 65222 # HTTP(S) 和 SOCKS 代理混合端口
 tcp-concurrent: true # TCP 并发连接所有 IP, 将使用最快握手的 TCP
 allow-lan: false # 允许局域网连接
@@ -174,7 +173,6 @@ listeners: #搭建代理节点
     udp: true
     udp-over-tcp: false
     ip-version: ipv4-prefer
-
     smux:
       enabled: true
       protocol: h2mux
@@ -193,6 +191,7 @@ listeners: #搭建代理节点
       user1: password1
     up: 200
     down: 30
+    alpn:[h3]
     masquerade: "https://bing.com"
     certificate: ./server.crt
     private-key: ./server.key
