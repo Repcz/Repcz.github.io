@@ -73,7 +73,7 @@ nav:
     - VPS: vps/index.md
     - Sub Store 部署: substore/install.md
     - Subconverter 部署: subconverter/index.md
-    - Mihomo 部署: vps/mihomo.md
+    - Mihomo Docker 部署: vps/mihomo-docker.md
     - Hysteria2 部署: vps/hysteira2.md
     - SNELL 部署: vps/snell.md
     - VPS 测试:
@@ -181,7 +181,7 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format\
+          format: !!python/name:pymdownx.superfences.fence_code_format  # 代码块高亮插件
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg

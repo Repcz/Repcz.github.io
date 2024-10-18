@@ -142,6 +142,7 @@ EOF
 
 ```bash
 cat > /root/mihomo/config.yml << EOF
+
 mixed-port: 65222 # HTTP(S) 和 SOCKS 代理混合端口
 tcp-concurrent: true # TCP 并发连接所有 IP, 将使用最快握手的 TCP
 allow-lan: false # 允许局域网连接
@@ -164,20 +165,6 @@ rules:
 
 listeners: #搭建代理节点
 
-  - name: hy2
-    type: hysteria2
-    port: 65111
-    listen: "::"
-    users:
-      user1: password1
-    up: 200
-    down: 30
-    alpn:[h3]
-    masquerade: "https://bing.com"
-    certificate: ./server.crt
-    private-key: ./server.key
-
-
   - name: SS2022
     type: shadowsocks
     port: 65112
@@ -187,6 +174,7 @@ listeners: #搭建代理节点
     udp: true
     udp-over-tcp: false
     ip-version: ipv4-prefer
+
     smux:
       enabled: true
       protocol: h2mux
@@ -197,13 +185,16 @@ listeners: #搭建代理节点
       only-tcp: false
       padding: true
 
-  - name: socks-in
-    type: socks
-    port: 65113
-    listen: 0.0.0.0
-    udp: true
-    users:
-      - username: password
+  - name: hy2
+    type: hysteria2
+    port: 65111
+    listen: "::"
+    password: 123456
+    up: 200
+    down: 30
+    masquerade: "https://bing.com"
+    certificate: ./server.crt
+    private-key: ./server.key
 
 EOF
 ```
