@@ -106,7 +106,7 @@ dns:
   default-nameserver: [223.5.5.5, 119.29.29.29, system]
   nameserver: [223.5.5.5, 119.29.29.29]
   nameserver-policy:
-    'geosite:cn': system
+    'geosite:cn': [system]
     'geosite:gfw,geolocation-!cn': [quic://223.5.5.5, quic://223.6.6.6, https://1.12.12.12/dns-query, https://120.53.53.53/dns-query]
 
 proxy-groups:
@@ -189,7 +189,9 @@ listeners: #搭建代理节点
     type: hysteria2
     port: 65111
     listen: "::"
-    password: 123456
+    users:
+      user1: password1
+      user2: password2
     up: 200
     down: 30
     masquerade: "https://bing.com"
@@ -200,6 +202,10 @@ EOF
 ```
 
 #### 搭建 `hysteria2` 节点需自签证书
+
+```bash
+sudo useradd -m mihomo
+```
 
 ```bash
 openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /root/mihomo/server.key -out /root/mihomo/server.crt -subj "/CN=bing.com" -days 36500 && sudo chown mihomo /root/mihomo/server.key && sudo chown mihomo /root/mihomo/server.crt

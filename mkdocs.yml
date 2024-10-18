@@ -73,7 +73,7 @@ nav:
     - VPS: vps/index.md
     - Sub Store 部署: substore/install.md
     - Subconverter 部署: subconverter/index.md
-    - Mihomo Docker 部署: vps/mihomo-docker.md
+    - Mihomo Docker 部署: vps/mihomo.md
     - Hysteria2 部署: vps/hysteira2.md
     - SNELL 部署: vps/snell.md
     - VPS 测试:
