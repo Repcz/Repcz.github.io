@@ -191,7 +191,6 @@ listeners: #搭建代理节点
     listen: "::"
     users:
       user1: password1
-      user2: password2
     up: 200
     down: 30
     masquerade: "https://bing.com"
