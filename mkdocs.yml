@@ -73,7 +73,7 @@ nav:
     - VPS: vps/index.md
     - Sub Store 部署: substore/install.md
     - Subconverter 部署: subconverter/index.md
-#    - Mihomo 部署: vps/mihomo.md
+    - Mihomo 部署: vps/mihomo.md
     - Hysteria2 部署: vps/hysteira2.md
     - SNELL 部署: vps/snell.md
     - VPS 测试:
@@ -146,40 +146,28 @@ theme:
 
 # markdown特性设置
 markdown_extensions:
-  - admonition # 提醒框、警告框等
-  - md_in_html # 支持嵌入HTML代码
-  - pymdownx.details # 支持<details>折叠标签
-  - pymdownx.tilde # 支持~表示删除的文本
-  - pymdownx.magiclink # 自动将URL转换为可点击的链接
-
-  - abbr
   - attr_list
-  - def_list
-  - footnotes
   - md_in_html
-  - pymdownx.caret
-  - pymdownx.betterem
-  - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.snippets
-  - pymdownx.smartsymbols
-  
-  - pymdownx.highlight: # 代码块高亮
+  - pymdownx.magiclink
+  - pymdownx.highlight:
       anchor_linenums: true
-      linenums: true # 显示行号
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
   - pymdownx.tabbed:
       alternate_style: true
-  - toc:
-      permalink: true  # 固定标题位置为当前位置
-      toc_depth: 4
-      anchorlink: true
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
 
 
 
