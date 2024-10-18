@@ -164,6 +164,20 @@ rules:
 
 listeners: #搭建代理节点
 
+  - name: hy2
+    type: hysteria2
+    port: 65111
+    listen: "::"
+    users:
+      user1: password1
+    up: 200
+    down: 30
+    alpn:[h3]
+    masquerade: "https://bing.com"
+    certificate: ./server.crt
+    private-key: ./server.key
+
+
   - name: SS2022
     type: shadowsocks
     port: 65112
@@ -183,18 +197,13 @@ listeners: #搭建代理节点
       only-tcp: false
       padding: true
 
-  - name: hy2
-    type: hysteria2
-    port: 65111
-    listen: "::"
+  - name: socks-in
+    type: socks
+    port: 65113
+    listen: 0.0.0.0
+    udp: true
     users:
-      user1: password1
-    up: 200
-    down: 30
-    alpn:[h3]
-    masquerade: "https://bing.com"
-    certificate: ./server.crt
-    private-key: ./server.key
+      - username: password
 
 EOF
 ```
