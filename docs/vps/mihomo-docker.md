@@ -189,7 +189,9 @@ listeners: #搭建代理节点
     type: hysteria2
     port: 65111
     listen: "::"
-    password: 123456
+    users:
+      user1: password1
+      user2: password2
     up: 200
     down: 30
     masquerade: "https://bing.com"
