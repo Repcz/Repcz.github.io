@@ -21,7 +21,7 @@ mkdir -p /root/mihomo
 2.写入 `Docker compose` 文件
 
 ```bash
-cat > /root/mihomo/docker-compose.yaml << EOF
+cat > /root/mihomo/docker-compose.yml << EOF
 services:
   mihomo:
     container_name: mihomo
@@ -141,7 +141,7 @@ EOF
 此配置文件同时搭建 `SS 2022` 和 `hysteria2` 节点，请根据需要自行修改。
 
 ```bash
-cat > /root/mihomo/config.yml << EOF
+cat > /root/mihomo/config.yaml << EOF
 
 mixed-port: 65222 # HTTP(S) 和 SOCKS 代理混合端口
 tcp-concurrent: true # TCP 并发连接所有 IP, 将使用最快握手的 TCP
@@ -211,7 +211,7 @@ EOF
 openssl rand --base64 <密码长度>
 ```
 
-#### 搭建 `hysteria2` 节点需自签证书
+#### `hysteria2` 节点需自签证书
 
 ```bash
 openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /root/mihomo/server.key -out /root/mihomo/server.crt -subj "/CN=bing.com" -days 36500 && sudo chown mihomo /root/mihomo/server.key && sudo chown mihomo /root/mihomo/server.crt
