@@ -2,7 +2,7 @@
 
 ## 安装 Docker
 
-```
+```bash
 curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
 ```
 
@@ -43,7 +43,6 @@ services:
 
 EOF
 ```
-
 
 ## 写入 Mihomo 配置
 
