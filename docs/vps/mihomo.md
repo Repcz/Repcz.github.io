@@ -21,7 +21,7 @@ mkdir -p /root/mihomo
 2.写入 `Docker compose` 文件
 
 ```bash
-cat > /root/mihomo/docker-compose.yml << EOF
+cat > /root/mihomo/docker-compose.yaml << EOF
 services:
   mihomo:
     container_name: mihomo
@@ -51,7 +51,7 @@ EOF
 ### 客户端配置文件
 
 ```bash
-cat > /root/mihomo/config.yml << EOF
+cat > /root/mihomo/config.yaml << EOF
 
 proxy-providers:
   Subscribe: {url: http://your-service-provider, path: ./proxy-providers/Sub.yaml, type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800}}
@@ -203,9 +203,6 @@ EOF
 
 #### 搭建 `hysteria2` 节点需自签证书
 
-```bash
-sudo useradd -m mihomo
-```
 
 ```bash
 openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /root/mihomo/server.key -out /root/mihomo/server.crt -subj "/CN=bing.com" -days 36500 && sudo chown mihomo /root/mihomo/server.key && sudo chown mihomo /root/mihomo/server.crt
