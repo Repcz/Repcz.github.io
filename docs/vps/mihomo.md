@@ -12,13 +12,13 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 
 ## 部署 Mihomo Docker compose
 
-1.新建目录
+1. 新建目录
 
 ```bash
 mkdir -p /root/mihomo
 ```
 
-2.写入 `Docker compose` 文件
+2. 写入 `Docker compose` 文件
 
 ```bash
 cat > /root/mihomo/docker-compose.yml << EOF
@@ -219,19 +219,19 @@ openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout 
 
 ## 启动/删除 Mihomo Docker
 
-1.进入目录
+1. 进入目录
 
 ```bash
 cd /root/mihomo
 ```
 
-2.启动容器
+2. 启动容器
 
 ```bash
 docker compose up -d
 ```
 
-3.停止删除容器
+3. 停止删除容器
 
 ```bash
 docker compose down
