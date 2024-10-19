@@ -201,8 +201,17 @@ listeners: #搭建代理节点
 EOF
 ```
 
-#### 搭建 `hysteria2` 节点需自签证书
+#### `SS2022` 密码生成
 
+- `2022-blake3-aes-128-gcm`	16位密码长度
+- `2022-blake3-aes-256-gcm`	32位密码长度
+- `2022-blake3-chacha20-poly1305`	32位密码长度
+
+```bash
+openssl rand --base64 <密码长度>
+```
+
+#### 搭建 `hysteria2` 节点需自签证书
 
 ```bash
 openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /root/mihomo/server.key -out /root/mihomo/server.crt -subj "/CN=bing.com" -days 36500 && sudo chown mihomo /root/mihomo/server.key && sudo chown mihomo /root/mihomo/server.crt
