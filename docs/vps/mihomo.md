@@ -40,6 +40,7 @@ services:
       # 共享host的时间环境
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+
 EOF
 ```
 
