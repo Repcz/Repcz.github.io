@@ -212,10 +212,11 @@ switch-node-after-failure-times = 3
 
 #### 11.1.17 SSID 工作模式
 
-当切换到某一特定的WiFi下时改变Loon的流量模式
-- `"loon-wifi5g":DIRECT`，表示在loon-wifi5g这个wifi网络下使用直连模式，
-- `"cellular":PROXY`，表示在蜂窝网络下使用代理模式
-- `"default":RULE`，默认使用分流模式
+当切换到某一特定的 Wi-Fi 下时改变 Loon 的流量模式
+
+- `"loon-wifi5g":DIRECT`: 表示在loon-wifi5g这个wifi网络下使用直连模式
+- `"cellular":PROXY`: 表示在蜂窝网络下使用代理模式
+- `"default":RULE`: 默认使用分流模式
 
 
 ```
@@ -224,12 +225,9 @@ ssid-trigger = "loon-wifi5g":DIRECT,"cellular":PROXY,"default":RULE
 ```
 
 
-
-
-
 #### 11.1.18 强制 HTTP 引擎解析
 
-有些app使用原始的 tcp 来进行 http 请求，这些流量就会走 TUN，为了性能考虑，Loon 默认只会解析80端口的这些 http 请求，如果一些请求的端口不是80，则可以在这里指定相关的域名或者端口，从而让Loon对这些 http 请求进行解析
+有些app使用原始的 tcp 来进行 http 请求，这些流量就会走 TUN，为了性能考虑，Loon 默认只会解析80端口的这些 http 请求，如果一些请求的端口不是80，则可以在这里指定相关的域名或者端口，从而让 Loon 对这些 http 请求进行解析
 
 ```
 [General]
