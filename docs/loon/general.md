@@ -14,14 +14,25 @@
 <img src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/loon/Photo/11.1.webp" >
 
 
-#### 11.1.1 启用IPv6
+#### 11.1.1 IP 模式
 
-是否允许IPV6的请求，开启后会进行DNS `AAAA`记录查询，并且优先使用IPV6的IP
+<!-- prettier-ignore -->
+!!! 注意
+    Loon 3.2.3(755) 版本开始使用新的 `ip-mode` 参数替代原先的 `ipv6` 参数，`ipv6 = true` 参数已弃用
+
+
+- `ipv4-only`: 只使用 `IPv4` 进行请求，不发起 `AAAA` 的 DNS 查询，拒绝所有 `IPv6` 连接；
+- `auto`: 并发发起 `A` 和 `AAAA` 的 DNS 查询，优先使用响应速度更快的结果；
+- `ipv4-preferred`: 并发发起 `A` 和 `AAAA` 的 DNS 查询，优先使用 `IPv4` 结果，如无 `IPv4` 记录则切换到 `IPv6` 结果。
+- `ipv6-preferred`: 并发发起 `A` 和 `AAAA` 的 DNS 查询，优先使用 `IPv6` 结果，如无 `IPv6` 记录则切换到 `IPv4` 结果；
+
+
+`ipv4-preferred` 和 `ipv6-preferred` 会等待 `A` 和 `AAAA` 查询全部完成后再进行处理，可能会引发一些延迟。
 
 
 ```
 [General]
-ipv6 = true
+ip-mode = ipv4-only
 ```
 
 
@@ -29,10 +40,10 @@ ipv6 = true
 
 指定流量使用哪个网络接口进行转发，目前包含三种模式:
 
-- Auto: 系统自动分配
-- Cellular: 在WiFi和蜂窝数据都开启的情况下指定使用蜂窝网络
-- Performace: 在WiFi和蜂窝数据都开启的情况下使用最优的网络接口
-- Balance: 在WiFi和蜂窝数据都开启的情况下，均衡使用网络接口
+- `Auto`: 系统自动分配
+- `Cellular`: 在WiFi和蜂窝数据都开启的情况下指定使用蜂窝网络
+- `Performace`: 在WiFi和蜂窝数据都开启的情况下使用最优的网络接口
+- `Balance`: 在WiFi和蜂窝数据都开启的情况下，均衡使用网络接口
 
 
 ```
@@ -40,15 +51,14 @@ ipv6 = true
 interface-mode = Performace
 ```
 
-#### 11.1.3 GeoIP 数据库
+#### 11.1.3 GeoIP & ASN 数据库
 
-自定义 GeoIP 数据库的地址，可通过UI更改自动更新时间
-
-不填写此参数时，使用 MaxMind 数据库
+自定义 GeoIP/ASN 数据库的地址，可通过 UI 更改自动更新时间
 
 ```
 [General]
-geoip-url = https://gitlab.com/Masaiki/GeoIP2-CN/-/raw/release/Country.mmdb
+geoip-url = https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
+ipasn-url = https://github.com/xream/geoip/releases/latest/download/ipinfo.asn.mmdb
 ```
 
 ####  11.1.4 绕过路由
@@ -63,7 +73,7 @@ bypass-tun = 192.168.0.0/16,localhost,*.local
 
 #### 11.1.5 绕过代理
 
-和上面类似，`skip-proxy`则和 `HTTP Proxy` 有关，如果配置了该参数，那么所配置的这些IP段、域名将不会转发到Loon，而是由系统处理
+和上面类似，`skip-proxy` 则和 `HTTP Proxy` 有关，如果配置了该参数，那么所配置的这些IP段、域名将不会转发到Loon，而是由系统处理
 
 不作为默认路由 仅可通过 UI 开启
 
@@ -131,11 +141,11 @@ resource-parser = https://gitlab.com/sub-store/Sub-Store/-/releases/permalink/la
 
 #### 11.1.12 真实 IP
 
-有些app会自己去请求DNS获取IP，这样导致有些域名类型的规则无法进行匹配，所以Loon是用了FakeIP来解决这个问题。
+有些app会自己去请求 DNS 获取IP，这样导致有些域名类型的规则无法进行匹配，所以 Loon 是用了 FakeIP 来解决这个问题。
 
-原理是截取这些DNS请求，返回一个假的IP响应，然后在获取到这个假的IP的请求时将相关域名映射到请求中；
+原理是截取这些 DNS 请求，返回一个假的 IP 响应，然后在获取到这个假的IP的请求时将相关域名映射到请求中；
 
-但是有时候系统的一些域名会缓存这些假IP，导致关闭Loon后会用这个假的IP直接发起请求，这就会导致一些问题，针对这种情况可以配置`real-ip`来使这些域名返回真实的ip
+但是有时候系统的一些域名会缓存这些假IP，导致关闭 Loon 后会用这个假的 IP 直接发起请求，这就会导致一些问题，针对这种情况可以配置`real-ip`来使这些域名返回真实的 IP
 
 ```
 [General]
@@ -146,7 +156,7 @@ real-ip = *.apple.com,*.icloud.com
 
 <!-- prettier-ignore -->
 !!! 注意
-    Loon 1.1.7 版本开始舍弃 `disable-udp-ports` 参数，转为使用端口协议及逻辑规则
+    Loon 3.1.7 版本开始舍弃 `disable-udp-ports` 参数，转为使用端口协议及逻辑规则
 
 
 <img src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/loon/Photo/11.1.13.webp" width="600">
@@ -182,7 +192,7 @@ udp-fallback-mode = REJECT
 
 点击可查看端口，也可修改端口
 
-其他需要被代理的设备中，应处于同一局域网下，在其 Wi-Fi 设置中填写 Loon 的IP和设置的端口
+其他需要被代理的设备中，应处于同一局域网下，在其 Wi-Fi 设置中填写 Loon 的 IP 和设置的端口
 
 
 ```
@@ -281,9 +291,9 @@ dns-reject-mode = LOOPBACKIP
 
 - https://www.nsloon.com/openloon/update?sub=all
 
-Loon 1.1.7 版本后新增「下载进度提示」
+Loon 3.1.7 版本后新增「下载进度提示」
 
-Loon 1.1.8 版本新增「资源自动更新策略」：可自行更改更新时间及是否隐藏下载进度等设置
+Loon 3.1.8 版本新增「资源自动更新策略」：可自行更改更新时间及是否隐藏下载进度等设置
 
 
 ### 11.3 Apple TV
