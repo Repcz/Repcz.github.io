@@ -6,7 +6,7 @@ https://portal.saltyfish.io
 
 [Amsterdam VPS - Premium Network](https://portal.saltyfish.io/cart.php?gid=22)
 
-此次购买的为 `Amsterdam VPS - Premium Network` `ams.p1.mini`，售价 `￥121.80`/季度
+此次购买的为 `Amsterdam VPS - Premium Network`中的`ams.p1.mini`季付款，售价 `￥121.80`
 
 ```
 1x vCore(s)
