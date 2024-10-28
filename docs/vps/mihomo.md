@@ -219,20 +219,14 @@ openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout 
 
 ## 启动/删除 Mihomo Docker
 
-1. 进入目录
+1. 启动容器
 
 ```bash
-cd /root/mihomo
+cd /root/mihomo && docker compose up -d
 ```
 
-2. 启动容器
+2. 停止删除容器
 
 ```bash
-docker compose up -d
-```
-
-3. 停止删除容器
-
-```bash
-docker compose down
+cd /root/mihomo && docker compose down
 ```

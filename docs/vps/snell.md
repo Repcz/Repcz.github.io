@@ -9,8 +9,6 @@
 wget -O snell.sh --no-check-certificate https://git.io/Snell.sh && chmod +x snell.sh && ./snell.sh
 ```
 
-
-
 ## Docker 部署
 
 
@@ -59,15 +57,11 @@ EOF
 1.启动 `Docker compose`
 
 ```bash
-cd /root/snelldocker
-```
-
-```bash
-docker compose up -d
+cd /root/snelldocker && docker compose up -d
 ```
 
 2.停止删除 `Docker compose`
 
 ```bash
-docker compose down
+cd /root/snelldocker && docker compose down
 ```

@@ -122,10 +122,6 @@ systemctl enable hysteria-server.service
 mkdir /root/hysteria2
 ```
 
-```bash
-cd /root/hysteria2
-```
-
 ### 写入 Docker Compose 文件
 
 ```bash
@@ -197,12 +193,12 @@ openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout 
 1.启动 `Docker compose`
 
 ```bash
-docker compose up -d
+cd /root/hysteria2 && docker compose up -d
 ```
 
 2.停止删除 `Docker compose`
 ```bash
-docker compose down
+cd /root/hysteria2 && docker compose down
 ```
 
 ## 设置端口跳跃
