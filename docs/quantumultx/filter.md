@@ -289,9 +289,9 @@ https://example.com/reject.txt, tag=🛡️ Block Ads, force-policy=reject, upda
 
     `https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/QuantumultX/12306/12306.list`
 
-    例如在末尾添加`?raw=ture`：
+    例如在末尾添加`?raw=true`：
 
-    `https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/QuantumultX/12306/12306.list?raw=ture`
+    `https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/QuantumultX/12306/12306.list?raw=true`
 
     或者直接点击`raw`或者`view`，⁠使用跳转后的链接：
 
@@ -322,9 +322,9 @@ https://example.com/reject.txt, tag=🛡️ Block Ads, force-policy=reject, upda
 
     `https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/QuantumultX/12306/12306.list`
 
-    例如在末尾添加`?raw=ture`：
+    例如在末尾添加`?raw=true`：
 
-    `https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/QuantumultX/12306/12306.list?raw=ture`
+    `https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/QuantumultX/12306/12306.list?raw=true`
 
     或者直接点击`raw`或者`view`，⁠使用跳转后的链接：
 
