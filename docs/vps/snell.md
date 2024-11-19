@@ -15,40 +15,46 @@ wget -O snell.sh --no-check-certificate https://git.io/Snell.sh && chmod +x snel
 ### 创建文件夹
 
 ```bash
-mkdir -p /root/snelldocker/snell-conf
+mkdir snell && cd snell
 ```
 
 ### 写入 Docker Compose 文件
 
 ```bash
-cat > /root/snelldocker/docker-compose.yml << EOF
+cat > docker-compose.yaml << EOF
 services:
   snell:
-    image: accors/snell:latest
+    image: vocrx/snell-server:alpine
     container_name: snell
     restart: always
     network_mode: host
-    volumes:
-      - ./snell-conf/snell.conf:/etc/snell-server.conf
     environment:
-      - SNELL_URL=https://dl.nssurge.com/snell/snell-server-v4.1.1-linux-amd64.zip
+      - PORT=65110
+      - PSK=jy7jbw6yFWikg2uS
+      - DNS=1.1.1.1,8.8.8.8
 EOF
 ```
 
-### 写入 SNELL 配置文件
+### 自定义 SNELL 配置文件
 
-```bash
-cat > /root/snelldocker/snell-conf/snell.conf << EOF
-[snell-server]
-listen = 0.0.0.0:65110
-psk = jy7jbw6yFWikg2uS
-tfo = true
-version = 4
-dns = 1.1.1.1, 8.8.8.8
-EOF
+修改 `environment` 下的参数，即可自定义 SNELL 配置
+
+```yaml
+services:
+  snell:
+    image: vocrx/snell-server:alpine
+    container_name: snell
+    restart: always
+    network_mode: host
+    environment:
+      - PORT=自定义使用的端口，仅host模式下生效，不写则随机。
+      - PSK=节点密码，不写则随机。
+      - IPV6=true/false，不写默认为false。
+      - DNS=8.8.8.8,1.1.1.1，不写为系统默认
+      - VERSION=v4.1.1，自定义二进制文件版本，不写则默认最新版
+      - OBFS=http,默认为空,写此条必须配置HOST
+      - HOST=icloud.com,默认为空
 ```
-
-
 
 
 ### 启动/删除 SNELL Docker
@@ -57,11 +63,11 @@ EOF
 1.启动 `Docker compose`
 
 ```bash
-cd /root/snelldocker && docker compose up -d
+cd snell && docker compose up -d
 ```
 
 2.停止删除 `Docker compose`
 
 ```bash
-cd /root/snelldocker && docker compose down
+cd snell && docker compose down
 ```
