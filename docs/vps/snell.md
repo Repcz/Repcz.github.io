@@ -63,11 +63,11 @@ services:
 1.启动 `Docker compose`
 
 ```bash
-cd snell && docker compose up -d
+docker compose up -d
 ```
 
 2.停止删除 `Docker compose`
 
 ```bash
-cd snell && docker compose down
+docker compose down
 ```
