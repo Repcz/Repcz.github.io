@@ -37,7 +37,7 @@ EOF
 
 ### 自定义 SNELL 配置文件
 
-修改 `environment` 下的参数，即可自定义 SNELL 配置
+修改 `environment` 下的参数, 即可自定义 SNELL 配置
 
 ```yaml
 services:
@@ -47,11 +47,11 @@ services:
     restart: always
     network_mode: host
     environment:
-      - PORT=自定义使用的端口，仅host模式下生效，不写则随机。
-      - PSK=节点密码，不写则随机。
-      - IPV6=true/false，不写默认为false。
-      - DNS=8.8.8.8,1.1.1.1，不写为系统默认
-      - VERSION=v4.1.1，自定义二进制文件版本，不写则默认最新版
+      - PORT=自定义使用的端口, 仅host模式下生效, 不写则随机。
+      - PSK=节点密码, 不写则随机。
+      - IPV6=true/false, 不写默认为false。
+      - DNS=8.8.8.8,1.1.1.1, 不写为系统默认
+      - VERSION=v4.1.1, 自定义二进制文件版本, 不写则默认最新版
       - OBFS=http,默认为空,写此条必须配置HOST
       - HOST=icloud.com,默认为空
 ```
