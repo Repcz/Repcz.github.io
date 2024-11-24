@@ -390,6 +390,7 @@ rule-providers:
   Apple: 
     type: http
     behavior: classical
+   #format: yaml
     interval: 86400
     path: ./rule-providers/Apple.yaml
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Apple.yaml
