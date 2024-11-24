@@ -18,7 +18,7 @@ nav:
     - Egern: egern/index.md
     - Mihomo: 
       - Mihomo: clash/index.md
-      - Clash Verge Rev: clash/verge.md
+      - Verge Rev: clash/verge.md
       - Mihomo Party: clash/party.md
       - 自定义本地配置: clash/editprofile.md
     - Loon:
