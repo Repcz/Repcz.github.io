@@ -380,17 +380,31 @@ rules:
 
 ### 添加规则集
 
-规则集添加可以按以下格式进行添加
+在 mihomo 规则集引用完整参数可见[官方文档](https://wiki.metacubex.one/config/rule-providers/)
 
-由于 规则集 有三种 行为类型(behavior：`domain`, `ipcidr` or `classical`)，和 两种 格式(format：`yaml` or `text`)，因此有6种不同的组合，需要针对规则集内容来书写不同的参数
 
-在 mihomo 中的书写格式如下，`format: yaml`可以省略，`format: text`不可省略
+当为格式为`yaml`时可以省略`format: yaml`：
+
+```yaml
+rule-providers:
+  Apple: 
+    type: http
+    behavior: classical
+    interval: 86400
+    path: ./rule-providers/Apple.yaml
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Apple.yaml
+```
+
+或者参考 [单行json格式](https://wiki.metacubex.one/handbook/syntax/#json_1)：
+
+eg：
 
 ```yaml
 rule-providers:
   Apple: {type: http, behavior: classical, interval: 86400, path: ./rule-providers/Apple.yaml, url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Apple.yaml}
 ```
 
+---
 
 由于在我的配置里写了锚点，用`c: &c {type: http, behavior: classical, interval: 86400}`进行替代，因此也可以写成如下写法，其他的`behavior`也可以进行替代：
 
@@ -406,7 +420,9 @@ rules:
   - RULE-SET,Apple,DIRECT 
 ```
 
+---
 
+由于 规则集 有三种 行为类型(behavior：`domain`, `ipcidr` or `classical`)，和 两种 格式(format：`yaml` or `text`)，因此有6种不同的组合，需要针对规则集内容来书写不同的参数
 
 #### classical
 
