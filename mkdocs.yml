@@ -13,7 +13,7 @@ dev_addr: 127.0.0.1:7788
 nav:
   - 关于: index.md
   - 代理工具:
-    - 感谢: proxytool/index.md
+    - 说明: proxytool/index.md
     - 代理软件下载: proxytool/download.md
     - Egern: egern/index.md
     - Mihomo: 
