@@ -233,9 +233,9 @@ rules:
 
 #### 规则类型
 
-以下部分介绍了部分规则类型及其使用方法，Mihomo(ClashMeta)内核的更多详细规则见 [Mihomo WIKI](https://wiki.metacubex.one/config/rules/)
+以下部分介绍了部分规则类型及其使用方法，Mihomo内核的更多详细规则见 [Mihomo WIKI](https://wiki.metacubex.one/config/rules/)
 
-- DOMAIN 域名
+-  `DOMAIN` 域名
 
 ```yaml
 rules:
@@ -244,7 +244,7 @@ rules:
 
 域名规则，如果请求的域完全匹配，则会匹配上此规则
 
-- DOMAIN-SUFFIX 域名后缀
+- `DOMAIN-SUFFIX` 域名后缀
 
 ```yaml
 rules:
@@ -256,7 +256,7 @@ rules:
 例：`google.com` 匹配`www.google.com`、`mail.google.com`和`google.com`, 但不匹配`content-google.com`
 
 
-- DOMAIN-KEYWORD 域名关键词
+- `DOMAIN-KEYWORD` 域名关键词
 
 ```yaml
 rules:
@@ -266,7 +266,7 @@ rules:
 域名关键词规则，如果请求的域名中包含关键字，则会匹配上此规则
 
 
-- GEOSITE (ClashMeta专属)
+- `GEOSITE` 
 
 域名集合,匹配集合内的域名,具体参考 [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community/tree/master/data)
 
@@ -276,7 +276,7 @@ rules:
   - GEOSITE,cn,DIRECT
 ```
 
-- GEOIP
+- `GEOIP`
 
 国家IP代码规则,匹配集合内相应的IP范围
 
@@ -286,38 +286,38 @@ rules:
   - GEOIP,LAN,DIRECT
 ```
 
-- IP-CIDR IPv4地址段
+- `IP-CIDR` IPv4地址段
 
 IP-CIDR 规则用于根据数据包的目标 IPv4 地址路由数据包.
 
 <!-- prettier-ignore -->
 !!! 警告
-    使用这种规则时, Clash 将域名解析为 IPv4 地址. 如果要跳过 DNS 解析, 请使用 no-resolve 选项.
+    使用这种规则时, mihomo 将域名解析为 IPv4 地址. 如果要跳过 DNS 解析, 请使用 `no-resolve` 选项.
 
 ```yaml
 rules:
   - IP-CIDR,127.0.0.0/8,DIRECT 
 ```
 
-将任何目标 IP 地址为 127.0.0.0/8 的数据包路由到 DIRECT.
+将任何目标 IP 地址为 `127.0.0.0/8` 的数据包路由到 DIRECT.
 
-- IP-CIDR6 IPv6地址段
+- `IP-CIDR6` IPv6地址段
 
 IP-CIDR6 规则用于根据数据包的目标 IPv6 地址路由数据包.
 
 <!-- prettier-ignore -->
 !!! 警告
-    使用这种规则时, Clash 将域名解析为 IPv6 地址. 如果要跳过 DNS 解析, 请使用 no-resolve 选项.
+    使用这种规则时, mihomo 将域名解析为 IPv6 地址. 如果要跳过 DNS 解析, 请使用 `no-resolve` 选项.
 
 ```yaml
 rules:
   - IP-CIDR6,2620:0:2d0:200::7/32,policy 
 ```
 
-将任何目标 IP 地址为 2620:0:2d0:200::7/32 的数据包路由到 policy.
+将任何目标 IP 地址为 `2620:0:2d0:200::7/32` 的数据包路由到 policy.
 
 
-- PROCESS-NAME 源进程名
+- `PROCESS-NAME` 源进程名
 
 PROCESS-NAME 规则用于根据发送数据包的进程名称路由数据包.
 
@@ -328,7 +328,7 @@ rules:
 
 将任何来自进程 nc 的数据包路由到 DIRECT.
 
-- PROCESS-PATH 源进程路径
+- `PROCESS-PATH` 源进程路径
 
 PROCESS-PATH 规则用于根据发送数据包的进程路径路由数据包.
 
@@ -339,13 +339,13 @@ rules:
 
 将任何来自路径为 /usr/local/bin/nc 的进程的数据包路由到 DIRECT.
 
-- RULE-SET 规则集
+- `RULE-SET` 规则集
 
-RULE-SET 规则用于根据 Rule Providers 规则集 的结果路由数据包. 当 Clash 使用此规则时, 它会从指定的 Rule Providers 规则集中加载规则, 然后将数据包与规则进行匹配. 如果数据包与任何规则匹配, 则将数据包路由到指定的策略, 否则跳过此规则.
+RULE-SET 规则用于根据 Rule Providers 规则集 的结果路由数据包. 当 mihomo 使用此规则时, 它会从指定的 Rule Providers 规则集中加载规则, 然后将数据包与规则进行匹配. 如果数据包与任何规则匹配, 则将数据包路由到指定的策略, 否则跳过此规则.
 
 <!-- prettier-ignore -->
 !!! 警告
-    使用 RULE-SET 时, 当规则集的类型为 IPCIDR , Clash 将解析域名以获取 IP 地址. 如果要跳过 DNS 解析, 请使用 no-resolve 选项.
+    使用 RULE-SET 时, 当规则集的类型为 IPCIDR , mihomo 将解析域名以获取 IP 地址. 如果要跳过 DNS 解析, 请使用 `no-resolve` 选项.
 
 ```yaml
 
@@ -363,10 +363,10 @@ rules:
 
 ```
 
-从 my-rule-provider 加载所有规则
+从 名称为 `my-rule-provider` 的规则集中 加载所有规则
 
 
-- MATCH 全匹配
+- `MATCH` 全匹配
 
 MATCH 规则用于路由剩余的数据包. 该规则是必需的, 通常用作最后一条规则.
 
@@ -382,25 +382,9 @@ rules:
 
 规则集添加可以按以下格式进行添加
 
-由于 规则集 有三种 行为类型(behavior：domain, ipcidr or classical)，和 两种 格式(format：yaml or text)，因此有6种不同的组合，需要针对规则集内容来书写不同的参数
+由于 规则集 有三种 行为类型(behavior：`domain`, `ipcidr` or `classical`)，和 两种 格式(format：`yaml` or `text`)，因此有6种不同的组合，需要针对规则集内容来书写不同的参数
 
-- `behavior: classical` `format: yaml`
-
-其规则集内容格式如下：
-
-```yaml
-payload:
-  - DOMAIN-SUFFIX,google.com
-  - DOMAIN-KEYWORD,google
-  - DOMAIN,ad.com
-  - SRC-IP-CIDR,192.168.1.201/32
-  - IP-CIDR,127.0.0.0/8
-  - GEOIP,CN
-  - DST-PORT,80
-  - SRC-PORT,7777
-```
-
-在 clash中的书写格式（`format: yaml`可以省略）：
+在 mihomo 中的书写格式如下，`format: yaml`可以省略，`format: text`不可省略
 
 ```yaml
 rule-providers:
@@ -416,80 +400,76 @@ rule-providers:
 ```
 
 同时需要在`rule`中为其指定策略：
+
 ```yaml
 rules:
   - RULE-SET,Apple,DIRECT 
 ```
 
----
-
-- `behavior: classical` `format: text`
-
-其规则集内容格式如下：
-
-```
-DOMAIN-SUFFIX,google.com
-DOMAIN-KEYWORD,google
-DOMAIN,ad.com
-SRC-IP-CIDR,192.168.1.201/32
-IP-CIDR,127.0.0.0/8
-GEOIP,CN
-DST-PORT,80
-SRC-PORT,7777
-```
-
-在 clash中的书写格式（需要加一个`format: text`）：
-
-```yaml
-rule-providers:
-  Apple: {type: http, behavior: classical, format: text, interval: 86400, path: ./rule-providers/Apple.yaml, url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list}
-```
 
 
+#### classical
 
-同时需要在`rule`中为其指定策略：
-```yaml
-rules:
-  - RULE-SET,Apple,DIRECT 
-```
 
----
+=== "yaml"
+    ```{.yaml linenums="1"}
+    payload:
+    - DOMAIN-SUFFIX,google.com
+    - DOMAIN-KEYWORD,google
+    - DOMAIN,ad.com
+    - SRC-IP-CIDR,192.168.1.201/32
+    - IP-CIDR,127.0.0.0/8
+    - GEOIP,CN
+    - DST-PORT,80
+    - SRC-PORT,7777
+    ```
 
-后续仅展示不同`behavior`的区别，具体书写格式和指定策略将省略
+=== "text"
+    ```text
+    DOMAIN-SUFFIX,google.com
+    DOMAIN-KEYWORD,google
+    DOMAIN,ad.com
+    SRC-IP-CIDR,192.168.1.201/32
+    IP-CIDR,127.0.0.0/8
+    GEOIP,CN
+    DST-PORT,80
+    SRC-PORT,7777
+    ```
 
-- `behavior: domain` `format: yaml`
+#### domain
 
-```yaml
-payload:
-  - '.blogger.com'
-  - '*.*.microsoft.com'
-  - 'books.itunes.apple.com'
-```
+`domain`类规则集合内容通配应遵守[通配符](https://wiki.metacubex.one/handbook/syntax/#_8)
 
-- `behavior: domain` `format: text`
+=== "yaml"
+    ```{.yaml linenums="1"}
+    payload:
+    - '.blogger.com'
+    - '*.*.microsoft.com'
+    - 'books.itunes.apple.com'
+    ```
 
-```
-.blogger.com
-*.*.microsoft.com
-books.itunes.apple.com
-```
+=== "text"
+    ```text
+    .blogger.com
+    *.*.microsoft.com
+    books.itunes.apple.com
+    ```
 
----
+#### ipcidr
 
-- `behavior: ipcidr` `format: yaml`
+=== "yaml"
+    ```{.yaml linenums="1"}
+    payload:
+    - '192.168.1.0/24'
+    - '10.0.0.0.1/32'
+    ```
 
-```yaml
-payload:
-  - '192.168.1.0/24'
-  - '10.0.0.0.1/32'
-```
+=== "text"
+    ```text
+    192.168.1.0/24
+    10.0.0.0.1/32
+    ```
 
-- `behavior: ipcidr` `format: text`
-
-```
-192.168.1.0/24
-10.0.0.0.1/32
-```
 
 ### 使策略组单独使用一个或多个机场订阅
 
