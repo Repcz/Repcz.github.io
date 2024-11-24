@@ -1,26 +1,12 @@
 
-
-### 解除UWP应用回环限制
-
-* 应用目录的`resources文件夹`下双击运行 `enableLoopback.exe`
-* 全选软件(Ctrl+A)，勾选前方任意选项框，点击工具栏的 **Save Changes**
-
-
-### 设置 TUN 模式
-
 <!-- prettier-ignore -->
-!!! 提示
-    由于部分软件并不使用系统代理，因此需要设置TUN模式强制接管这些流量，比如Emby客户端
+!!! 注意
+    此内容使用所有使用 `Mihomo` 内核的 GUI 程序
 
-* 点击左侧 **设置** ，点击 **服务模式** 右边的盾牌🛡 → 点击 **INSTALL**，
+    使用时务必注意 [内核版本] 及是否 [被 GUI 设置覆盖]
 
-* 安装完成后，勾选 **服务模式** 右侧的选项，勾选 **TUN 模式** ，并取消勾选 **系统代理**
 
-* 如果此前其他ClashVerge安装过 **服务模式**，需要在应用目录的`resources文件夹`下双击运行 `uninstall-service.exe` 后，再进行上方的安装步骤
 
-![7](../clash/Photo/7.webp)
-
-![8](../clash/Photo/8.webp)
 
 
 ### 添加多个机场订阅
@@ -32,7 +18,7 @@
 
 
 ```yaml
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://1.1.1.1/generate_204, interval: 1800, timeout: 5000}}
 proxy-providers:
   Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
     url: http://your-service-provider
@@ -46,7 +32,7 @@ proxy-providers:
 👇 移除 `Subscribe2` 前方的 `#`，并修改对应的 `http://your-service-provider` 即可。
 
 ```yaml
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://1.1.1.1/generate_204, interval: 1800, timeout: 5000}}
 proxy-providers:
   Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
     url: http://your-service-provider
@@ -65,7 +51,7 @@ Mihomo 支持在 `proxy-providers` 中使用 [`override`](https://wiki.metacubex
 eg:
 
 ```yaml
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://1.1.1.1/generate_204, interval: 1800, timeout: 5000}}
 proxy-providers:
   Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
     url: http://your-service-provider
@@ -78,7 +64,7 @@ proxy-providers:
 👇 删除对应的 `#`
 
 ```yaml
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://1.1.1.1/generate_204, interval: 1800, timeout: 5000}}
 proxy-providers:
   Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
     url: http://your-service-provider
@@ -92,7 +78,7 @@ proxy-providers:
 
 ### 修改策略组类型
 
-默认地区/国家策略组，全部为自动选择最低延迟，测试地址为：`http://connectivitycheck.gstatic.com/generate_204` , 测试间隔：1800 秒
+默认地区/国家策略组，全部为自动选择最低延迟，测试地址为：`http://1.1.1.1/generate_204` , 测试间隔：1800 秒
 
 * 点击左侧 **配置/订阅** → 找到使用的配置并右键 → **修改配置**
 * 找到第140行 `- {name: 🇭🇰 香港节点, <<: *auto, filter: ...."}`，将 `*auto` 修改为 `*select`；
