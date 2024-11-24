@@ -407,7 +407,7 @@ rule-providers:
 
 ---
 
-由于在我的配置里写了锚点，用`c: &c {type: http, behavior: classical, interval: 86400}`进行替代，因此也可以写成如下写法，其他的`behavior`也可以进行替代：
+由于在我的配置里写了[锚点](https://wiki.metacubex.one/handbook/syntax/#_7)，用`c: &c {type: http, behavior: classical, interval: 86400}`进行替代，因此也可以写成如下写法，其他的`behavior`也可以进行替代：
 
 ```yaml
 rule-providers:
