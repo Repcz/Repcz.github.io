@@ -411,6 +411,8 @@ rules:
 #### classical
 
 
+`classical` 支持[路由规则](https://wiki.metacubex.one/config/rules/)的全部类型 (rule-set/sub-rule 除外)
+
 === "yaml"
     ```{.yaml linenums="1"}
     payload:
@@ -435,6 +437,7 @@ rules:
     DST-PORT,80
     SRC-PORT,7777
     ```
+
 
 #### domain
 
