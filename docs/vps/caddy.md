@@ -53,7 +53,7 @@ sudo apt install caddy
 ## Docker 部署
 
 ```bash
-mkdir -p /etc/caddy
+mkdir -p /srv /etc/caddy
 ```
 
 ```bash

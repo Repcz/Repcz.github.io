@@ -73,13 +73,13 @@ https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge-ab
 
 以下将使用 [科技lion](https://kejilion.blogspot.com/2023/08/lionldnmp.html) 的脚本
 
-```
+```bash
 curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
 ```
 
 1. 升级并安装 `curl`
 
-```
+```bash
 apt update -y  && apt install -y curl
 ```
 
@@ -90,7 +90,7 @@ apt update -y  && apt install -y curl
 2. 执行一键脚本
 
 
-```
+```bash
 curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
 ```
 
@@ -113,13 +113,13 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 
 - 全功能带推送
 
-```
+```bash
 docker run -it -d --restart=always -e "SUB_STORE_PUSH_SERVICE=https://api.day.app/XXXXXXXXXXXX/[推送标题]/[推送内容]?group=SubStore&autoCopy=1&isArchive=1&sound=shake&level=timeSensitive&icon=https%3A%2F%2Fraw.githubusercontent.com%2F58xinian%2Ficon%2Fmaster%2FSub-Store1.png"  -e "SUB_STORE_CRON=0 0 * * *" -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA -p 127.0.0.1:3001:3001 -v /root/sub-store-data:/opt/app/data --name sub-store xream/sub-store
 ```
 
 - 不带推送
 
-```
+```bash
 docker run -it -d --restart=always -e "SUB_STORE_CRON=0 0 * * *" -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA -p 127.0.0.1:3001:3001 -v /root/sub-store-data:/opt/app/data --name sub-store xream/sub-store
 ```
 
@@ -135,14 +135,15 @@ FianlShell中，复制可以在选中后，点击按钮复制
 ![docker4](../substore/Photo/docker4.webp)
 
 
-## 反向代理
-
-`NginxProxyManager 反代` 和 `Caddy 反代`, 2选1 即可。
 
 
-### Caddy 反代
+### Caddy 反向代理
 
-#### 安装 Caddy
+这里的方反向代理，简单来说就是让你从访问 `vps的ip:端口` 变成访问域名
+
+官方脚本 和 Docker 部署，2选1即可
+
+#### 官方脚本安装 Caddy
 
 参考[官方教程](https://caddy2.dengxiaolong.com/docs/install)，依次执行以下命令
 
@@ -166,7 +167,7 @@ sudo apt update
 sudo apt install caddy
 ```
 
-#### Caddy 添加反代
+##### Caddy 添加反代配置文件
 
 粘贴以下代码，写入反代配置
 
@@ -174,7 +175,7 @@ sudo apt install caddy
 !!! 注意
     `sub.xxxxx.xyz`替换为你的域名
 
-```
+```bash
 cat << EOF > /etc/caddy/Caddyfile
 sub.xxxxx.xyz {
     reverse_proxy 127.0.0.1:3001
@@ -184,13 +185,13 @@ EOF
 
 写入进程守护
 
-```
+```bash
 sudo systemctl enable --now caddy
 ```
 
 完成后重载配置
 
-```
+```bash
 sudo systemctl reload caddy
 ```
 
@@ -198,96 +199,61 @@ sudo systemctl reload caddy
 ??? note "Caddy 启动、停止、重启、查看状态"
     启动
 
-    ```
+    ```bash
     sudo systemctl start caddy
     ```
 
     停止
 
-    ```
+    ```bash
     sudo systemctl stop caddy
     ```
 
     重启
 
-    ```
+    ```bash
     sudo systemctl reload caddy
     ```
 
     查看状态
     
-    ```
+    ```bash
     systemctl status caddy
     ```
 
+#### Docker 部署 Caddy
 
-### NginxProxyManager 反代
+依次执行以下命令
 
-#### 获取 SubStore Docker容器的 IP
+1. 生成并挂载配置文件夹
 
-科技lion脚本 ，6Docker管理 → 5网络管理
-
-记住现在获取到 IP ，此处为：`172.17.0.3`
-
-![npm6](../substore/Photo/npm6.webp)
-
-
-#### 部署 NginxProxyManager 可视化面板
-
-科技lion脚本 ，11面板工具 → 4NginxProxyManager可视化面板
-
-![docker5](../substore/Photo/docker5.webp)
-
-部署完成后，会给默认的账户、密码
-
-![npm1](../substore/Photo/npm1.webp)
-
-
-#### NginxProxyManager 登录、修改密码
-
-简单来说，上面的部署 SubStore 的指令，使得只能在 VPS 本地，访问 `127.0.0.1:3001`
-
-反代的作用，就是直接通过访问域名，并且是使用 Https 进行访问，来进入 `本地/VPS的ip+端口` 形式的服务
-
-访问`IP:81`，初次登录，需要在登陆后修改账号、密码
-
-![npm2](../substore/Photo/npm2.webp)
-
-![npm3](../substore/Photo/npm3.webp)
-
-
-#### NginxProxyManager 设置 SSL 证书
-
-![npm4](../substore/Photo/npm4.webp)
-
-![npm5](../substore/Photo/npm5.webp)
-
-
-
-#### NginxProxyManager 添加反代 
-
-输入对应的 IP、端口、域名
-
-![npm7](../substore/Photo/npm7.webp)
-
-SSL 选中刚才申请的证书，勾选 `Force SSL`
-
-![npm8](../substore/Photo/npm8.webp)
-
-
-
-## 访问 SubStore
-
-此时，SubStore 地址为：https://sub.xxxxx.xyz 
-
-其 API 为 
-
-```
-https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA 
+```bash
+mkdir -p /srv /etc/caddy
 ```
 
-浏览器访问 
+2. 粘贴以下代码，写入反代配置
 
+<!-- prettier-ignore -->
+!!! 注意
+    `sub.xxxxx.xyz`替换为你的域名
+
+```bash
+cat << EOF > /etc/caddy/Caddyfile
+sub.xxxxx.xyz {
+    reverse_proxy 127.0.0.1:3001
+    }
+EOF
 ```
-https://sub.xxxxx.xyz?api=https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA 
+
+3. Docker 安装 Caddy
+
+```bash
+docker run -d \
+    --name caddy \
+    -p 80:80 \
+    -p 443:443 \
+    -v /etc/caddy/Caddyfile:/etc/caddy/Caddyfile \
+    -v caddy_data:/data \
+    -v caddy_config:/config \
+    caddy:latest
 ```
