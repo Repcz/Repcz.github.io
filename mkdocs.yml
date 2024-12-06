@@ -71,6 +71,7 @@ nav:
     - Mihomo Docker 部署: vps/mihomo.md
     - Hysteria2 部署: vps/hysteira2.md
     - SNELL 部署: vps/snell.md
+    - Caddy 部署: vps/caddy.md
     - VPS 测试:
       - ByteVirt Singapore Premium: vps/vps-test/bytevirt-sgp.md
       - 阿里云 香港轻量服务器: vps/vps-test/aliyun-light.md
