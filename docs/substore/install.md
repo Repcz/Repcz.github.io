@@ -55,7 +55,7 @@ https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Surge-ab
 
 ![dns2](../substore/Photo/dns2.webp)
 
-假设2级域名为 `sub`，则设置的域名 `sub.xxxxxx.xyz`，解析到 VPS 对应的 IP 上；
+假设你的域名为`xxxxxx.xyz`，2级域名为 `sub`，则设置的域名 `sub.xxxxxx.xyz`，解析到 VPS 对应的 IP 上；
 
 当然，则解析过去需要一定的时间。
 
@@ -139,58 +139,6 @@ FianlShell中，复制可以在选中后，点击按钮复制
 
 `NginxProxyManager 反代` 和 `Caddy 反代`, 2选1 即可。
 
-### NginxProxyManager 反代
-
-#### 获取 SubStore Docker容器的 IP
-
-科技lion脚本 ，6Docker管理 → 5网络管理
-
-记住现在获取到 IP ，此处为：`172.17.0.3`
-
-![npm6](../substore/Photo/npm6.webp)
-
-
-#### 部署 NginxProxyManager 可视化面板
-
-科技lion脚本 ，11面板工具 → 4NginxProxyManager可视化面板
-
-![docker5](../substore/Photo/docker5.webp)
-
-部署完成后，会给默认的账户、密码
-
-![npm1](../substore/Photo/npm1.webp)
-
-
-#### NginxProxyManager 登录、修改密码
-
-简单来说，上面的部署 SubStore 的指令，使得只能在 VPS 本地，访问 `127.0.0.1:3001`
-
-反代的作用，就是直接通过访问域名，并且是使用 Https 进行访问，来进入 `本地/VPS的ip+端口` 形式的服务
-
-访问`IP:81`，初次登录，需要在登陆后修改账号、密码
-
-![npm2](../substore/Photo/npm2.webp)
-
-![npm3](../substore/Photo/npm3.webp)
-
-
-#### NginxProxyManager 设置 SSL 证书
-
-![npm4](../substore/Photo/npm4.webp)
-
-![npm5](../substore/Photo/npm5.webp)
-
-
-
-#### NginxProxyManager 添加反代 
-
-输入对应的 IP、端口、域名
-
-![npm7](../substore/Photo/npm7.webp)
-
-SSL 选中刚才申请的证书，勾选 `Force SSL`
-
-![npm8](../substore/Photo/npm8.webp)
 
 ### Caddy 反代
 
@@ -289,4 +237,56 @@ https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA
 https://sub.xxxxx.xyz?api=https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA 
 ```
 
+### NginxProxyManager 反代
+
+#### 获取 SubStore Docker容器的 IP
+
+科技lion脚本 ，6Docker管理 → 5网络管理
+
+记住现在获取到 IP ，此处为：`172.17.0.3`
+
+![npm6](../substore/Photo/npm6.webp)
+
+
+#### 部署 NginxProxyManager 可视化面板
+
+科技lion脚本 ，11面板工具 → 4NginxProxyManager可视化面板
+
+![docker5](../substore/Photo/docker5.webp)
+
+部署完成后，会给默认的账户、密码
+
+![npm1](../substore/Photo/npm1.webp)
+
+
+#### NginxProxyManager 登录、修改密码
+
+简单来说，上面的部署 SubStore 的指令，使得只能在 VPS 本地，访问 `127.0.0.1:3001`
+
+反代的作用，就是直接通过访问域名，并且是使用 Https 进行访问，来进入 `本地/VPS的ip+端口` 形式的服务
+
+访问`IP:81`，初次登录，需要在登陆后修改账号、密码
+
+![npm2](../substore/Photo/npm2.webp)
+
+![npm3](../substore/Photo/npm3.webp)
+
+
+#### NginxProxyManager 设置 SSL 证书
+
+![npm4](../substore/Photo/npm4.webp)
+
+![npm5](../substore/Photo/npm5.webp)
+
+
+
+#### NginxProxyManager 添加反代 
+
+输入对应的 IP、端口、域名
+
+![npm7](../substore/Photo/npm7.webp)
+
+SSL 选中刚才申请的证书，勾选 `Force SSL`
+
+![npm8](../substore/Photo/npm8.webp)
 
