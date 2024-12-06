@@ -221,22 +221,6 @@ sudo systemctl reload caddy
     ```
 
 
-## 访问 SubStore
-
-此时，SubStore 地址为：https://sub.xxxxx.xyz 
-
-其 API 为 
-
-```
-https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA 
-```
-
-浏览器访问 
-
-```
-https://sub.xxxxx.xyz?api=https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA 
-```
-
 ### NginxProxyManager 反代
 
 #### 获取 SubStore Docker容器的 IP
@@ -290,3 +274,20 @@ SSL 选中刚才申请的证书，勾选 `Force SSL`
 
 ![npm8](../substore/Photo/npm8.webp)
 
+
+
+## 访问 SubStore
+
+此时，SubStore 地址为：https://sub.xxxxx.xyz 
+
+其 API 为 
+
+```
+https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA 
+```
+
+浏览器访问 
+
+```
+https://sub.xxxxx.xyz?api=https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA 
+```
