@@ -257,3 +257,18 @@ docker run -d \
     -v caddy_config:/config \
     caddy:latest
 ```
+
+
+
+### 访问 SubStore
+
+此时，SubStore 地址为：`https://sub.xxxxx.xyz`
+
+其 API 为 
+```
+https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA 
+```
+浏览器访问 
+```
+https://sub.xxxxx.xyz?api=https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA 
+```
