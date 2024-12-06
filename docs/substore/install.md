@@ -198,23 +198,23 @@ SSL 选中刚才申请的证书，勾选 `Force SSL`
 
 参考[官方教程](https://caddy2.dengxiaolong.com/docs/install)，依次执行以下命令
 
-```
+```bash
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
 ```
 
-```
+```bash
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
 ```
 
-```
+```bash
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
 ```
 
-```
+```bash
 sudo apt update
 ```
 
-```
+```bash
 sudo apt install caddy
 ```
 
