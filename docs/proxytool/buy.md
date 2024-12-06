@@ -22,18 +22,15 @@
 
 2. 点击右侧的`[Continue as Guest]`按钮以游客身份购买
 
-   ![buy](../proxytool/Photo/2.webp)
-
-   ![buy](../proxytool/Photo/3.webp)
-
-
 3. 点击`[Credit or Debit Card]`按钮添加你的银联借记卡（储蓄卡）信息，并点击`[Continue to Review]`按钮即可
-
-   ![buy](../proxytool/Photo/4.webp)
-
 
 4. 购买到的礼品卡将以邮件的方式发送到接收邮箱处，所以在填写的时候，务必保证接收邮箱的地址填写正确
 
+   ![buy1](../proxytool/Photo/2.webp)
+
+   ![buy2](../proxytool/Photo/3.webp)
+
+   ![buy3](../proxytool/Photo/4.webp)
 
 !!! 注意
     看不懂英文页面建议使用浏览器的网页翻译功能，避免弄错！
