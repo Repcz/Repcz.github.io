@@ -225,38 +225,38 @@ sudo systemctl reload caddy
 
 依次执行以下命令
 
-1. 生成并挂载配置文件夹
+- 生成并挂载配置文件夹
 
- ```bash
- mkdir -p /srv /etc/caddy
- ```
+```bash
+mkdir -p /srv /etc/caddy
+```
 
-2. 粘贴以下代码，写入反代配置
+- 粘贴以下代码，写入反代配置
 
-  <!-- prettier-ignore -->
-  !!! 注意
-      `sub.xxxxx.xyz`替换为你的域名
+<!-- prettier-ignore -->
+!!! 注意
+    `sub.xxxxx.xyz`替换为你的域名
 
-  ```bash
-  cat << EOF > /etc/caddy/Caddyfile
-  sub.xxxxx.xyz {
-      reverse_proxy 127.0.0.1:3001
-      }
-  EOF
-  ```
+```bash
+cat << EOF > /etc/caddy/Caddyfile
+sub.xxxxx.xyz {
+    reverse_proxy 127.0.0.1:3001
+    }
+EOF
+```
 
-3. Docker 安装 Caddy
+- Docker 安装 Caddy
 
-  ```bash
-  docker run -d \
-      --name caddy \
-      -p 80:80 \
-      -p 443:443 \
-      -v /etc/caddy/Caddyfile:/etc/caddy/Caddyfile \
-      -v caddy_data:/data \
-      -v caddy_config:/config \
-      caddy:latest
-  ```
+```bash
+docker run -d \
+    --name caddy \
+    -p 80:80 \
+    -p 443:443 \
+    -v /etc/caddy/Caddyfile:/etc/caddy/Caddyfile \
+    -v caddy_data:/data \
+    -v caddy_config:/config \
+    caddy:latest
+```
 
 
 ### 访问 SubStore
