@@ -173,9 +173,8 @@ sudo apt install caddy
 
 粘贴以下代码，写入反代配置
 
-<!-- prettier-ignore -->
-!!! 注意
-    `sub.xxxxx.xyz`替换为你的域名
+!!! info ""
+    注意替换`sub.xxxxx.xyz`为你的域名
 
 ```bash
 cat << EOF > /etc/caddy/Caddyfile
@@ -235,15 +234,16 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 
 - 安装提示依次输入对应的域名及端口即可
 
-  eg:
+!!! info ""
+    注意替换`sub.xxxxx.xyz`为你的域名
 
-  ```bash
-  开始部署 反向代理-IP+端口
-  先将域名解析到本机IP: 显示你的服务器IP 
-  请输入你的IP或者解析过的域名: sub.xxxxx.xyz
-  请输入你的反代IP: 127.0.0.1
-  请输入你的反代端口: 3001
-  ```
+```
+开始部署 反向代理-IP+端口
+先将域名解析到本机IP: 显示你的服务器IP 
+请输入你的IP或者解析过的域名: sub.xxxxx.xyz
+请输入你的反代IP: 127.0.0.1
+请输入你的反代端口: 3001
+```
 
 
 ### 访问 SubStore
