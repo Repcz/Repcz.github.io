@@ -145,7 +145,7 @@ Caddy反代 和 脚本反代，2选1即可
 
 #### Caddy 反向代理
 
-- 部署 Caddy
+##### 部署 Caddy
 
 参考[官方教程](https://caddy2.dengxiaolong.com/docs/install)，依次执行以下命令
 
@@ -169,7 +169,7 @@ sudo apt update
 sudo apt install caddy
 ```
 
-- Caddy 添加反代配置文件
+##### Caddy 添加反代配置文件
 
 粘贴以下代码，写入反代配置
 
