@@ -137,13 +137,15 @@ FianlShell中，复制可以在选中后，点击按钮复制
 
 
 
-### Caddy 反向代理
+### 反向代理
 
 这里的方反向代理，简单来说就是让你从访问 `vps的ip:端口` 变成访问域名
 
-官方脚本 和 Docker 部署，2选1即可
+Caddy反代 和 脚本反代，2选1即可
 
-#### 官方脚本安装 Caddy
+#### Caddy 反向代理
+
+- 部署 Caddy
 
 参考[官方教程](https://caddy2.dengxiaolong.com/docs/install)，依次执行以下命令
 
@@ -167,7 +169,7 @@ sudo apt update
 sudo apt install caddy
 ```
 
-##### Caddy 添加反代配置文件
+- Caddy 添加反代配置文件
 
 粘贴以下代码，写入反代配置
 
@@ -221,42 +223,27 @@ sudo systemctl reload caddy
     systemctl status caddy
     ```
 
-#### Docker 部署 Caddy
+#### 科技 lion 脚本反代
 
-依次执行以下命令
-
-- 生成并挂载配置文件夹
+- 执行一键脚本
 
 ```bash
-mkdir -p /srv /etc/caddy
+curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
 ```
 
-- 粘贴以下代码，写入反代配置
+- 输入`10` → `23` 进入`站点反向代理-IP+端口`
 
-<!-- prettier-ignore -->
-!!! 注意
-    `sub.xxxxx.xyz`替换为你的域名
+- 安装提示依次输入对应的域名及端口即可
 
-```bash
-cat << EOF > /etc/caddy/Caddyfile
-sub.xxxxx.xyz {
-    reverse_proxy 127.0.0.1:3001
-    }
-EOF
-```
+  eg:
 
-- Docker 安装 Caddy
-
-```bash
-docker run -d \
-    --name caddy \
-    -p 80:80 \
-    -p 443:443 \
-    -v /etc/caddy/Caddyfile:/etc/caddy/Caddyfile \
-    -v caddy_data:/data \
-    -v caddy_config:/config \
-    caddy:latest
-```
+  ```bash
+  开始部署 反向代理-IP+端口
+  先将域名解析到本机IP: 显示你的服务器IP 
+  请输入你的IP或者解析过的域名: sub.xxxxx.xyz
+  请输入你的反代IP: 127.0.0.1
+  请输入你的反代端口: 3001
+  ```
 
 
 ### 访问 SubStore
