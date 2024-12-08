@@ -36,4 +36,3 @@ cd /root/mihomo && docker compose up -d
 ```bash
 cd /root/mihomo && docker compose down
 ```
-```
