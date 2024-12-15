@@ -42,12 +42,12 @@
 
 ### 支付宝 PockytShop 购买
 
-!!! info ""
+!!! warning ""
     非官方渠道购买，风险自负！！！
 
 [点击链接](alipays://platformapi/startapp?appId=2021003191605547)自动跳转
 
-进入小程序后搜索 iTunes ，点击带有`$ 2~500`的选项,最低充值 `$ 2`
+进入小程序后搜索 iTunes ，点击带有`$ 2~500`的选项，最低充值 `$ 2`
 
    ![buy](../proxytool/Photo/1.webp)
 
