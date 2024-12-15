@@ -51,9 +51,9 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
 
 <!-- prettier-ignore -->
 !!! 提示
-    在第 16 行修改
+    在第 `17` 行修改
 
-```yaml
+```{.yaml linenums="15"}
 proxy-providers:
   Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
     url: http://your-service-provider
