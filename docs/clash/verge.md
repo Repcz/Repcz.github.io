@@ -102,17 +102,21 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
 
 将 `http://your-service-provider` 替换为你的机场订阅地址，如果要添加多个机场，可以参考 [添加机场订阅](../clash/verge.md?#_1)
 
+<!-- prettier-ignore -->
+!!! 提示
+    在第 `17` 行修改
 
-```yaml
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}}
+```{.yaml linenums="15"}
 proxy-providers:
   Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
     url: http://your-service-provider
-    <<: *p
+    path: ./proxies/Sub.yaml
+    type: http
+    interval: 86400
+    health-check: {enable: true, url: http://connectivitycheck.gstatic.com/generate_204, interval: 1800, timeout: 5000}
     #override: # 修改节点前后缀时，需移除前方的 "#" 符号
       #additional-prefix: "节点前缀"
-      #additional-suffix: "节点后缀"
-  #Subscribe2: {url: http://your-service-provider, <<: *p}
+      #additional-suffix: "节点后缀"    
 ```
 
 Mihomo(ClashMeta) 内核支持解析 base64 格式的订阅，可按照下图提示复制机场订阅
