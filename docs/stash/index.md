@@ -19,14 +19,13 @@
 
 ### 2.导入覆写
 
-打开 Stash 后，点击[链接](https://link.stash.ws/install-override/github.com/Repcz/Tool/raw/X/Stash/Override/Stash.stoverride)一键导入
+开启 Stash 开关后，点击[链接](https://link.stash.ws/install-override/github.com/Repcz/Tool/raw/X/Stash/Override/Stash.stoverride)一键导入
 
 !!! info ""
     注意检查是否启用 [覆写] 开关，是否启用该覆写
  
-![s9](../Stash/Photo/s9.webp)
+![9](../stash/Photo/s9.webp)
 
-开启 Stash 开关或，等待外部下载即可
 
 ## 导入本地配置
 
@@ -48,7 +47,6 @@
 - [ ] 负载均衡
 - [ ] 故障转移
 - [x] 广告屏蔽
-- [x] 内存占用更低？
 
 [点击链接](https://link.stash.ws/install-config/raw.githubusercontent.com/Repcz/Tool/X/Stash/Stash_lite.yaml) 导入`Stash_lite.yaml`
 
@@ -59,7 +57,8 @@
 - [x] 自动选择最低延迟
 - [ ] 负载均衡
 - [ ] 故障转移
-- [x] 广告屏蔽
+- [ ] 广告屏蔽
+- [x] 内存占用更低？
 
 <img src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/stash/Photo/s1.webp" width="900">
 
