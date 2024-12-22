@@ -4,11 +4,39 @@
 
 <a href="https://apps.apple.com/app/id1596063349"><img width="200px" alt="Download on App Store" src="https://logos-download.com/wp-content/uploads/2016/06/Download_on_the_App_Store_logo.png"/></a>  
 
-## 导入配置
+## 导入覆写配置
 
-> **_Stash_** 自带 **Sub-Store**，机场订阅本地转换可参考[Sub-Store 教程](https://getupnote.com/share/notes/8SiMnOcwXxZ3xEtK4k2v9Gr3pv32/7522F394-6D73-414E-BE04-1455EDB15B9F)
+!!! info ""
+    此配置可远程自动更新，推荐使用
 
-### 1. 导入并修改配置
+### 1.导入机场
+
+<!-- prettier-ignore -->
+!!! 提示
+    建议使用一键导入[Stash]或[Clash]，避免出现不必要的问题
+
+
+![11](../clash/Photo/11.webp)
+
+### 2.导入覆写
+
+打开 Stash 后，点击[链接](https://link.stash.ws/install-override/github.com/Repcz/Tool/raw/X/Stash/Override/Stash.stoverride)一键导入
+
+!!! info ""
+    注意检查是否启用 [覆写] 开关，是否启用该覆写
+    
+![s9](../Stash/Photo/s9.webp)
+
+开启 Stash 开关或，等待外部下载即可
+
+## 导入本地配置
+
+> **_Stash_** 自带 **Sub-Store**，机场订阅本地转换可参考[Sub-Store 教程](../substore/use/#_3)
+
+!!! 注意
+    此配置不可自动更新，需要一定动手能力，不推荐使用
+
+### 1. 导入本地配置并修改
 
 
 [点击链接](https://link.stash.ws/install-config/raw.githubusercontent.com/Repcz/Tool/X/Stash/Stash.yaml) 导入`Stash.yaml`
