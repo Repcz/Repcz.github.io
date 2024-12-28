@@ -24,7 +24,9 @@
 
 ### 重写资源
 
-> 点击资源一键导入
+
+!!! info ""
+    点击资源一键导入
 
 #### 去广告重写
 
@@ -77,21 +79,10 @@
 - 整点薯条 [@VirgilClyne](https://github.com/VirgilClyne)
 
     - [🍟 GetSomeFries](https://github.com/VirgilClyne/GetSomeFries): 独立或实验性作品
-        - [🍟 Fries: 🌐 通用](https://github.com/VirgilClyne/GetSomeFries/wiki/🌐-通用): 通用设置增强插件/模块
-        - [🍟 Fries: 🌐 DNS](https://github.com/VirgilClyne/GetSomeFries/wiki/🌐-DNS): DNS设置增强插件/模块
-        - [🍟 Fries: 🌐 ASN](https://github.com/VirgilClyne/GetSomeFries/wiki/🌐-ASN): ASN分流插件/模块/规则集
-        - [🍟 Fries: 🚫 HTTPDNS](https://github.com/VirgilClyne/GetSomeFries/wiki/🚫-HTTPDNS): HTTPDNS禁止插件/模块/规则集
     - [ iRingo](https://github.com/VirgilClyne/iRingo): 解锁完整的 Apple功能和集成服务
-    - [☁️ Cloudflare](https://github.com/VirgilClyne/Cloudflare): Cloudflare相关模块
-    - [🍿️ DualSubs](https://github.com/DualSubs): 流媒体平台字幕增强及双语模块
-        - [🍿️ DualSubs: 🎦 Universal](https://github.com/DualSubs/Universal/wiki/🍿-DualSubs:-🎦-Universal)
-        - [🍿 DualSubs: ▶ YouTube (Music)](https://github.com/DualSubs/YouTube/wiki/🍿-DualSubs:-▶-YouTube)
-        - [🍿 DualSubs: 🇳 Netflix](https://github.com/DualSubs/Netflix/wiki/🍿-DualSubs:-🇳-Netflix)
-        - [🍿 DualSubs: 🎵 Spotify](https://github.com/DualSubs/Spotify/wiki/🍿-DualSubs:-🎵-Spotify)
-    - [🪐 BiliUniverse 哔哩万象](https://github.com/BiliUniverse): 哔哩哔哩流媒体平台功能增强系列模块
-        - [🪐 BiliUniverse: ⚙ Enhanced](https://github.com/BiliUniverse/Universe/wiki/⚙-Enhanced): 全面自定义哔哩哔哩app主界面
-        - [🪐 BiliUniverse: 🛡️ ADBlock](https://github.com/BiliUniverse/Universe/wiki/🛡-ADBlock): 自定义去除app广告与界面元素
-        - [🪐 BiliUniverse: 🌐 Global](https://github.com/BiliUniverse/Universe/wiki/🌐-Global): 自动识别番剧影视地区并自动分流，自定义搜索各地区结果
+    - [☁️ Cloudflare](https://auraflare.github.io): Cloudflare相关模块
+    - [🍿️ DualSubs](https://dualsubs.github.io): 流媒体平台字幕增强及双语模块
+    - [🪐 BiliUniverse 哔哩万象](https://biliuniverse.io): 哔哩哔哩流媒体平台功能增强系列模块
 
 - [BoxJS @chavyleung](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%22rewrite_remote%22%20%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2Fchavyleung%2Fscripts%2Fmaster%2Fbox%2Frewrite%2Fboxjs.rewrite.quanx.conf%2C%20tag%3DBoxJS%40chavyleung%2C%20update-interval%3D-1%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%0A%20%20%5D%0A%7D)
     - [boxjs文档](https://chavyleung.gitbook.io/boxjs/)
