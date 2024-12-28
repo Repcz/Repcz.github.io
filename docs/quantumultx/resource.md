@@ -1,5 +1,10 @@
 # 资源搜集
 
+
+<!-- prettier-ignore -->
+!!! 警告
+    此页面下内容不保证可用性，请自行验证
+
 ### 分流仓库
 
 #### 常用分流
@@ -25,39 +30,6 @@
 
 - [去广告频道](https://t.me/Aa28413761)
 
-- [MyblockAds @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FMyBlockAds.conf%2C%20tag%3DMyBlockAds%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)：[点此查看维护列表](https://t.me/GitCube/21)
-- [宝宝树孕育 @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fbabytree.snippet%2C%20tag%3Dbabytree%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
-- [高德地图 @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Famap.snippet%2C%20tag%3Damap%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
-
-<!-- prettier-ignore -->
-!!! 注意
-    需要卸载重装
-
-- [菜鸟 @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fcainiao.snippet%2C%20tag%3Dcainiao%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)：包括 APP 和 小程序
-- [哔哩哔哩 @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fbilibili.snippet%2C%20tag%3Dbilibili%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
-- [网易云音乐 @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fcloudmusic.snippet%2C%20tag%3Dcloudmusic%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
-- [微博 @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fweibo.snippet%2C%20tag%3Dweibo%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
-- [小红书 @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fxiaohongshu.snippet%2C%20tag%3Dxiaohongshu%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
-
-
-<!-- prettier-ignore -->
-!!! 注意
-    需在配置文件 `[general]` 下添加 `udp_drop_list=443`
-
-
-- [知乎 @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fzhihu.snippet%2C%20tag%3Dzhihu%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
-- [网页去广告 @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FPornAds.list%2C%20tag%3DPornAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FWebPage.conf%2C%20tag%3DWebPage%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D) 
-
-
-<!-- prettier-ignore -->
-!!! 注意
-    包含谷歌重定向及部分网页去广告
-
-- [YouTube @RuCu6](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRules%2FMyBlockAds.list%2C%20tag%3DMyBlockAds%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fyoutube.snippet%2C%20tag%3Dyoutube%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dtrue%2C%20enabled%3Dtrue%22%5D%7D)
-
-<!-- prettier-ignore -->
-!!! 注意
-    需在配置文件 `[general]` 下添加 `udp_drop_list=443`
 
 
 - [毒奶去广告 @limbo](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%22filter_remote%22%3A%5B%22https%3A%2F%2Fgithub.com%2Flimbopro%2FAdblock4limbo%2Fraw%2Fmain%2FAdblock4limbo.list%2C%20tag%3DAdblock4limbo%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dfalse%2C%20enabled%3Dtrue%22%5D%2C%22rewrite_remote%22%3A%5B%22https%3A%2F%2Fgithub.com%2Flimbopro%2FAdblock4limbo%2Fraw%2Fmain%2FAdblock4limbo.conf%2C%20tag%3DAdblock4limbo%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dfalse%2C%20enabled%3Dtrue%22%5D%7D)：
@@ -78,7 +50,6 @@
 !!! 注意
     需要卸载重装
 
-- [IT之家 @Keywos](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%22rewrite_remote%22%20%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2FRepcz%2FTool%2FX%2FQuantumultX%2FRewrites%2FITHome.snippet%2C%20tag%3DIT%E4%B9%8B%E5%AE%B6%E5%8E%BB%E5%B9%BF%E5%91%8A%40keywos%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%0A%20%20%5D%0A%7D)
 
 - [小程序净化 @fmz200](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%22rewrite_remote%22%20%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2Ffmz200%2Fwool_scripts%2Fmain%2FQuantumultX%2Frewrite%2Fcleanup.snippet%2C%20tag%3DApp%26%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%87%80%E5%8C%96%E5%90%88%E9%9B%86%40fmz200%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%0A%20%20%5D%0A%7D)
 - [去广告合集 @fmz200](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%20%20%22filter_remote%22%3A%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Ffmz200%2Fwool_scripts%2Fmain%2FQuantumultX%2Ffilter%2Ffenliuxiuzheng.list%2C%20tag%3D%E5%88%86%E6%B5%81%E4%BF%AE%E6%AD%A3%20%40fmz200%2C%20force-policy%3Ddirect%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Ffmz200%2Fwool_scripts%2Fmain%2FQuantumultX%2Ffilter%2Ffenliu.list%2C%20tag%3D%E5%88%86%E6%B5%81%E5%8E%BB%E5%B9%BF%E5%91%8A%20%40fmz200%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dfalse%2C%20enabled%3Dtrue%22%0A%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%22rewrite_remote%22%3A%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Ffmz200%2Fwool_scripts%2Fmain%2FQuantumultX%2Frewrite%2Fchongxie.txt%2C%20tag%3D%E9%87%8D%E5%86%99%E5%8E%BB%E5%B9%BF%E5%91%8A%20%40fmz200%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20inserted-resource%3Dfalse%2C%20enabled%3Dtrue%22%0A%20%20%20%20%20%20%20%20%5D%0A%7D)
@@ -92,7 +63,6 @@
     [重写地址](https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/rewrite/chongxie.txt)
 
 
-- [番茄小说去广告 @EAlyce](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%22filter_remote%22%20%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2FEAlyce%2Fconf%2Fmain%2FRule%2FFQNovelAdvertising.list%2C%20tag%3D%E7%95%AA%E8%8C%84%E5%B0%8F%E8%AF%B4%E5%8E%BB%E5%B9%BF%E5%91%8A%2C%20force-policy%3Dreject%2C%20update-interval%3D172800%2C%20opt-parser%3Dtrue%2C%20enabled%3Dtrue%22%0A%20%20%5D%0A%7D)
 
 #### 功能类重写
 
@@ -101,7 +71,6 @@
 <!-- prettier-ignore -->
 !!! 提示
     点击商品名称右侧的箭头，仅支持京东 `12.4.1` 及以下版本
-
 
 
 
@@ -135,9 +104,6 @@
 - [QX & Surge & Loon 脚本搜集频道](https://t.me/NobyDa)
 
 #### 解锁类重写
-
-- [Spotify解锁 @app2smile](https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%22rewrite_remote%22%20%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2Fapp2smile%2Frules%2Fmaster%2Fmodule%2Fspotify.conf%2C%20tag%3DSpotify%E8%A7%A3%E9%94%81%40app2smile%2C%20update-interval%3D172800%2C%20opt-parser%3Dtrue%2C%20enabled%3Dtrue%22%0A%20%20%5D%0A%7D)
-    - 不可设置为最高音质！
 
 - [叮当猫频道](https://t.me/chxm1023)
 - [骨钉频道](https://t.me/Guding88)
