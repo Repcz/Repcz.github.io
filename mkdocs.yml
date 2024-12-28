@@ -50,10 +50,10 @@ nav:
         - 策略组: quantumultx/policy.md
         - DNS & 域名映射: quantumultx/dns.md
         - MitM & 证书: quantumultx/mitm.md
-        - 重写[rewrite]: quantumultx/rewrite.md
+        - 重写: quantumultx/rewrite.md
         - HTTP 请求: quantumultx/http-js.md
         - 其他设置: quantumultx/other-set.md
-        - 配置文件[general]部分: quantumultx/general.md
+        - 通用设置: quantumultx/general.md
         - 配置文件相关: quantumultx/profile.md
       - 资源解析器使用: quantumultx/parser.md
       - URL Scheme: quantumultx/url-scheme.md
