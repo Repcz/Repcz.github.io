@@ -79,6 +79,7 @@ nav:
       - 阿里云 香港轻量服务器: vps/vps-test/aliyun-light.md
       - VKVM SG - CHINA : vps/vps-test/vkvm-sgp.md
       - SaltyFish Amsterdam : vps/vps-test/Saltyfish-Amsterdam.md
+      - CoalCloud GB BGP Pro : vps/vps-test/coalcloud-GB.md
   - 正则表达: 
       - 正则语法: regex/doc.md
       - 常用地区节点表达式: regex/use.md
