@@ -7,7 +7,7 @@ www.coalcloud.net
 
 [UK BGP Pro NewYearPlan](https://www.coalcloud.net/store/uk-bgp-proispipv4)
 
-此次购买的为 `英国 UK BGP PRO(双ISP住宅原生) IPV4 UK BGP Pro NewYearPlan`，售价 `180 CNY`
+此次购买的为 `英国 UK BGP PRO(双ISP住宅原生) IPV4 NewYearPlan`，售价 `180 CNY`
 
 ```
 1 Core(s) (Fair Share)
@@ -24,7 +24,7 @@ KVM Virtualization
 
 - IPv4 测试结果
 
-![售价](../vps-test/Photo/coal-gb-bgppro.png)
+![售价](../vps-test/Photo/coal-uk-bgppro.png)
 
 
 ### 融合怪测试
