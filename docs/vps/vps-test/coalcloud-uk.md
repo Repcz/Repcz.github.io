@@ -22,8 +22,6 @@ KVM Virtualization
 ### IP质量测试
 
 
-- IPv4 测试结果
-
 ![售价](../vps-test/Photo/coal-uk-bgppro.png)
 
 
