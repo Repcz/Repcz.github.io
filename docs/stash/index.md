@@ -49,18 +49,6 @@
 - [ ] 故障转移
 - [x] 广告屏蔽
 
-[点击链接](https://link.stash.ws/install-config/raw.githubusercontent.com/Repcz/Tool/X/Stash/Stash_lite.yaml) 导入`Stash_lite.yaml`
-
-- [x] 使用 GeoSITE & GeoIP
-- [x] 地区分流（香港、美国、日本、台湾、新加坡）
-- [x] 苹果、谷歌、微软、电报、推特分流
-- [x] 常用流媒体（可以自行添加单独的策略组）
-- [x] 自动选择最低延迟
-- [ ] 负载均衡
-- [ ] 故障转移
-- [ ] 广告屏蔽
-- [x] 内存占用更低？
-
 <img src="https://raw.githubusercontent.com/Repcz/Repcz.github.io/main/docs/stash/Photo/s1.webp" width="900">
 
 导入节点订阅
