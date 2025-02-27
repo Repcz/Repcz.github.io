@@ -21,7 +21,7 @@ nav:
       - mihomo: mihomo/index.md
       - Verge Rev: mihomo/verge.md
       - mihomo Party: mihomo/party.md
-      - 自定义本地配置: mihomo/editprofile.md
+      - 自定义配置: mihomo/editprofile.md
     - Loon:
       - 入门: loon/index.md
       - 使用指北:
