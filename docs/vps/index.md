@@ -76,12 +76,6 @@ docker run -d --name watchtower --restart=always -v /var/run/docker.sock:/var/ru
 wget -O snell.sh --no-check-certificate https://git.io/Snell.sh && chmod +x snell.sh && ./snell.sh
 ```
 
-* Snell快速部署，随机端口、启动TFO，输出Surge格式节点
-
-```bash
-curl -sS -o Snell.sh https://raw.githubusercontent.com/passeway/Snell/main/Snell.sh && chmod +x Snell.sh && ./Snell.sh
-```
-
 #### Hysteria2
 
 * Hy2快速部署，随机端口，输出Surge、Clash格式节点，不设置下载速度
