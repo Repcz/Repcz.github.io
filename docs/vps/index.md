@@ -70,7 +70,7 @@ docker run -d --name watchtower --restart=always -v /var/run/docker.sock:/var/ru
 
 #### SENLL 
 
-* Snell搭建、管理
+* Snell 搭建、管理
 
 ```bash
 wget -O snell.sh --no-check-certificate https://git.io/Snell.sh && chmod +x snell.sh && ./snell.sh
@@ -78,7 +78,7 @@ wget -O snell.sh --no-check-certificate https://git.io/Snell.sh && chmod +x snel
 
 #### Hysteria2
 
-* Hy2快速部署，随机端口，输出Surge、Clash格式节点，不设置下载速度
+* Hy2 快速部署，随机端口，输出Surge、Clash格式节点，不设置下载速度
 
 ```bash
 curl -sS -o Hysteria.sh https://raw.githubusercontent.com/passeway/Hysteria/main/Hysteria.sh  && chmod +x Hysteria.sh && ./Hysteria.sh
