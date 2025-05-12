@@ -1,0 +1,205 @@
+# 2024-6-2 07:37
+
+site_name: Lᴜᴄʏ's Tool
+repo_name: Tool
+repo_url: https://github.com/Repcz/Tool
+copyright: Copyright &copy 2024 Repcz
+edit_uri: https://github.com/Repcz/Repcz.github.io
+
+# dev服务器监听地址
+dev_addr: 127.0.0.1:7788
+
+# 导航设置
+nav:
+  - 关于: index.md
+  - 代理工具:
+    - 说明: proxytool/index.md
+    - 购买 iOS 代理软件: proxytool/buy.md
+    - 代理软件下载: proxytool/download.md
+    - Egern: egern/index.md
+    - mihomo: 
+      - mihomo: mihomo/index.md
+      - Verge Rev: mihomo/verge.md
+      - mihomo Party: mihomo/party.md
+      - 自定义配置: mihomo/editprofile.md
+    - Loon:
+      - 入门: loon/index.md
+      - 使用指北:
+        - 交互UI: loon/UI.md
+        - 节点订阅: loon/node.md
+        - 规则系统: loon/filter.md
+        - 策略: loon/policy.md
+        - 复写: loon/rewrite.md
+        - 脚本: loon/script.md
+        - 脚本 API: loon/script_api.md
+        - 插件: loon/plugin.md
+        - DNS & 映射: loon/dns.md
+        - MitM: loon/mitm.md
+        - 配置文件: loon/profile.md
+        - 其他配置: loon/general.md
+        - 更多设置: loon/more-set.md
+      - URL Scheme: loon/url-scheme.md
+      - 授权 & 相关文档: loon/authorize.md
+    - Quantumult X:
+      - 入门: quantumultx/index.md
+      - 使用指北:
+        - 交互UI: quantumultx/UI.md
+        - 节点订阅: quantumultx/node.md
+        - 常用延迟测试地址: quantumultx/proxytest.md
+        - 规则系统: quantumultx/filter.md
+        - 策略组: quantumultx/policy.md
+        - DNS & 域名映射: quantumultx/dns.md
+        - MitM & 证书: quantumultx/mitm.md
+        - 重写: quantumultx/rewrite.md
+        - HTTP 请求: quantumultx/http-js.md
+        - 其他设置: quantumultx/other-set.md
+        - 通用设置: quantumultx/general.md
+        - 配置文件相关: quantumultx/profile.md
+      - 资源解析器使用: quantumultx/parser.md
+      - URL Scheme: quantumultx/url-scheme.md
+      - 授权 & 相关文档: quantumultx/authorize.md
+      - 资源搜集: quantumultx/resource.md
+      - 图标集: quantumultx/icon.md
+    - Shadowrocket: shadowrocket/index.md
+    - Stash: stash/index.md
+    - Surge: surge/index.md
+    - Surfboard: surfboard/index.md
+    - Sub Store: substore/use.md
+    - sing-box: sing-box/index.md
+  - VPS:
+    - VPS: vps/index.md
+    - Sub Store 部署: substore/install.md
+    - Subconverter 部署: subconverter/index.md
+    - Hysteria2 部署: vps/hysteira2.md
+    - SNELL 部署: vps/snell.md
+    - Caddy 部署: vps/caddy.md
+    - Uptime Kuma: vps/uptime.md
+    - mihomo 部署: vps/mihomo.md
+    - sing-box 部署: vps/sing-box.md
+    - VPS 测试:
+      - ByteVirt [Singapore Premium]: vps/vps-test/bytevirt-sgp.md
+      - 阿里云 [香港轻量服务器]: vps/vps-test/aliyun-light.md
+      - VKVM [SG - CHINA]: vps/vps-test/vkvm-sgp.md
+      - SaltyFish [Amsterdam Premium]: vps/vps-test/Saltyfish-Amsterdam.md
+      - CoalCloud [UK BGP Pro]: vps/vps-test/coalcloud-uk.md
+      - YxVM [Hong Kong Eco Beta]: vps/vps-test/yxvm-hk-eco.md
+  - 正则表达: 
+      - 正则语法: regex/doc.md
+      - 常用地区节点表达式: regex/use.md
+  
+  # - 广而告之: aff/index.md
+
+
+# 主题设置
+theme:
+  name: material
+  logo: assets/logo.JPG
+  favicon: assets/lucy.ico
+  features:
+    - announce.dismiss #呈现可标记为由用户读取的临时公告，可以包含一个用于取消当前公告的按钮
+    # - navigation.instant
+    # - header.autohide  #自动隐藏
+    - navigation.tracking #地址栏中的 URL 将自动更新为在目录中突出显示的活动锚点
+    - navigation.tabs #顶级部分将呈现在上面视口标题下方的菜单层中，但在移动设备上保持原样
+    # - navigation.tabs.sticky  #启用粘性选项卡后，导航选项卡将锁定在标题下方，并在向下滚动时始终保持可见
+    - navigation.sections #启用部分后，顶级部分在边栏中呈现为1220px以上视口的组，但在移动设备上保持原样
+    - navigation.top # 返回顶部的按钮 在上滑时出现
+    - navigation.footer #页脚将呈现在边栏中，但在移动设备上保持原样
+    - search.suggest # 搜索输入一些字母时推荐补全整个单词
+    - search.highlight # 搜索出的文章关键词加入高亮
+    - search.share #搜索分享按钮
+    - navigation.expand # 打开Tab时左侧目录全部展开
+    - navigation.indexes #启用节索引页后，可以将文档直接附加到节
+    - content.tabs.link
+    - content.tooltips
+    - content.code.copy #代码复制
+    #- content.action.edit
+    #- content.action.view
+    - content.code.annotate
+
+  language: zh # 一些提示性的文字会变成中文
+
+  icon:
+    repo: fontawesome/brands/github #右上角图标
+    logo: logo
+
+  # 亮色/深色模式
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: 关闭自动模式
+    #primary: blue grey
+    - media: "(prefers-color-scheme: light)"
+      scheme: default # 日间模式
+      primary: white # 上方的
+      accent: blue # 链接等可交互元件的高亮色
+      # teal
+      toggle:
+        icon: material/toggle-switch # 图标
+        name: 切换至夜间模式 # 鼠标悬浮提示
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate # 夜间模式
+      primary: black
+      accent: indigo
+      # teal
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: 切换至日间模式
+
+# markdown特性设置
+markdown_extensions:
+  - admonition # 提醒框、警告框等
+  - md_in_html # 支持嵌入HTML代码
+  - pymdownx.details # 支持<details>折叠标签
+  - pymdownx.tilde # 支持~表示删除的文本
+  - pymdownx.magiclink # 自动将URL转换为可点击的链接
+
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.caret
+  - pymdownx.betterem
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.smartsymbols
+  
+  - pymdownx.highlight: # 代码块高亮
+      anchor_linenums: true
+      linenums: true # 显示行号
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true  # 固定标题位置为当前位置
+      toc_depth: 4
+      anchorlink: true
+  # mermaid渲染
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format  # 代码块高亮插件
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+
+
+
+extra:
+  generator: false # 去除页脚广告
+  social: # 页脚链接
+    - icon: fontawesome/brands/github
+      link: https://github.com/Repcz/Tool
+    - icon: material/file-document
+      link: https://github.com/Repcz/Repcz.github.io
