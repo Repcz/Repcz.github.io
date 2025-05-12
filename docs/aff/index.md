@@ -20,19 +20,3 @@
 - 广港、沪日、京德专线 IEPL 专线
 
 ![TKV](../aff/TKV.webp)
-
-### [Academy City Airport](https://www.aca.best/#/register?code=J9Vf5lbX)
-
-- 流媒体解锁 | 冷门国家 | 家宽节点
-- 公网中转 SS 节点
-- 0.2x 倍率节点 | Emby 0.01x倍率节点 | 3x 家宽节点
-- 送 MisakaF 合作 Emby
-
-![aca](../aff/ACA.webp)
-
-### [XQC Retard](https://www.xqc.best/#/register?code=zwB37FuC)
-
-- [Academy City Airport](https://www.aca.best/#/register?code=J9Vf5lbX) 家的公益机场
-- VMESS 协议
-- 目前 0 元购
-- 不保证可用性
