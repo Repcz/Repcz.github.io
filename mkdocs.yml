@@ -76,6 +76,7 @@ nav:
     - Uptime Kuma: vps/uptime.md
     - mihomo 部署: vps/mihomo.md
     - sing-box 部署: vps/sing-box.md
+    - git-proxy 部署: vps/git-proxy.md
     - VPS 测试:
       - ByteVirt [Singapore Premium]: vps/vps-test/bytevirt-sgp.md
       - 阿里云 [香港轻量服务器]: vps/vps-test/aliyun-light.md
