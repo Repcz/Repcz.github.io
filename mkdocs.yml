@@ -1,4 +1,4 @@
-# 最后更新时间: 2025-5-12 21:48
+# 最后更新时间: 2025-6-27 23:30
 
 site_name: Lᴜᴄʏ's Tool
 repo_name: Tool
@@ -7,7 +7,7 @@ copyright: Copyright &copy 2024 Repcz
 edit_uri: https://github.com/Repcz/Repcz.github.io
 
 # dev服务器监听地址
-dev_addr: 127.0.0.1:7788
+dev_addr: 127.0.0.1:8888
 
 # 导航设置
 nav:

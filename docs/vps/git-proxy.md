@@ -2,11 +2,11 @@
 
 项目基于 [麻婆](https://github.com/pmkol) 的开源 [git-proxy](https://github.com/pmkol/git-proxy) 加速服务
 
-> 以下基于 Debian 系统，参考 ChatGPT 给出的步骤
+> 以下内容使用 Debian 系统，参考 ChatGPT 给出的步骤
 
 ## 部署 git-proxy
 
-1. 下载对应平台的二进制文件（比如 Linux amd64）：
+1. 下载对应平台的[二进制文件](https://github.com/pmkol/git-proxy/releases)（比如 Linux amd64）：
 
 ```bash
 # 创建目录并进入
