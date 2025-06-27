@@ -80,7 +80,7 @@ WantedBy=multi-user.target
 
 可以根据需要修改 `ExecStart=/root/git-proxy/git-proxy -p 3000` 为你需要的指令，例如限速为 3MB/S : `ExecStart=/root/git-proxy/git-proxy -p 3000 -l -3`
 
-* *重新加载 systemd 并启动服务：
+* 重新加载 systemd 并启动服务：
 
 ```bash
 sudo systemctl daemon-reexec
