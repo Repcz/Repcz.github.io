@@ -6,7 +6,7 @@
 
 ## 部署 git-proxy
 
-1. 下载对应平台的[二进制文件](https://github.com/pmkol/git-proxy/releases)（比如 Linux amd64）：
+* 下载对应平台的[二进制文件](https://github.com/pmkol/git-proxy/releases)（比如 Linux amd64）：
 
 ```bash
 # 创建目录并进入
@@ -16,21 +16,19 @@ wget https://github.com/pmkol/git-proxy/releases/download/Prerelease/git-proxy-l
 
 ```
 
-2. 赋予执行权限
+* *赋予执行权限
 
 ```bash
 chmod +x git-proxy
 ```
 
-3. 运行程序
+* 运行程序
 
 ```bash
 ./git-proxy -p 3000
 ```
 
-此时 程序运行成功并占用 `3000` 端口
-
-再 `ctrl+C` 退出程序
+此时 程序运行成功并占用 `3000` 端口，再 `ctrl+C` 退出程序
 
 以下为指令：
 
@@ -51,7 +49,7 @@ Flags:
 
 ## 写入 systemd 服务配置文件
 
-1. 创建服务文件：
+* *创建服务文件：
 
 ```bash
 sudo nano /etc/systemd/system/git-proxy.service
@@ -82,7 +80,7 @@ WantedBy=multi-user.target
 
 可以根据需要修改 `ExecStart=/root/git-proxy/git-proxy -p 3000` 为你需要的指令，例如限速为 3MB/S : `ExecStart=/root/git-proxy/git-proxy -p 3000 -l -3`
 
-2. 重新加载 systemd 并启动服务：
+* *重新加载 systemd 并启动服务：
 
 ```bash
 sudo systemctl daemon-reexec
