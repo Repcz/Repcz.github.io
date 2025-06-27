@@ -91,7 +91,7 @@ sudo systemctl start git-proxy.service
 
 ## 反向代理
 
-以下仅提供 Caddy 配置，，请根据需求进修改:
+以下仅提供 Caddy 配置，请根据需求进修改:
 
 ```json
 git.your.domain {
