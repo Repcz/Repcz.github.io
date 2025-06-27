@@ -88,7 +88,7 @@ nav:
       - 正则语法: regex/doc.md
       - 常用地区节点表达式: regex/use.md
   
-  # - 广而告之: aff/index.md
+  - 广而告之: aff/index.md
 
 
 # 主题设置
