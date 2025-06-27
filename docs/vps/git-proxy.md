@@ -30,7 +30,7 @@ chmod +x git-proxy
 
 此时 程序运行成功并占用 `3000` 端口，再 `ctrl+C` 退出程序
 
-以下为详细指令：
+* 以下为参考指令
 
 ```shell
 Usage:
