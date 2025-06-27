@@ -16,7 +16,7 @@ wget https://github.com/pmkol/git-proxy/releases/download/Prerelease/git-proxy-l
 
 ```
 
-* *赋予执行权限
+* 赋予执行权限
 
 ```bash
 chmod +x git-proxy
@@ -30,7 +30,7 @@ chmod +x git-proxy
 
 此时 程序运行成功并占用 `3000` 端口，再 `ctrl+C` 退出程序
 
-以下为指令：
+以下为详细指令：
 
 ```shell
 Usage:
@@ -49,7 +49,7 @@ Flags:
 
 ## 写入 systemd 服务配置文件
 
-* *创建服务文件：
+* 创建服务文件：
 
 ```bash
 sudo nano /etc/systemd/system/git-proxy.service
