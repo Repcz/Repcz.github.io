@@ -24,7 +24,7 @@ mkdir snell && cd snell
 cat > docker-compose.yaml << EOF
 services:
   snell:
-    image: vocrx/snell-server:alpine
+    image: vocrx/snell-server:latest
     container_name: snell
     restart: always
     network_mode: host
@@ -42,7 +42,7 @@ EOF
 ```yaml
 services:
   snell:
-    image: vocrx/snell-server:alpine
+    image: vocrx/snell-server:latest
     container_name: snell
     restart: always
     network_mode: host
