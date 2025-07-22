@@ -8,8 +8,12 @@
 
 #### Loon协议
 
-- ShadowSocks
+- ShadowSocks (stream/aead/2022)
+    - ShadowSocks + shadow-tls2/3
+    - ShadowSocks + simpleObfs
+    - ShadowSocks + simpleObfs + shadow-tls2/3
 - ShadowSocksR
+    - ShadowSocksR + shadow-tls2/3
 - VMESS
     - VMESS + TLS
     - VMESS + WebSocket
@@ -19,6 +23,7 @@
 - VLESS
     - VLESS + WebSocket
     - VLESS + HTTP
+    - VLESS + xtls-rprx-vision + reality
 - Trojan
     - Trojan + WebSocket
     - Trojan + HTTP
