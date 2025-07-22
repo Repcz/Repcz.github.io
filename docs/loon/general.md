@@ -22,7 +22,7 @@
 
     Loon 3.2.6(811) 版本开始于高级配置添加 `ipv6-vif` 选项，默认关闭
 
-* IP 查询模式 `ip-mode`
+##### IP 查询模式 `ip-mode`
 
 - `ipv4-only`: 只使用 `IPv4` 进行请求，不发起 `AAAA` 的 DNS 查询，拒绝所有 `IPv6` 连接；
 - `auto`: 并发发起 `A` 和 `AAAA` 的 DNS 查询，优先使用响应速度更快的结果；
@@ -38,7 +38,7 @@
 ip-mode = ipv4-only
 ```
 
-* TUN IPV6 配置 `ipv6-vif`
+##### TUN IPV6 配置 `ipv6-vif`
 
 - `off`: 不处理 TUN 中的 IPv6 流量转发
 - `auto`: 根据当前网络环境自动决定
