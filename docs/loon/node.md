@@ -43,6 +43,7 @@
 !!! 注意
     以下主要讲的是 `[Proxy]` 区块下的内容，所以示例都以 `[Proxy]` 开头表明在其之下，并不是让你每个参数字段前都加上 `[Proxy]`。
 
+    Loon 3.2.6(811) 版本支持节点添加新参数 ip-mode，表示节点使用的 IP栈，支持ipv4-only,dual,ipv4-preferred,ipv6-preferred,ipv6-only
 
 如果要在配置文件中手动添加、修改单个节点，请遵从下面的格式
 
@@ -306,6 +307,11 @@ resource-parser = https://gitlab.com/sub-store/Sub-Store/-/releases/permalink/la
 ```
 
 #### 2.3.2 UI 添加
+
+
+<!-- prettier-ignore -->
+!!! 注意
+    Loon 3.2.6(811) 版本支持节点添加新参数 ip-mode，表示节点使用的 IP栈，支持ipv4-only,dual,ipv4-preferred,ipv6-preferred,ipv6-only
 
 
 1. 「仪表标签页」-「节点」 → 点击右上角`＋` → 选择`添加订阅`
