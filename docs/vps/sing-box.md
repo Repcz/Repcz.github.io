@@ -94,7 +94,13 @@ docker run -d \
         {
             "type": "direct"
         }
-    ]
+    ],
+    "ntp": {
+        "enabled": true,
+        "server": "time.apple.com",
+        "server_port": 123,
+        "interval": "30m"
+    }
 }
 ```
 #### 自用配置
@@ -144,7 +150,13 @@ docker run -d \
         {
             "type": "direct"
         }
-    ]
+    ],
+    "ntp": {
+        "enabled": true,
+        "server": "time.apple.com",
+        "server_port": 123,
+        "interval": "30m"
+    }
 }
 ```
 

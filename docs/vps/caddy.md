@@ -50,19 +50,3 @@ sudo apt install caddy
     ```
 
 
-## Docker 部署
-
-```bash
-mkdir -p /srv /etc/caddy
-```
-
-```bash
-docker run -d \
-    --name caddy \
-    -p 80:80 \
-    -p 443:443 \
-    -v /etc/caddy/Caddyfile:/etc/caddy/Caddyfile \
-    -v caddy_data:/data \
-    -v caddy_config:/config \
-    caddy:latest
-```
