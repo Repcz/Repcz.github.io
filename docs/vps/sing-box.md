@@ -103,62 +103,8 @@ docker run -d \
     }
 }
 ```
-#### 自用配置
 
-```json
-{
-    "log": {
-        "disabled": false,
-        "level": "info",
-        "timestamp": true
-    },
-    "inbounds": [
-        {
-            "type": "shadowtls",
-            "tag": "Shadowsocks+ShadowTLS+Padding",
-            "listen": "::",
-            "listen_port": 65110,
-            "version": 3,
-            "users": [
-                {
-                    "name": "singbox",
-                    "password": "tqwatbK2CO9jIq0XJa2tZg=="
-                }
-            ],
-            "handshake": {
-                "server": "icloud.com",
-                "server_port": 443
-            },
-            "strict_mode": true,
-            "detour": "shadowsocks-shadowtls-in"
-        },
-        {
-            "type": "shadowsocks",
-            "tag": "shadowsocks-shadowtls-in",
-            "listen": "127.0.0.1",
-            "sniff": true,
-            "sniff_override_destination": false,
-            "method": "2022-blake3-aes-128-gcm",
-            "password": "tqwatbK2CO9jIq0XJa2tZg==",
-            "multiplex": {
-                "enabled": true,
-                "padding": true
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "type": "direct"
-        }
-    ],
-    "ntp": {
-        "enabled": true,
-        "server": "time.apple.com",
-        "server_port": 123,
-        "interval": "30m"
-    }
-}
-```
+
 
 #### `SS2022` 密码生成
 
