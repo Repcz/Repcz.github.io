@@ -37,19 +37,7 @@ bash <(curl -sL https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest
 * 搭建人形(Docker)
 
 ```bash
-wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/docker.sh -O docker.sh && chmod +x docker.sh && bash docker.sh
-```
-
-* 搭建人形
-
-```bash
-wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/install.sh -O install.sh && chmod +x install.sh && bash install.sh
-```
-
-* 搭建人形(EAlyce)
-
-```bash
-curl -k -O https://raw.githubusercontent.com/EAlyce/conf/main/PagerMaid/RXsetup.sh && chmod +x RXsetup.sh && ./RXsetup.sh
+bash <(curl -fsSL https://github.com/EAlyce/conf/raw/refs/heads/main/Linux/installTeleBox.sh)
 ```
 
 #### 科技lion 多工具脚本
@@ -77,12 +65,6 @@ wget -O snell.sh --no-check-certificate https://git.io/Snell.sh && chmod +x snel
 ```
 
 #### Hysteria2
-
-* Hy2 快速部署，随机端口，输出Surge、Clash格式节点，不设置下载速度
-
-```bash
-curl -sS -o Hysteria.sh https://raw.githubusercontent.com/passeway/Hysteria/main/Hysteria.sh  && chmod +x Hysteria.sh && ./Hysteria.sh
-```
 
 * 官方脚本
 

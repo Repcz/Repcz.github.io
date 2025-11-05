@@ -19,7 +19,7 @@ docker run -d \
 === ":material-debian: Debian"
 
     ```bash
-    bash <(curl -fsSL https://sing-box.app/deb-install.sh)
+    curl -fsSL https://sing-box.app/install.sh | sh
     ```
 
 #### :material-book-multiple: 服务管理
