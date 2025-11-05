@@ -33,9 +33,6 @@ bash <(curl -sL https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest
 
 #### 人形脚本
 
-
-* 搭建人形(Docker)
-
 ```bash
 bash <(curl -fsSL https://github.com/EAlyce/conf/raw/refs/heads/main/Linux/installTeleBox.sh)
 ```
