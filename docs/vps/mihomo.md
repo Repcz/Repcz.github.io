@@ -6,10 +6,6 @@
 curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh
 ```
 
-脚本 → 6 `Docker 管理` → 1 `安装 Docker`
-
-如果是国内服务器，可能需要更换 `Docker源`：脚本 → 6 `Docker 管理` → 8 `更换 Docker 源`
-
 ## 部署 mihomo Docker compose
 
 1. 新建目录
