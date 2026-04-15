@@ -48,7 +48,24 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 每小时自动更新 Docker 镜像，更多使用细节参考[《Watchtower：自动更新 Docker 镜像与容器》](https://www.moewah.com/archives/3863.html)
 
 ```bash
-docker run -d --name watchtower --restart=always -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup -i 3600
+docker run -d \
+  --name watchtower \
+  --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  nickfedor/watchtower \
+  --cleanup \
+  --interval 3600
+```
+
+#### Realm 转发
+
+```bash
+bash <(curl -sSL https://github.com/qiuxiuya/qiuxiuya/raw/refs/heads/main/VPS/realm/realm_install.sh)
+```
+
+修改 `/etc/realm/config.toml` 后 重启Realm
+```bash
+systemctl restart hysteria-server.service
 ```
 
 ### 节点搭建脚本
