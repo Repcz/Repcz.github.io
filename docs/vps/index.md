@@ -28,6 +28,11 @@ curl https://raw.githubusercontent.com/ludashi2020/backtrace/main/install.sh -sS
 bash <(curl -sL https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh)
 ```
 
+#### nexttrace 路由测试
+
+```bash
+curl -sL https://nxtrace.org/nt | bash
+```
 
 ### 工具类节点
 
@@ -65,7 +70,7 @@ bash <(curl -sSL https://github.com/qiuxiuya/qiuxiuya/raw/refs/heads/main/VPS/re
 
 修改 `/etc/realm/config.toml` 后 重启Realm
 ```bash
-systemctl restart hysteria-server.service
+sudo systemctl restart realm
 ```
 
 ### 节点搭建脚本
@@ -139,18 +144,3 @@ bash <(curl -fsSL https://get.hy2.sh/) --remove
 wget -O ss-rust.sh --no-check-certificate https://raw.githubusercontent.com/xOS/Shadowsocks-Rust/master/ss-rust.sh && chmod +x ss-rust.sh && ./ss-rust.sh
 ```
 
-#### WARP
-
-<!-- prettier-ignore -->
-!!! 注意
-    这是给服务器设置 `WARP` 出站代理，不是生成WARP节点
-
-```bash
-bash <(curl -fsSL git.io/warp.sh) menu
-```
-
-#### Sing-box 多协议
-
-```bash
-wget -N -O /root/singbox.sh https://raw.githubusercontent.com/qiuxiuya/qiuxiuya/main/VPS/singbox.sh && chmod +x /root/singbox.sh && ln -sf /root/singbox.sh /usr/local/bin/singbox && bash /root/singbox.sh
-```
