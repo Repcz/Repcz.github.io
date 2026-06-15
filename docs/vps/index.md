@@ -4,28 +4,10 @@
 
 ###　检测类脚本
 
-#### 流媒体检测
+#### NodeQuality 多维度检测
 
-```bash
-bash <(curl -L -s media.ispvps.com)
 ```
-
-#### IP质量检测
-
-```bash
-bash <(curl -L -s ip.check.place)
-```
-
-#### 回程测试
-
-```bash
-curl https://raw.githubusercontent.com/ludashi2020/backtrace/main/install.sh -sSf | sh
-```
-
-#### 测速
-
-```bash
-bash <(curl -sL https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh)
+bash <(curl -sL https://run.NodeQuality.com)
 ```
 
 #### nexttrace 路由测试
@@ -38,8 +20,10 @@ curl -sL https://nxtrace.org/nt | bash
 
 #### 人形脚本
 
+[TeleBox](https://github.com/TeleBoxOrg/TeleBox)
+
 ```bash
-bash <(curl -fsSL https://github.com/EAlyce/conf/raw/refs/heads/main/Linux/installTeleBox.sh)
+wget https://raw.githubusercontent.com/TeleBoxOrg/TeleBox_Scripts/refs/heads/main/Install/telebox.sh -O telebox.sh && chmod +x telebox.sh && bash telebox.sh
 ```
 
 #### 科技lion 多工具脚本
@@ -81,6 +65,12 @@ sudo systemctl restart realm
 
 ```bash
 wget -O snell.sh --no-check-certificate https://git.io/Snell.sh && chmod +x snell.sh && ./snell.sh
+```
+
+* (被)开源 Snell
+
+```bash
+bash <(curl -fsSL https://s.ee/opensnell)
 ```
 
 #### Hysteria2

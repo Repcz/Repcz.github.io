@@ -71,7 +71,6 @@ nav:
     - VPS: vps/index.md
     - Sub Store 部署: substore/install.md
     - Hysteria2 部署: vps/hysteira2.md
-    - SNELL 部署: vps/snell.md
     - Caddy 部署: vps/caddy.md
     - mihomo 部署: vps/mihomo.md
     - git-proxy 部署: vps/git-proxy.md

@@ -115,7 +115,7 @@ curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 | 字段 | 位置 | 说明 |
 |------|------|------|
 | `your_server_ip` | `certificate_providers[0].domain[0]` | 替换为你的 **VPS 公网 IP** |
-| `your_server_ip` | `inbounds[0].tls.server_name` | 替换为你的 **VPS 公网 IP**（或域名） |
+| `your_server_ip` | `inbounds[0].tls.server_name` | 替换为你的 **VPS 公网 IP** |
 | `admin@example.com` | `certificate_providers[0].email` | 替换为你的 **邮箱**（Let's Encrypt 注册用） |
 | `""`（password） | `inbounds[0].users[0].password` | 设置一个 **连接密码**，客户端连接时需要 |
 
@@ -133,7 +133,7 @@ sing-box check -c /etc/sing-box/config.json
 
 ### 服务管理
 
-安装完成后 重新启动 并 启用 sing-box
+安装完成后执行 `sudo systemctl enable sing-box && sudo systemctl restart sing-box` 启动 sing-box
 
 | 行动   | 命令                                            |
 |------|-----------------------------------------------|
