@@ -31,7 +31,7 @@ your.domain {
 
 ### sing-box anyTLS 入站
 
-``` json
+```json
 "inbounds": [
         {
             "type": "anytls",

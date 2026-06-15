@@ -70,13 +70,14 @@ nav:
   - VPS:
     - VPS: vps/index.md
     - Sub Store 部署: substore/install.md
-    - Hysteria2 部署: vps/hysteira2.md
     - Caddy:
       - 部署: vps/caddy.md
       - 转发 sni 共用端口: vps/caddy-l4sni.md
     - mihomo 部署: vps/mihomo.md
     - git-proxy 部署: vps/git-proxy.md
-    - anyTLS 部署: vps/anyTLS.md
+    - 节点部署: 
+      - anyTLS 部署: vps/anyTLS.md
+      - Hysteria2 部署: vps/hysteira2.md
   - 正则表达: 
       - 正则语法: regex/doc.md
       - 常用地区节点表达式: regex/use.md
