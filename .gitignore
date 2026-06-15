@@ -1,1 +1,4 @@
 .DS_Store
+
+# MkDocs 构建输出
+site/
