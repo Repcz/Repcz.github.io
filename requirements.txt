@@ -1,0 +1,5 @@
+# Material for MkDocs - 文档站点生成
+# 版本锁定以确保构建可复现
+mkdocs-material==9.7.6
+mkdocs-minify-plugin>=0.8.0
+Pygments>=2.18.0
