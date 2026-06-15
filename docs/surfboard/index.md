@@ -71,11 +71,11 @@ eg：
 为第二个机场添加一个策略组：
 
 eg：
-```{linenums="66"}
+```{linenums="65"}
 [Proxy Group]
 
-# > 外部节点(在此将"http://your-service-provider"替换为你的机场订阅，推荐使用base64或者node list)
-🚀 手动切换 = select,  🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, DIRECT, policy-path=http://your-service-provider, interval=300, update-interval=86400
+# 外部节点(在此将"http://your-service-provider"替换为你的机场订阅，推荐使用base64或者node list)
+手动选择 = select, include-all-proxies=true, icon-url=https://raw.githubusercontent.com/Irrucky/Tool/main/Surge/icon/surge_3.png, policy-path=http://your-service-provider, interval=300, update-interval=86400
 
 ...
 ```
@@ -85,25 +85,24 @@ eg：
 
 
 ```{linenums="66"}
-[Proxy Group]
+# 外部节点(在此将"http://your-service-provider"替换为你的机场订阅，推荐使用base64或者node list)
+手动选择 = select, include-all-proxies=true, icon-url=https://raw.githubusercontent.com/Irrucky/Tool/main/Surge/icon/surge_3.png, policy-path=http://your-service-provider, interval=300, update-interval=86400
 
-🚀 手动切换 = select,  🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, DIRECT, policy-path=http://your-service-provider, interval=300, update-interval=86400
-
-机场2 = select,  🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, DIRECT, policy-path=http://your-service-provider, interval=300, update-interval=86400
+机场2 = select,  香港节点, 美国节点, 狮城节点, 日本节点, 台湾节点, DIRECT, policy-path=http://your-service-provider, interval=300, update-interval=86400
 ...
 ```
 
-同时`include-other-group = "🚀 手动切换"`需要修改成`include-other-group = "🚀 手动切换, 机场2"`（这里按需修改）
+同时`include-other-group = "手动选择"`需要修改成`include-other-group = "手动选择, 机场2"`（这里按需修改）
 
 
 eg：
 
 ```{linenums="95"}
-🇭🇰 香港节点 = url-test, policy-regex-filter=^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$, interval=600,update-interval=86400, no-alert=0, hidden=0, include-other-group = "🚀 手动切换"
+🇭🇰 香港节点 = url-test, policy-regex-filter=^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$, interval=600,update-interval=86400, no-alert=0, hidden=0, include-other-group = "手动选择"
 ```
 
 👇
 
 ```{linenums="95"}
-🇭🇰 香港节点 = url-test, policy-regex-filter=^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$, interval=600,update-interval=86400, no-alert=0, hidden=0, include-other-group = "🚀 手动切换, 机场2"
+🇭🇰 香港节点 = url-test, policy-regex-filter=^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$, interval=600,update-interval=86400, no-alert=0, hidden=0, include-other-group = "手动选择, 机场2"
 ```

@@ -1,13 +1,13 @@
-## 使用 Caddy 管理证书 + Caddy 转发 SNI 至 sing-box
+# 使用 Caddy 管理证书 + Caddy 转发 SNI 至 sing-box
 
-### Caddy 安装 l4 转发
+## Caddy 安装 l4 转发
 
 ```bash
 caddy add-package github.com/mholt/caddy-l4
 sudo systemctl restart caddy
 ```
 
-### Caddyfile 配置
+## Caddyfile 配置
 
 ```cafddyfile
 {
@@ -29,7 +29,7 @@ your.domain {
 }
 ```
 
-### sing-box anyTLS 入站
+## sing-box anyTLS 入站
 
 ```json
 "inbounds": [
