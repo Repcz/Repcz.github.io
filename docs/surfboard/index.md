@@ -2,7 +2,7 @@
 
 ## Surfboard 下载地址
 
-<a href="https://play.google.com/store/apps/details?id=com.getsurfboard"><img width="200px" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/></a> or [surfboard/releases](https://github.com/getsurfboard/surfboard/releases)
+<a href="https://play.google.com/store/apps/details?id=com.getsurfboard"><img width="80px" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"/></a> or <a href='https://github.com/getsurfboard/surfboard/releases'><img src="https://img.shields.io/badge/Releases-blue"></a>                                                              
 
 
 ## 导入配置
