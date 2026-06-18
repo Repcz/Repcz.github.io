@@ -106,7 +106,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: github-pages
-          path: site
+          path: site-dl
+
+      - name: Extract artifact and prepare site
+        run: |
+          mkdir -p site
+          tar -xf site-dl/artifact.tar -C site
+          rm -rf site-dl
 
       - name: Deploy to Cloudflare Pages
         run: npx wrangler@latest pages deploy site --project-name=repcz-tool
