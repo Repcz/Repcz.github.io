@@ -1,14 +1,19 @@
-# Name: Deploy MkDocs to GitHub Pages
+# Name: Deploy MkDocs to GitHub Pages & Cloudflare Pages
 #
-# 构建 MkDocs Material 文档站点并部署到 GitHub Pages
+# 构建 MkDocs Material 文档站点并双部署到:
+#   - GitHub Pages (doc.repcz.link)
+#   - Cloudflare Pages (wiki.repcz.link)
 #
 # 触发条件:
-#   - push 到 X 分支 (构建 + 部署)
+#   - push 到 X 分支 (构建 + 双部署)
 #   - PR 到 X 分支 (仅构建，不部署)
 #
 # 环境要求:
 #   - GitHub Pages 已启用，source 设置为 "GitHub Actions"
-#   - 仓库 Settings > Pages > Source = GitHub Actions
+#   - Cloudflare Pages 项目已创建 (项目名: repcz-tool)
+#   - GitHub Secrets:
+#     - CLOUDFLARE_API_TOKEN
+#     - CLOUDFLARE_ACCOUNT_ID
 
 name: Deploy MkDocs
 
@@ -19,12 +24,9 @@ on:
   pull_request:
     branches:
       - X
-
-  # 允许手动触发
   workflow_dispatch:
 
-# 权限: 需要 id-token: write 用于 OIDC 认证
-# 以及 pages: write 和 contents: read 用于部署
+# 权限设置
 permissions:
   contents: read
   pages: write
@@ -37,7 +39,7 @@ concurrency:
 
 jobs:
   # ============================================================
-  # 构建作业
+  # 构建作业 — 一次构建，两份部署共用
   # ============================================================
   build:
     runs-on: ubuntu-latest
@@ -65,8 +67,6 @@ jobs:
       - name: Build MkDocs site
         run: mkdocs build --strict
         env:
-          # 从 actions/configure-pages 获取完整 base URL 并注入为 site_url
-          # 确保 MkDocs 生成正确的规范 URL 和资源路径
           SITE_URL: ${{ steps.pages.outputs.base_url }}
 
       - name: Upload Pages artifact
@@ -75,14 +75,13 @@ jobs:
           path: site
 
   # ============================================================
-  # 部署作业 (仅 push 到 X 时执行)
+  # 部署到 GitHub Pages
   # ============================================================
-  deploy:
+  deploy-github:
     if: github.event_name == 'push' && github.ref == 'refs/heads/X'
     needs: build
     runs-on: ubuntu-latest
 
-    # 部署环境
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -91,3 +90,27 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # ============================================================
+  # 部署到 Cloudflare Pages (wiki.repcz.link)
+  # ============================================================
+  deploy-cloudflare:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/X'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Download built artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: site
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site --project-name=repcz-tool
