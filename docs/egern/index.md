@@ -50,7 +50,7 @@ Egern 的 [DNS 模块](https://doc.egernapp.com/zh-CN/docs/configuration/dns)功
 !!! 提示
     以下为配置文件中的 dns 设置，如果你什么也不懂，建议不要修改
 
-```yaml{linenums="20"}
+```yaml linenums="20"
 dns:
   bootstrap: #  默认 DNS 服务器，用来解析 upstreams
   - system
@@ -93,34 +93,40 @@ dns:
   - 223.5.5.5
 ```
 
-处于某些没必要的`防 DNS 泄露`需求，可以将 `forward` 中最后一条规则改为 `Foreign-Encrypted-DNS`; 
+处于某些没必要的`防 DNS 泄露`需求，可以将 `forward` 中最后一条规则改为 `Foreign-Encrypted-DNS`;
 
 并且由于 `Upstreams` DNS 是遵从出站设置的，可以将 `Foreign-Encrypted-DNS` 中的域名手动指定代理节点以减少延迟
 
-eg: 
-```yaml
-dns:
-  forward: # DNS 转发规则
-  - proxy_rule_set:
-      match: https://github.com/Repcz/Tool/raw/X/Egern/Rules/Reject.yaml
-      value: REJECT
-      disabled: false
-  - proxy_rule_set:
-      match: https://github.com/Repcz/Tool/raw/X/Egern/Rules/ChinaDomain.yaml
-      value: Domestic-DNS
-      disabled: false
-  - domain_wildcard:
-      match: '*'
-      value: Foreign-Encrypted-DNS
-      disabled: false
-rules:
-- or:
-    name: DNS Proxy
-    match:
-    - domain:
-        match: cloudflare-dns.com
-    - domain:
-        match: dns.google
-    policy: Policy
-    disabled: false
-```
+eg:
+
+=== "DNS"
+    ```yaml
+    dns:
+      forward:
+      - proxy_rule_set:
+          match: https://github.com/Repcz/Tool/raw/X/Egern/Rules/Reject.yaml
+          value: REJECT
+          disabled: false
+      - proxy_rule_set:
+          match: https://github.com/Repcz/Tool/raw/X/Egern/Rules/ChinaDomain.yaml
+          value: Domestic-DNS
+          disabled: false
+      - domain_wildcard:
+          match: '*'
+          value: Foreign-Encrypted-DNS
+          disabled: false
+    ```
+
+=== "Rules"
+    ```yaml
+    rules:
+    - or:
+        name: DNS Proxy
+        match:
+        - domain:
+            match: cloudflare-dns.com
+        - domain:
+            match: dns.google
+        policy: Policy
+        disabled: false
+    ```
