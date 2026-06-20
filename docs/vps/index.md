@@ -48,11 +48,14 @@ docker run -d \
 
 #### Realm 转发
 
+[wcwq99/realm](https://github.com/wcwq99/realm)
+
 ```bash
-bash <(curl -sSL https://github.com/qiuxiuya/qiuxiuya/raw/refs/heads/main/VPS/realm/realm_install.sh)
+curl -L https://raw.githubusercontent.com/wcwq98/realm/refs/heads/main/realm.sh -o realm.sh && chmod +x realm.sh && ./realm.sh
 ```
 
-修改 `/etc/realm/config.toml` 后 重启Realm
+修改 `/root/.realm/config.toml` 后 重启 realm
+
 ```bash
 sudo systemctl restart realm
 ```
