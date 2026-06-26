@@ -1,6 +1,8 @@
 # 13. 资源解析器使用方法
 
 > 以下内容参考 [解析器作者的使用教程](https://www.notion.so/Quantumult-X-6bd13c1adc174debb80ebd3f5dfdd744)，更详细的示例请移步该教程。
+>
+> 官方也提供了[资源解析器示例](https://github.com/crossutility/Quantumult-X/blob/master/resource-parser.js)及[参数化 UI 协议](https://github.com/crossutility/Quantumult-X/blob/master/parser-helper-protocol.md)（v1.5.6+）。
 
 ### 13.1 主要功能
 
@@ -12,7 +14,33 @@
   - 𝐒𝐮𝐫𝐠𝐞/𝐂𝐥𝐚𝐬𝐡 类型规则 𝗹𝗶𝘀𝘁 与 模块 module 的解析使用
 
 
-### 13.2 添加解析器
+### 13.2 自定义解析器开发
+
+官方提供了[资源解析器示例](https://github.com/crossutility/Quantumult-X/blob/master/resource-parser.js)，自定义解析器中可用的 API：
+
+| 对象 | 说明 |
+|------|------|
+| `$resource.link` | 资源的原始 URL 或本地路径 |
+| `$resource.content` | 资源的响应内容（UTF-8） |
+| `$resource.info` | 服务器资源的响应头 `subscription-userinfo` 字段（v1.0.10+） |
+| `$resource.tag` | 服务器资源的自定义标签（v1.0.10+） |
+| `$resource.user_agent` | 当前下载使用的 User-Agent，重试时值为上次返回的 UA（v1.5.6+） |
+
+输出格式：
+
+| API | 说明 |
+|-----|------|
+| `$done({content: "..."})` | 返回解析后的内容 |
+| `$done({error: "..."})` | 返回错误信息 |
+| `$done({retry: {user_agent: "..."}})` | 请求使用指定 UA 重新下载并解析（v1.5.6+，每个资源最多重试一次） |
+
+### 13.3 参数化 UI 协议（v1.5.6+）
+
+自 Quantumult X v1.5.6 (build 918) 起，资源解析器支持参数化 UI 编辑协议。解析器作者可通过 `$parser` 对象声明支持的参数及控件类型，由 QX 客户端动态渲染编辑页面。
+
+详细协议见 [parser-helper-protocol.md](https://github.com/crossutility/Quantumult-X/blob/master/parser-helper-protocol.md)。
+
+### 13.4 添加解析器
 
 如果开启资源解析器时，提示无自定义资源解析器，则需要在配置文件`[general]`下添加以下代码：
 
@@ -20,7 +48,7 @@
 resource_parser_url=https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
 ```
 
-### 13.3 使用方法
+### 13.5 使用方法
 
 1.在添加的资源链接后增加配置参数
 
@@ -49,7 +77,7 @@ http://your-service-provider#emoji=1&tfo=1&in=香港+台湾
 
 ![UI10-1](Photo/UI10-1.webp){: width=300}
 
-### 13.4 参数说明
+### 13.6 参数说明
 
 <!-- prettier-ignore -->
 !!! 说明
@@ -61,7 +89,7 @@ http://your-service-provider#emoji=1&tfo=1&in=香港+台湾
 
     http://your-rewrite-provider
 
-#### 13.4.1 节点参数
+#### 13.6.1 节点参数
 
 1.`emoji=1`(国行设备用`2`)/`-1`, 添加/删除节点名内地区旗帜;
 
@@ -133,9 +161,9 @@ http://your-service-provider#in=🇭🇰+🇸🇬&rename=Hong%20Kong@香港+0\.2
 
 12.`aead=-1`, 关闭 Vmess 的 AEAD 参数
 
-13.`host=xxx` , 修改 `host` 参数（如有）
+13.`host=xxx`, 修改 `host` 参数（如有）
 
-14.`checkurl=xxx` , 指定`server_check_ur`l 参数
+14.`checkurl=xxx`, 指定 `server_check_url` 参数
 
 15.`sort=1`/`-1`/`x`/参数规则, 按节点名 `正`/`逆`/`随机`/参数规则 排序
 
@@ -153,7 +181,7 @@ http://your-service-provider#in=🇭🇰+🇸🇬&rename=Hong%20Kong@香港+0\.2
   - 说明: https://github.com/KOP-XIAO/QuantumultX/pull/9
 
 
-#### 13.4.2「rewrite 重写」/「filter 分流」参数
+#### 13.6.2「rewrite 重写」/「filter 分流」参数
 
 1.`in`/`out`, 根据关键词 `保留`/`禁用` 相关分流、重写规则;
 
@@ -195,7 +223,7 @@ http://your-rewrite-provider#out=baidu-index.js+baidu-zhidao.js&outhn=baidu
   - `via=接口`, 为分流规则添加 `via-interface` 参数, `0` 表示 `via-interface=%TUN%`
   - `relay=目标策略名`, 批量将节点订阅转换为`ip`/`host`规则，用于实现代理链
 
-#### 13.4.3 其他参数
+#### 13.6.3 其他参数
 
 1.通知参数 `ntf=0`/`1`, 用于 `关闭`/`打开` 资源解析器的提示通知
 
