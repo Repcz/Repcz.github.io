@@ -17,7 +17,7 @@
 
 #### 7.1.1 重写类型
 
-> 以下内容参考 [QX 官方示例配置](https://github.com/crossutility/Quantumult-X/blob/master/sample.conf)
+> 以下内容参考 [QX 官方示例配置](https://github.com/crossutility/Quantumult-X/blob/master/sample.conf) 与 [官方重写文档](https://github.com/crossutility/Quantumult-X/blob/master/rewrite.md)
 
 - `reject`：返回 HTTP 状态代码 404，没有任何内容。该类型对短时间内重复的请求有动态延迟（0~5秒）响应机制：重复越少延迟越小（0），重复越多延迟越大（5）。
 - `reject-200`：返回 HTTP 状态代码 200，没有内容。
@@ -34,7 +34,8 @@
 - 如果 `rewrite` 与正文相关，则与长度和编码相关的 HTTP 标头字段将由 Quantumult 自动处理，因此不应自行处理。响应正文和脚本响应正文支持的最大响应大小为 1024kB（解压缩）。
 - 如果 `body` 为空，则不会执行 body 相关的重写。
 - 在重写中使用 JavaScript 时，可以使用以下对象：`$request`、`$response`、`$notify(title, subtitle, message)`、`console.log(message)` 和 Quantumult 的内置对象都有前缀`$`。
-- 支持：`$request.sessionIndex`、`$request.scheme`、`$request.method`、`$request.url`、`$request.path`、`$request.headers`、`$response.sessionIndex`、`$response.statusCode`、`$response.headers`、`$response.body`
+- `$request` 支持：`$request.sessionIndex`、`$request.scheme`、`$request.method`、`$request.url`、`$request.path`、`$request.headers`
+- `$response` 支持：`$response.sessionIndex`、`$response.statusCode`、`$response.headers`、`$response.body`、`$response.bodyBytes`（二进制数据，`ArrayBuffer` 类型，iOS 14.0+ / QX v1.0.19+）
 - `$request.sessionIndex` 等于 `$response.sessionIndex`（当响应与请求关联时）。`sessionIndex` 与橙色「网络活动」面板中的 TCP 记录索引无关。
 - 如果启用了 Quantumult 通知，`$notify(title, subtitle, message)` 将发布 iOS 通知。
 - `$prefs` 用于持久存储：`$prefs.valueForKey(key)`、`$prefs.setValueForKey(value, key)`、`$prefs.removeValueForKey(key)`、`$prefs.removeAllValues()`。
@@ -42,7 +43,17 @@
 - `setTimeout(function() { }, interval)` 将在 `interval`(ms) 后运行函数。
 - `script-request-header`、`script-request-body`、`script-response-header`、`script-response-body`、`script-echo-response` 和 `script-analyze-echo-response` 的脚本应保存在本地「我的 iPhone - Quantumult X - Scripts」或「iCloud Drive - Quantumult X - Scripts」。
 - `script-analyze-echo-response` 与 `script-echo-response` 的区别在于前者会等待请求正文。
-- 示例可以在 [crossutility/Quantumult-X](https://github.com/crossutility/Quantumult-X) 找到。
+- 各脚本类型的 `$done()` 返回格式：
+  - `script-request-header`：`$done({path: modifiedPath, headers: modifiedHeaders})` 或 `$done({path: modifiedPath})` 或 `$done({})`
+  - `script-response-header`：`$done({status: modifiedStatus, headers: modifiedHeaders})` 或 `$done({headers: modifiedHeaders})` 或 `$done({})`
+  - `script-response-body`：`$done(modifiedBody)` 或 `$done({body: modifiedBody, headers: modifiedHeaders, status: modifiedStatus})`
+  - `script-echo-response`：`$done({status: myStatus, headers: myHeaders, body: myData})`
+  - `script-request-body`：`$done(modifiedBody)` 或 `$done({body: modifiedBody})`
+  - `script-analyze-echo-response`：同 `script-echo-response`，但会等待请求正文
+  - `bodyBytes` 二进制重写：`$done({bodyBytes: buffer})`（需 iOS 14.0+ / QX v1.0.19+）
+- 脚本 URL 支持通过 `#` 附加自定义参数，脚本内使用 `$environment.sourcePath` 获取完整路径。
+- `$task.fetch()` 支持通过 `opts.policy` 指定策略发送请求：`{url: url, opts: {policy: "direct"}}`
+- 完整示例可在 [crossutility/Quantumult-X](https://github.com/crossutility/Quantumult-X) 找到。
 
 #### 7.1.2 配置文件添加
 
@@ -69,8 +80,10 @@
 ;^http://example\.com/resource8/ url script-response-header response-header.js
 ;^http://example\.com/resource9/ url script-request-header request-header.js
 ;^http://example\.com/resource10/ url script-request-body request-body.js
+;^http://example\.com/resource11/ url script-analyze-echo-response script-analyze-echo.js
 ;^http://example\.com/resource1/1/ \r\nUser-Agent: example-agent url-and-header reject
 ;^http://example\.com/resource1/1/ ^POST url-and-header reject
+;^http://example\.com/resource12/ url script-response-body bytes-rewrite.js
 
 [mitm]
 hostname = example.com
@@ -169,28 +182,24 @@ hostname = spclient.wg.spotify.com
 
 #### 7.2.1 配置文件添加
 
-远程重写在 配置文件`[rewrite_remote]` 下添加：
+远程重写在配置文件 `[rewrite_remote]` 下添加：
 
 ```
 [rewrite_remote]
 https://example.com/rewrite.conf, tag=🛡️ Block Ads, update-interval=172800, opt-parser=true, inserted-resource=true, enabled=true
 ```
-也就是说一条完整的远程重写配置是这么组成的：
+也就是说一条完整的远程重写配置由以下参数组成：
 
-`<资源路径>, <资源标签>, <自动更新时间间隔>, <是否使用资源解析器>, <插入资源>, <是否启用>`
+`<资源路径>, tag=<资源标签>, update-interval=<更新间隔>, opt-parser=<使用解析器>, inserted-resource=<插入本地规则前>, enabled=<是否启用>`
 
-- `tag` 资源标签：相当于名称，标识这条远程分流文件的作用；
+- `tag` 资源标签：标识该远程重写规则的名称；
+- `update-interval` 自动更新间隔，单位为秒，设为 `-1` 则不更新；
+- `opt-parser` 是否使用资源解析器处理该资源，若关闭则改为 `false`；
+- `inserted-resource` 是否将重写规则插入到本地规则之前；
+- `enabled` 是否启用该资源，若停用则改为 `false`；
+- `require-devices`（可选）限定该规则仅在指定设备上加载，设备 ID 可在「设置 - 其他设置 - 关于」中查看。示例：`require-devices=ID1, ID2`
 
-- `update-interval` 自动更新的时间间隔，单位为秒；
-
-- `opt-parser` 是否使用资源解析器，若关闭则改为 `false`；
-
-- `inserted-resource` 插入资源，将重写文件中的规则放置于本地规则之前；
-
-- `enabled` 是否启用该重写资源文件，若不使用可改为 `false`；
-
-
-远程重写通常配置好了主机名`hostname`，因此大多数是无需自行填写
+远程重写通常已内置了 `hostname`，因此多数情况下无需自行填写 `[mitm]`。
 
 
 #### 7.2.2 UI添加
@@ -205,11 +214,11 @@ https://example.com/rewrite.conf, tag=🛡️ Block Ads, update-interval=172800,
 
     `https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/QuantumultX/12306/12306.list`
 
-    例如在末尾添加`?raw=ture`：
+    例如在末尾添加 `?raw=true`：
 
-    `https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/QuantumultX/12306/12306.list?raw=ture`
+    `https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/QuantumultX/12306/12306.list?raw=true`
 
-    或者直接点击`raw`或者`view`，⁠使用跳转后的链接：
+    或者直接点击 `raw` 或 `view`，使用跳转后的链接：
 
     `https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/12306/12306.list`
 
@@ -217,7 +226,7 @@ https://example.com/rewrite.conf, tag=🛡️ Block Ads, update-interval=172800,
     ![raw1](Photo/raw1.webp)
 
 
-    或者将链接里的`blob`⁠修改为`raw`：
+    或者将链接里的 `blob` 修改为 `raw`：
 
     `https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/QuantumultX/12306/12306.list`
 
@@ -232,7 +241,7 @@ https://example.com/rewrite.conf, tag=🛡️ Block Ads, update-interval=172800,
     ```
 
 
-当使用非标准 Quantumult X 的重写时，例如一些脚本`.js`、其他软件的模块`.sgmodule`、插件`.plugin`⁠等，这些里面都包含有重写规则，可开启解析器使其变为 Quantumult X 支持的格式；但这并不意味着上述格式的文件在开启解析器后一定可用。需要自行鉴别。
+当使用非标准 Quantumult X 的重写时，例如一些脚本 `.js`、其他软件的模块 `.sgmodule`、插件 `.plugin` 等，这些里面都包含有重写规则，可开启解析器使其变为 Quantumult X 支持的格式；但这并不意味着上述格式的文件在开启解析器后一定可用。需要自行鉴别。
 
 ✅ Surge模块(主要内容为重写规则)：https://raw.githubusercontent.com/Keywos/rule/main/module/weibous.sgmodule
 
@@ -271,12 +280,22 @@ https://example.com/rewrite.conf, tag=🛡️ Block Ads, update-interval=172800,
 
 #### 7.2.3 远程重写资源更新与重写细则查看
 
-
-- 默认自动更新时间为48小时，需打开QX才可自动更新；
-
-- 可以更改配置文件中的`update-interval`参数，单位为秒(S)，修改为`-1`即为不更新
-
-- 左滑重写资源可以单独更新，并查看其细则
+- 默认自动更新时间为 48 小时，需打开 QX 才可自动更新；
+- 可通过配置 `update-interval` 参数自定义更新间隔（单位：秒），设为 `-1` 则不更新；
+- 左滑重写资源可单独更新，并查看其细则；
 
 ![rerite_remote](Photo/rerite_remote.webp){: width=900}
+
+
+??? tip "远程重写片段文件格式参考"
+    远程重写资源文件无需包含 `[rewrite_remote]` 区块头，只需包含重写规则和可选的 `hostname`：
+
+    ```ini
+    ; hostname 行可选，缺失则不会自动配置 MitM 主机名
+    hostname = *.example.com, *.sample.com
+    ^http://example\.com/resource2/ url 302 http://example.com/new-resource2/
+    ^http://example\.com/resource3/ url 307 http://example.com/new-resource3/
+    ```
+
+    完整示例见 [sample-import-rewrite.snippet](https://github.com/crossutility/Quantumult-X/blob/master/sample-import-rewrite.snippet)
 
