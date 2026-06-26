@@ -1,23 +1,21 @@
 # URL Scheme
-
-### [官方文档](https://github.com/crossutility/Quantumult-X/blob/master/url-scheme.md)
-
+> 官方文档：https://github.com/crossutility/Quantumult-X/blob/master/url-scheme.md
+各 API 可用版本：
+| API | 最低版本 |
+|-----|---------|
+| `update-configuration` | v1.0.29 build 670 |
+| `add-resource` | v1.0.29 build 670 |
+| `ui?module=gallery&action=add` | v1.0.29 build 672 |
+| Universal Links | v1.0.30 (App Store) |
 ### 参数
-
 #### 替换所有现有资源
-
 <!-- prettier-ignore -->
 !!! 警告
     此操作会覆盖现有配置
-
-
 ```
 quantumult-x:///update-configuration?remote-resource=url-encoded-json
 ```
-
-
 假设资源如下：
-
 ```
 {
     "server_remote": [
@@ -32,27 +30,18 @@ quantumult-x:///update-configuration?remote-resource=url-encoded-json
     ]
 }
 ```
-
 [URL Encode](https://www.jyshare.com/front-end/695/) 后得到如下:
-
 ```
 %7B%0A%20%20%20%20%22server_remote%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Fserver.snippet%2C%20tag%3DSample-01%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Fserver-complete.snippet%2C%20tag%3DSample-02%22%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22filter_remote%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Ffilter.snippet%2C%20tag%3DSample%2C%20force-policy%3Dyour-policy-name%22%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22rewrite_remote%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Fsample-import-rewrite.snippet%2C%20tag%3DSample%22%0A%20%20%20%20%5D%0A%7D
 ```
-
 将其拼接：
-
 ```
 quantumult-x:///update-configuration?remote-resource=%7B%0A%20%20%20%20%22server_remote%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Fserver.snippet%2C%20tag%3DSample-01%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Fserver-complete.snippet%2C%20tag%3DSample-02%22%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22filter_remote%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Ffilter.snippet%2C%20tag%3DSample%2C%20force-policy%3Dyour-policy-name%22%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22rewrite_remote%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Fsample-import-rewrite.snippet%2C%20tag%3DSample%22%0A%20%20%20%20%5D%0A%7D
 ```
-
-
 #### 保留所有现有资源并添加新资源
-
 ```
 quantumult-x:///add-resource?remote-resource=url-encoded-json
 ```
-
-
 ```
 {
     "rewrite_remote": [
@@ -63,76 +52,50 @@ quantumult-x:///add-resource?remote-resource=url-encoded-json
         ]
 }
 ```
-
-
 [URL Encode](https://www.jyshare.com/front-end/695/) 后得到如下:
-
 ```
 %7B%0A%20%20%20%20%22rewrite_remote%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fgithub.com%2Flimbopro%2FAdblock4limbo%2Fraw%2Fmain%2FAdblock4limbo.conf%2C%20tag%3DAdblock4limbo%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FWebPage.conf%2C%20tag%3D%E7%BD%91%E9%A1%B5%E5%8E%BB%E5%B9%BF%E5%91%8A%40RuCu6%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FMyBlockAds.conf%2C%20tag%3DMyBlockAds%40RuCu6%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fzhihu.snippet%2C%20tag%3D%E7%9F%A5%E4%B9%8E%E5%8E%BB%E5%B9%BF%E5%91%8A%40RuCu6%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%5D%0A%7D
 ```
-
-
 将其拼接：
-
 ```
 quantumult-x:///add-resource?remote-resource=%7B%0A%20%20%20%20%22rewrite_remote%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fgithub.com%2Flimbopro%2FAdblock4limbo%2Fraw%2Fmain%2FAdblock4limbo.conf%2C%20tag%3DAdblock4limbo%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FWebPage.conf%2C%20tag%3D%E7%BD%91%E9%A1%B5%E5%8E%BB%E5%B9%BF%E5%91%8A%40RuCu6%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FMyBlockAds.conf%2C%20tag%3DMyBlockAds%40RuCu6%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fzhihu.snippet%2C%20tag%3D%E7%9F%A5%E4%B9%8E%E5%8E%BB%E5%B9%BF%E5%91%8A%40RuCu6%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%5D%0A%7D
 ```
-
 #### 添加脚本任务仓库
-
 ```
 quantumult-x:///ui?module=gallery&type=task&action=add&content=url-encoded-json
 ```
-
-
 ```
 [
     "https://raw.githubusercontent.com/crossutility/Quantumult-X/master/gallery.json"
 ]
 ```
-
-
 ```
 quantumult-x:///ui?module=gallery&type=task&action=add&content=%5B%0A%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Fgallery.json%22%0A%5D
 ```
-
-
 #### 添加图标集仓库
-
 ```
 quantumult-x:///ui?module=gallery&type=icon&action=add&content=url-encoded-json
 ```
-
-
 ```
 [
      "https://raw.githubusercontent.com/crossutility/Quantumult-X/master/icon-gallery.json"
 ]
 ```
-
-
 ```
 quantumult-x:///ui?module=gallery&type=icon&action=add&content=%5B%0A%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fcrossutility%2FQuantumult-X%2Fmaster%2Ficon-gallery.json%22%0A%5D
 ```
-
-### 通用链接
-
-Quantumult X 通用链接以 `https://quantumult.app/x/open-app/` 开头，链接的其余部分应与 Quantumult X URL 类似。
-
+### 通用链接（Universal Links）
+自 QX v1.0.30 (App Store) 起支持。当设备上通用链接生效时，点击链接将直接打开 QX；如果链接在 Safari 或其他浏览器中打开，则表示通用链接未生效。
+Apple 的 CDN 获取 `apple-app-site-association` 文件最长需要 24 小时。设备在应用安装后大约每周检查一次更新。此过程由系统处理，而非 QX 自身。
+Quantumult X 通用链接以 `https://quantumult.app/x/open-app/` 开头，其余部分与 URL Scheme 类似。
 ```
 quantumult-x:///add-resource?remote-resource=url-encoded-json
 ```
-
 变更为：
-
 ```
 https://quantumult.app/x/open-app/add-resource?remote-resource=url-encoded-json
 ```
-
-
 eg:
-
 ```
 https://quantumult.app/x/open-app/add-resource?remote-resource=%7B%0A%20%20%20%20%22rewrite_remote%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fgithub.com%2Flimbopro%2FAdblock4limbo%2Fraw%2Fmain%2FAdblock4limbo.conf%2C%20tag%3DAdblock4limbo%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FWebPage.conf%2C%20tag%3D%E7%BD%91%E9%A1%B5%E5%8E%BB%E5%B9%BF%E5%91%8A%40RuCu6%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FMyBlockAds.conf%2C%20tag%3DMyBlockAds%40RuCu6%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20%20enabled%3Dtrue%22%2C%0A%20%20%20%20%20%20%20%20%22https%3A%2F%2Fmirror.ghproxy.com%2Fhttps%3A%2F%2Fraw.githubusercontent.com%2FRuCu6%2FQuanX%2Fmain%2FRewrites%2FCube%2Fzhihu.snippet%2C%20tag%3D%E7%9F%A5%E4%B9%8E%E5%8E%BB%E5%B9%BF%E5%91%8A%40RuCu6%2C%20update-interval%3D172800%2C%20opt-parser%3Dfalse%2C%20enabled%3Dtrue%22%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%5D%0A%7D
 ```
-
