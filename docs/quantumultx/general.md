@@ -55,8 +55,8 @@ server_check_timeout = 5000
 
 - `network_check_url` 网络检查 URL 设置；
 - `server_check_url` 代理服务器网络检查 URL 设置；
-- `server_check_user_agent` 代理服务器检查的 `User Agent `自定义设置；
-- `server_check_timeout` 测试超时设置，单位为 `ms`；该值仅在 ≤ 5000 时生效；此值与整个检测过程（包括 DNS 查询、TCP 握手、TLS 握手、应用层 HTTP 会话）的总持续时间进行比较，因此总耗时可能明显长于"TCP 握手"和"HTTP 会话时长"；
+- `server_check_user_agent` 代理服务器检查的 `User Agent` 自定义设置；
+- `server_check_timeout` 检测超时（毫秒），该值仅当 ≤ 5000 时生效。此值与整个检测过程（包括 DNS 查询、TCP 握手、TLS 握手及应用层 HTTP 会话）的总耗时进行比较，因此总耗时可能明显长于「TCP 握手」和「HTTP 会话时长」；
 
 ### 11.4 服务器 GEO 信息显示
 
@@ -174,17 +174,19 @@ fallback_udp_policy = reject
 udp_whitelist = 53, 123, 1900, 80-443
 ```
 
-用于设置 UDP 端口的白名单列表，不在该列表的 UDP 将会被丢弃
+用于设置 UDP 目标端口白名单，不在该列表中的 UDP 包将被丢弃并回发 ICMP（port unreachable）。空值表示允许所有端口。
 
-一段范围用 `-` 字符连接
+一段范围用 `-` 字符连接。该设置与分流规则、策略及代理服务器端口无关。
 
 #### 11.9.3 `udp_drop_list`
 ```
 [general]
-udp_drop_list = 1900, 80
+udp_drop_list = 1900, 80, STUN, QUIC
 ```
 
-`udp_drop_list` 不会回发 ICMP (port unreachable) 消息
+`udp_drop_list` 不会回发 ICMP (port unreachable) 消息。除端口号外，也支持协议名称如 `STUN`、`QUIC`。
+
+仅被 `udp_whitelist` 允许的 UDP 包才能被 `udp_drop_list` 捕获。
 
 #### 11.9.4 `icmp_auto_reply`
 
@@ -193,7 +195,7 @@ udp_drop_list = 1900, 80
 icmp_auto_reply = true
 ```
 
-ICMP 自动回复
+开启后 Quantumult X Tunnel 会自动回复 ICMP 请求（如 Ping）。
 
 ### 11.10 自定义 DoH 的 `User Agent`
 
@@ -213,21 +215,3 @@ enhanced_compatibility_ssid_list = LINK_22E174, LINK_22E175
 
 当全局选项「兼容性增强」（位于「其他设置」→「VPN」）关闭时，`enhanced_compatibility_ssid_list` 中的 SSID 将被考虑以开启兼容性增强。例如：兼容性增强全局关闭，但在 SSID 为 `LINK_22E174` 或 `LINK_22E175` 时自动开启。
 
-### 11.12 ICMP 自动回复
-
-```
-[general]
-icmp_auto_reply = true
-```
-
-开启后 Quantumult X Tunnel 会自动回复 ICMP 请求。
-
-### 11.13 `fallback_udp_policy` 补充
-
-`fallback_udp_policy` 将应用于任何经由规则匹配但命中不支持 UDP Relay 的节点（或支持 UDP Relay 但未注 `udp-relay=true` 的节点）的 UDP 流量：
-
-- 该参数默认值为 `reject`
-- 可选值：`reject`（阻止）、`direct`（直连）或任意已开启 UDP Relay 的代理服务器 tag（名称）
-- 任何不满足上述条件的值将被忽略并使用 `reject`
-
-设置为 `direct` 时，请务必清楚了解同一目标主机名 TCP 请求与 UDP 请求的源地址不同所造成的隐私及安全风险。
