@@ -1,4 +1,3 @@
-
 <!-- prettier-ignore -->
 !!! 注意
     - 节点延迟低不代表速度快
@@ -129,7 +128,7 @@
 
     - XIAOMI
     ```
-    network_check_url=http://http://connect.rom.miui.com/generate_204
+    network_check_url=http://connect.rom.miui.com/generate_204
     ```
 
 === "Loon/Surge"
@@ -162,7 +161,8 @@
 
     - XIAOMI
     ```
-    internet-test-url = http://http://connect.rom.miui.com/generate_204
+    internet-test-url = http://connect.rom.miui.com/generate_204
     ```
+
 
 
