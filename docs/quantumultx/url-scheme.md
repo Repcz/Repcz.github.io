@@ -1,6 +1,7 @@
 # URL Scheme
 > 官方文档：https://github.com/crossutility/Quantumult-X/blob/master/url-scheme.md
 各 API 可用版本：
+
 | API | 最低版本 |
 |-----|---------|
 | `update-configuration` | v1.0.29 build 670 |
