@@ -30,23 +30,17 @@ https://example.com/provider.txt, tag=机场名称, img-url=https://example.com/
 
 对应的完整参数：
 
-`<资源路径>, <资源标签>, <资源图标>，<自动更新时间间隔>, <是否使用资源解析器>, <插入资源>, <是否启用>`
+`<资源路径>, tag=<资源标签>, img-url=<图标>, update-interval=<更新间隔>, opt-parser=<使用解析器>, as-policy=<策略类型>, require-devices=<设备ID>, enabled=<是否启用>`
 
-- `tag` 资源标签：相当于名称，标识这条节点订阅的作用；
+所有参数均为 `key=value` 格式（除资源路径外），顺序不限。
 
-- `img-url` 自定义图标参数是可选的，使用它可以更美观些，但此处不显示彩色图标
-
-- `update-interval` 自动更新的时间间隔，单位为秒；负数表示禁用自动更新；
-
-- `opt-parser` 是否使用资源解析器，若关闭则改为 `false`；
-
-- `inserted-resource` 插入资源，将文件中的节点放置于本地节点之前；
-
-- `enabled` 是否启用该节点订阅文件，若不使用可改为 `false`；
-
-- `as-policy` 可选参数，将远程节点订阅直接作为策略组使用，如 `as-policy=static`；
-
-- `require-devices` 可选参数，指定仅在特定设备ID上加载此订阅，多个设备用逗号分隔（设备ID可在「设置 - 其他设置 - 关于」中查找）；
+- `tag`：资源标签，标识这条节点订阅的名称；
+- `img-url`：自定义图标，可选，但节点资源区域仅支持单色图标；
+- `update-interval`：自动更新间隔，单位为秒；负数表示禁用自动更新；
+- `opt-parser`：是否使用资源解析器，默认 `false`；
+- `enabled`：是否启用，默认 `true`；
+- `as-policy`：可选，将远程节点订阅直接作为策略组使用，如 `as-policy=static`；
+- `require-devices`：可选，指定仅在特定设备 ID 上加载此订阅（设备 ID 在「设置 - 其他设置 - 关于」中查看）；
 
 
 ### 2.2 添加本地节点
