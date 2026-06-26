@@ -139,11 +139,17 @@ excluded_routes = 239.255.255.250/32
 dns_reject_domain_behavior = loopback
 ```
 
+当域名在分流规则中被 `reject` 时，DNS 级别的拒绝行为由此参数控制。
+
 可选参数有：
 
-- `loopback`
-- `no-error-no-answer`
-- `nxdomain`
+- `loopback`（默认）：返回回环 IP 响应（127.0.0.1 或 ::1）
+- `no-error-no-answer`：返回 NOERROR 但不返回应答
+- `nxdomain`：返回 NXDOMAIN（域名不存在）
+- `none`：禁用 DNS 级别拒绝功能
+
+!!! tip "切换说明"
+    如果将已拒绝的域名改为非拒绝状态（通过修改配置、分流规则或策略），最多需要 10 秒生效（TTL 为 10）。
 
 ### 11.9 `UDP`相关设置
 

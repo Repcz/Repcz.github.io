@@ -8,7 +8,9 @@
 
 <!-- prettier-ignore -->
 !!! 提示
-    DNS 查询结果仅用于分流规则或通过直接策略连接，通过服务器连接时不会使用该结果，Quantumult 永远不会知道相关域名的目的 IP。
+    DNS 查询结果仅用于分流规则评估或通过直连策略连接；通过代理服务器连接时不会使用该结果，Quantumult X 永远不会知道相关域名的目标 IP。
+
+    关于 `dns_exclusion_list`（placeholder IP 198.18.0.0/15 映射机制 / resolve-on-remote）和 `dns_reject_domain_behavior`（DNS 级别拒绝行为），见[通用设置](general.md) 中的相关参数。
 
 ### 5.1 推荐 DNS 设置
 
@@ -39,8 +41,9 @@ server = [2400:3200::1]
 ```
 [dns]
 no-system
+server = 119.29.29.29
 ```
-如果你并不想使用系统 (通过 DHCP) 自动获取的 DNS 设置，可以如上设置，但需要注意应该设置至少一条自定义 DNS，如上述的 `server = 119.29.29.29`
+如果不希望使用系统（通过 DHCP）自动获取的 DNS，可添加 `no-system`。**必须同时设置至少一条自定义 DNS**，否则将无法正常解析域名。
 
 ### 5.4 禁用 IPv6
 
@@ -143,8 +146,14 @@ doh-server = /*.example3.com/https://doh.pub/dns-query
 
 ; 使用 doq 服务 解析 example.com
 doq-server = /*.example4.com/quic://dns.adguard.com
+
+; 同时支持按 SSID 排除/包含
+;doh-server = /*.example3.com/https://doh.pub/dns-query, excluded_ssids=SSID2
+;doq-server = /*.example4.com/quic://dns.adguard.com, excluded_ssids=SSID3
 ```
-可以如上指定 DNS 查询特定域名，如需要指定端口号，可以在 DNS 后面加上英文冒号及端口号。
+可以如上指定某个 DNS 服务器仅查询特定域名，支持通配符 `*`。如需要指定端口号，可在 DNS 后面加上英文冒号及端口号。
+
+对于 `doh-server` 和 `doq-server` 的按域名绑定规则，同样支持 `excluded_ssids` / `included_ssids` 参数。
 
 ### 5.9 本地 DNS 映射
 
@@ -154,12 +163,10 @@ doq-server = /*.example4.com/quic://dns.adguard.com
 ;address = /example5.com/192.168.16.18
 ;address = /example6.com/[2001:8d3:8d3:8d3:8d3:8d3:8d3:8d3]
 
-; 别名
+; 别名：将 example7.com 的所有查询映射到 another-example.com
 alias = /example7.com/another-example.com
 ```
-这里不允许直接为某个域设置 `127.0.0.1`。
-
-如果想让某个域 (例如 example.com) 为 `127.0.0.1`，只需在 `[filter_local]` 区块添加 `host, example.com, reject`，REJECT 操作将向查询返回具有 `127.0.0.1` 的 DNS 响应。
+不允许直接为某个域设置 `127.0.0.1`。如需将某域名指向 `127.0.0.1`，应在 `[filter_local]` 中添加 `host, example.com, reject`，reject 操作将向 DNS 查询返回 `127.0.0.1`。
 
 ### 5.10 在指定 SSID 下生效或失效
 
