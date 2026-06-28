@@ -26,23 +26,6 @@ https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/QuantumultX.conf
 ```
 
 
-QuantumultX_tvOS
-
-- [x] 地区分流（香港、美国、日本、台湾、新加坡）
-- [x] 苹果、谷歌、微软、电报、推特分流
-- [x] 流媒体（支持单独分流）
-- [x] 自动选择最低延迟
-- [ ] 负载均衡
-- [ ] 故障转移
-- [ ] 广告屏蔽重写
-- [ ] 适用于软路由环境
-- [x] 适用于tvOS
-
-```
-https://raw.githubusercontent.com/Repcz/Tool/X/QuantumultX/QuantumultX_tvOS.conf
-```
-
-
 * 运行 **Quantumult X** ，点击右下角的 **风车** 图标
 * 弹出的 **设置** 菜单中，在最下方 **配置文件** 区域，点击 **下载配置**
 * 将配置文件链接填入并保存
