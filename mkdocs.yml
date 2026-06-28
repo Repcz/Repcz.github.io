@@ -61,7 +61,15 @@ nav:
       - 授权 & 相关文档: quantumultx/authorize.md
       - 资源搜集: quantumultx/resource.md
       - 图标集: quantumultx/icon.md
-    - Shadowrocket: shadowrocket/index.md
+    - Shadowrocket:
+      - 首页: shadowrocket/index.md
+      - 使用指北:
+        - 节点与订阅: shadowrocket/node.md
+        - 配置文件: shadowrocket/config.md
+        - 规则系统: shadowrocket/rule.md
+        - DNS 设置: shadowrocket/dns.md
+        - 高级功能: shadowrocket/advance.md
+        - 常见问题与附录: shadowrocket/faq.md
     - Stash: stash/index.md
     - Surge: surge/index.md
     - Surfboard: surfboard/index.md
