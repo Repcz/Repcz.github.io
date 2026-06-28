@@ -103,6 +103,16 @@ docker run -d \
   --interval 3600
 ```
 
+**手动执行一次：** 使用 `--run-once` 立即更新所有容器，完成后容器退出。
+
+```bash
+docker run --rm \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  nickfedor/watchtower \
+  --run-once \
+  --cleanup
+```
+
 **定时执行（cron 表达式）：** 替代 `--interval`，使用 6 字段 cron 格式。
 
 ```bash
