@@ -123,6 +123,21 @@ docker run -it -d --restart=always -e "SUB_STORE_PUSH_SERVICE=https://api.day.ap
 docker run -it -d --restart=always -e "SUB_STORE_CRON=0 0 * * *" -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA -p 127.0.0.1:3001:3001 -v /root/sub-store-data:/opt/app/data --name sub-store xream/sub-store
 ```
 
+- 自用模版
+
+```bash
+docker run -d \
+--name sub-store \
+--restart unless-stopped \
+-p 127.0.0.1:3001:3001 \
+-v /root/sub-store-data:/opt/app/data \
+-e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA \
+-e SUB_STORE_BACKEND_SYNC_CRON="30 3 * * *" \
+-e SUB_STORE_BACKEND_UPLOAD_CRON="20 3 * * *" \
+-e SUB_STORE_PUSH_SERVICE="telegram://BOT_TOKEN@telegram?chats=CHAT_ID" \
+xream/sub-store:latest
+```
+
 
 <!-- prettier-ignore -->
 !!! 注意
