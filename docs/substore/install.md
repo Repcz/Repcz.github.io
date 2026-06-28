@@ -111,45 +111,150 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 
 ### 部署 `SubStore`
 
-- 全功能带推送
+<!-- prettier-ignore -->
+!!! 注意 "重要变更"
+    后端版本 `2.14.376` 起使用 `SUB_STORE_BACKEND_SYNC_CRON`，旧的 `SUB_STORE_CRON` 已弃用，Docker 版将不再支持。
+
+<!-- prettier-ignore -->
+!!! 注意
+    `SUB_STORE_FRONTEND_BACKEND_PATH=/` 后的字段（此处是 `2cXaAxRGfddmGz2yx1wA`）表示 API 路径，需自行设置并保存好；**不要使用特殊符号**，防止出现意外问题。
+
+- 全功能带推送（Bark）
 
 ```bash
-docker run -it -d --restart=always -e "SUB_STORE_PUSH_SERVICE=https://api.day.app/XXXXXXXXXXXX/[推送标题]/[推送内容]?group=SubStore&autoCopy=1&isArchive=1&sound=shake&level=timeSensitive&icon=https%3A%2F%2Fraw.githubusercontent.com%2F58xinian%2Ficon%2Fmaster%2FSub-Store1.png"  -e "SUB_STORE_CRON=0 0 * * *" -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA -p 127.0.0.1:3001:3001 -v /root/sub-store-data:/opt/app/data --name sub-store xream/sub-store
+docker run -it -d --restart=always \
+  -e "SUB_STORE_PUSH_SERVICE=https://api.day.app/XXXXXXXXXXXX/[推送标题]/[推送内容]?group=SubStore&autoCopy=1&isArchive=1&sound=shake&level=timeSensitive&icon=https%3A%2F%2Fraw.githubusercontent.com%2F58xinian%2Ficon%2Fmaster%2FSub-Store1.png" \
+  -e "SUB_STORE_BACKEND_SYNC_CRON=55 23 * * *" \
+  -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA \
+  -p 127.0.0.1:3001:3001 \
+  -v /root/sub-store-data:/opt/app/data \
+  --name sub-store \
+  xream/sub-store
 ```
 
 - 不带推送
 
 ```bash
-docker run -it -d --restart=always -e "SUB_STORE_CRON=0 0 * * *" -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA -p 127.0.0.1:3001:3001 -v /root/sub-store-data:/opt/app/data --name sub-store xream/sub-store
+docker run -it -d --restart=always \
+  -e "SUB_STORE_BACKEND_SYNC_CRON=55 23 * * *" \
+  -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA \
+  -p 127.0.0.1:3001:3001 \
+  -v /root/sub-store-data:/opt/app/data \
+  --name sub-store \
+  xream/sub-store
 ```
 
-- 自用模版
+- 自用模版（Telegram 推送）
 
 ```bash
 docker run -d \
---name sub-store \
---restart unless-stopped \
--p 127.0.0.1:3001:3001 \
--v /root/sub-store-data:/opt/app/data \
--e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA \
--e SUB_STORE_BACKEND_SYNC_CRON="30 3 * * *" \
--e SUB_STORE_BACKEND_UPLOAD_CRON="20 3 * * *" \
--e SUB_STORE_PUSH_SERVICE="telegram://BOT_TOKEN@telegram?chats=CHAT_ID" \
-xream/sub-store:latest
+  --name sub-store \
+  --restart unless-stopped \
+  -p 127.0.0.1:3001:3001 \
+  -v /root/sub-store-data:/opt/app/data \
+  -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA \
+  -e SUB_STORE_BACKEND_SYNC_CRON="30 3 * * *" \
+  -e SUB_STORE_BACKEND_UPLOAD_CRON="20 3 * * *" \
+  -e SUB_STORE_PUSH_SERVICE="telegram://BOT_TOKEN@telegram?chats=CHAT_ID" \
+  xream/sub-store:latest
 ```
 
-
 <!-- prettier-ignore -->
-!!! 注意
-    `SUB_STORE_FRONTEND_BACKEND_PATH=/`后的字段(此处是`2cXaAxRGfddmGz2yx1wA`)表示 API，需自行设置并保存好；
+!!! info "推送服务说明"
+    新版已支持 [shoutrrr](https://containrrr.dev/shoutrrr/v0.8/services/telegram) URL 格式，Telegram 示例：`telegram://BOT_TOKEN@telegram?chats=CHAT_ID`  
+    也支持 Bark / PushPlus 等服务，格式为 `https://api.day.app/XXXXXXXXX/[推送标题]/[推送内容]?...`  
+    或 Telegram Bot：`https://api.telegram.org/botAPI_KEY/sendMessage?chat_id=CHAT_ID&text=[推送标题][推送内容]`  
+    其中 `[推送标题]` 和 `[推送内容]` 会被自动替换。
 
-如果不知道输入什么，可以用 科技lion 的脚本 ，13系统工具 → 14密码生成
+如果不知道 API 路径密码怎么生成，可以用科技 lion 的脚本：`13系统工具 → 14密码生成`
 
-FianlShell中，复制可以在选中后，点击按钮复制
+FinalShell 中，复制可以在选中后，点击按钮复制
 
 ![docker4](Photo/docker4.webp)
 
+### 使用 `network_mode: host` 模式
 
+<!-- prettier-ignore -->
+!!! tip "适用场景"
+    如需使用 IPv6 或避免端口映射冲突，可采用 `network_mode: host` 模式。
+
+注意默认监听的是 `::`（全部接口），理论上应保证只监听 `127.0.0.1`。
+
+可以合并端口，这样配置：
+
+```
+HOST=127.0.0.1
+PORT=9876
+SUB_STORE_BACKEND_API_PORT=3000
+SUB_STORE_BACKEND_API_HOST=127.0.0.1
+SUB_STORE_BACKEND_MERGE=true
+SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA
+```
+
+此时仅暴露端口 `3000`，带路径访问。
+
+或按需拆分前后端端口：
+
+```
+HOST=127.0.0.1
+PORT=9876
+SUB_STORE_BACKEND_API_PORT=3000
+SUB_STORE_BACKEND_API_HOST=127.0.0.1
+SUB_STORE_FRONTEND_PORT=3001
+SUB_STORE_FRONTEND_HOST=127.0.0.1
+SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA
+```
+
+<!-- prettier-ignore -->
+!!! warning "端口说明"
+    - `SUB_STORE_BACKEND_API_HOST` **永远不应暴露**，这是内部裸后端
+    - `SUB_STORE_BACKEND_API_PORT` 默认为 `3000`
+    - `SUB_STORE_FRONTEND_PORT` 默认为 `3001`
+    - `HOST` / `PORT` 是 HTTP-META 的配置，`9876` 可能与其他服务冲突（如 `ddns-go`），可自行调整
+
+### 更多环境变量
+
+Sub-Store 支持通过 `.env` 文件或 `-e` 参数设置以下环境变量：
+
+| 环境变量 | 说明 | 默认值 |
+|---------|------|--------|
+| `SUB_STORE_BACKEND_SYNC_CRON` | 定时同步订阅/文件到私有 Gist（替代已弃用的 `SUB_STORE_CRON`） | - |
+| `SUB_STORE_BACKEND_UPLOAD_CRON` | 定时备份全部数据到 Gist | - |
+| `SUB_STORE_BACKEND_DOWNLOAD_CRON` | 定时从 Gist 恢复全部数据 | - |
+| `SUB_STORE_FRONTEND_BACKEND_PATH` | 前端访问后端的 API 路径前缀 | - |
+| `SUB_STORE_BACKEND_MERGE` | 合并前后端端口，后端同时处理 API 和前端资源 | - |
+| `SUB_STORE_BACKEND_PREFIX` | 后端（`SUB_STORE_BACKEND_API_PORT`）也加上路径前缀，防扫 | - |
+| `SUB_STORE_PUSH_SERVICE` | 推送服务 URL（支持 shoutrrr / Bark / PushPlus / Telegram Bot） | - |
+| `SUB_STORE_MAX_HEADER_SIZE` | 设置 undici header 大小限制（单位 bytes） | `32768` |
+| `SUB_STORE_BODY_JSON_LIMIT` | 自定义 JSON Body 大小限制 | `1mb` |
+| `SUB_STORE_CORS_ALLOWED_ORIGINS` | CORS 允许的域名 | `*` |
+| `SUB_STORE_BACKEND_DEFAULT_PROXY` | 默认代理（SOCKS5/HTTP/HTTPS），例如 `socks5://a:b@127.0.0.1:7890` | - |
+| `SUB_STORE_MMDB_COUNTRY_PATH` | MaxMind GeoLite2 Country 数据库路径 | - |
+| `SUB_STORE_MMDB_ASN_PATH` | MaxMind GeoLite2 ASN 数据库路径 | - |
+| `SUB_STORE_MMDB_CRON` | 定时更新 MMDB 数据库（后端 >=2.19.30） | - |
+| `SUB_STORE_MMDB_COUNTRY_URL` | Country 数据库下载 URL（配合 `SUB_STORE_MMDB_CRON`） | - |
+| `SUB_STORE_MMDB_ASN_URL` | ASN 数据库下载 URL（配合 `SUB_STORE_MMDB_CRON`） | - |
+| `SUB_STORE_DATA_URL` | 远程数据文件链接，启动时自动拉取并恢复数据 | - |
+| `SUB_STORE_DATA_URL_POST` | 拉取远程数据后执行的自定义命令，例如 `content.settings.gistToken='xxxxxxxxx'` | - |
+| `SUB_STORE_BACKEND_CUSTOM_NAME` | 自定义前端显示的运行环境名称 | - |
+| `SUB_STORE_BACKEND_CUSTOM_ICON` | 自定义前端显示的运行环境图标 | - |
+| `SUB_STORE_X_POWERED_BY` | 自定义响应头 `X-Powered-By` | - |
+| `SUB_STORE_PRODUCE_CRON` | 后台定时处理订阅（配合脚本缓存），格式：`cron,类型,名称;...` | - |
+
+<!-- prettier-ignore -->
+!!! info "`SUB_STORE_PRODUCE_CRON` 格式说明"
+    格式：`cron,类型,名称` 分号连接多个。`sub` = 单条订阅，`col` = 组合订阅。
+    
+    示例：`0 */2 * * *,sub,a;0 */3 * * *,col,b`  
+    即每 2 小时处理单条订阅 a，每 3 小时处理组合订阅 b。
+    
+    目的是定时处理订阅并生成脚本缓存，缓存有效期内 Surge 等 App 拉取订阅不会超时。
+
+<!-- prettier-ignore -->
+!!! info "`SUB_STORE_DATA_URL` 使用说明"
+    如果要从 Gist 恢复，使用 Raw 链接 + `noCache` 参数：  
+    `https://gist.githubusercontent.com/[username]/[gist_id]/raw/[filename]#noCache`  
+    示例：`SUB_STORE_DATA_URL="https://gist.githubusercontent.com/username/id/raw/Sub-Store#noCache"`
 
 
 ### 反向代理
@@ -269,7 +374,83 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 ```
 https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA
 ```
-浏览器访问 
+
+一键配置打开前端 + 后端：
 ```
 https://sub.xxxxx.xyz?api=https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA
 ```
+
+<!-- prettier-ignore -->
+!!! tip "健康检查"
+    访问 `https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA/api/utils/env` 可查看版本信息，也可用作健康检查 URL
+
+
+### 更新 Sub-Store
+
+和其他 Docker 服务一样，可使用 [watchtower](https://github.com/containrrr/watchtower) 自动更新：
+
+```bash
+docker run -d \
+  --name watchtower \
+  --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  containrrr/watchtower \
+  --interval 3600 \
+  --cleanup \
+  sub-store
+```
+
+每 3600 秒检查一次 Sub-Store 是否有更新，自动更新并清理旧镜像。
+
+### 查看日志
+
+```bash
+docker logs -f -t --tail 100 sub-store
+```
+
+
+### 备份注意事项
+
+<!-- prettier-ignore -->
+!!! warning "GitHub Token 安全"
+    GitHub 会扫描明文 Gist 中的 Token。Sub-Store 备份时：
+    
+    - 选择**明文**备份 → 不会备份已设置的 GitHub Token
+    - 选择 **Base64 编码**备份 → 完整备份（默认）
+    
+    如需明文备份可通过 API：`/api/utils/backup?action=upload&encode=plaintext`  
+    保留现有 Token 恢复：`/api/utils/backup?action=download&keep=settings.gistToken`
+
+<!-- prettier-ignore -->
+!!! danger "Token 被吊销"
+    近期备份失败的用户可能是 Token 被 GitHub 扫描后吊销。解决方法：
+    
+    1. 更新 Sub-Store 到最新版本
+    2. 生成新的 GitHub Token
+    3. 删除旧的 Gist
+    4. 保存新 Token 后重新上传备份
+
+
+## HTTP-META
+
+带 `http-meta` tag 的镜像（`xream/sub-store:latest-http-meta`）包含 [HTTP-META](https://github.com/xream/http-meta)。
+
+可直接使用需要 HTTP-META 功能的脚本，本地端口号为默认值，无需额外设置。
+
+若需要自定义 HTTP-META 的端口号，使用环境变量 `PORT=9876`。
+
+进行调试时，可设置：
+
+```bash
+-e META_DISABLE_AUTO_CLEAN=true \
+-e META_TEMP_FOLDER=/opt/app/data
+```
+
+这样能查看每次运行时核心的日志和配置。
+
+相关资源：
+
+- [Sub-Store 教程脚本合集](https://t.me/zhetengsha/214)
+- [节点测活脚本](https://t.me/zhetengsha/1210)
+- [GPT 检测脚本](https://t.me/zhetengsha/1209)
+- [入口 & 落地检测完整示例](https://t.me/zhetengsha/1415)
