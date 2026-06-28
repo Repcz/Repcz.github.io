@@ -34,17 +34,102 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 
 #### Docker watchtower
 
-每小时自动更新 Docker 镜像，更多使用细节参考[《Watchtower：自动更新 Docker 镜像与容器》](https://www.moewah.com/archives/3863.html)
+[watchtower](https://watchtower.nickfedor.com/) — Docker 容器自动更新工具。原项目 `containrrr/watchtower` 已停止维护，此 fork 由 [nicholas-fedor](https://github.com/nicholas-fedor) 持续维护。
+
+**基础用法：** 每 3600 秒检查一次所有容器，自动更新并清理旧镜像。
 
 ```bash
 docker run -d \
   --name watchtower \
-  --restart=always \
+  --restart unless-stopped \
   -v /var/run/docker.sock:/var/run/docker.sock \
   nickfedor/watchtower \
   --cleanup \
   --interval 3600
 ```
+
+**仅监控不更新：** 只检查不执行更新操作，适合先观察兼容性。
+
+```bash
+docker run -d \
+  --name watchtower \
+  --restart unless-stopped \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  nickfedor/watchtower \
+  --interval 3600 \
+  --monitor-only
+```
+
+**更新后推送 Telegram 通知并附带报告：**
+
+```bash
+docker run -d \
+  --name watchtower \
+  --restart unless-stopped \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e WATCHTOWER_NOTIFICATION_URL="telegram://BOT_TOKEN@telegram?chats=CHAT_ID" \
+  -e WATCHTOWER_NOTIFICATION_REPORT="true" \
+  nickfedor/watchtower \
+  --cleanup \
+  --interval 3600
+```
+
+**更新报告模板示例（显示扫描数、更新数、失败数及详情）：**
+
+```bash
+docker run -d \
+  --name watchtower \
+  --restart unless-stopped \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e WATCHTOWER_NOTIFICATION_URL="telegram://BOT_TOKEN@telegram?chats=CHAT_ID" \
+  -e WATCHTOWER_NOTIFICATION_REPORT="true" \
+  -e WATCHTOWER_NOTIFICATION_TEMPLATE="{{if .Report}}{{with .Report}}{{len .Scanned}} Scanned, {{len .Updated}} Updated, {{len .Failed}} Failed{{range .Updated}} {{.Name}} ({{.ImageName}}): {{.CurrentImageID.ShortID}} → {{.LatestImageID.ShortID}}{{end}}{{range .Failed}} {{.Name}} ({{.ImageName}}): {{.Error}}{{end}}{{end}}{{end}}" \
+  nickfedor/watchtower \
+  --cleanup \
+  --interval 3600
+```
+
+**同时推送多个渠道：**
+
+```bash
+docker run -d \
+  --name watchtower \
+  --restart unless-stopped \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e 'WATCHTOWER_NOTIFICATION_URL=telegram://BOT_TOKEN@telegram?chats=CHAT_ID slack://token-a/token-b/token-c' \
+  -e WATCHTOWER_NOTIFICATION_REPORT="true" \
+  nickfedor/watchtower \
+  --cleanup \
+  --interval 3600
+```
+
+**定时执行（cron 表达式）：** 替代 `--interval`，使用 6 字段 cron 格式。
+
+```bash
+docker run -d \
+  --name watchtower \
+  --restart unless-stopped \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  nickfedor/watchtower \
+  --cleanup \
+  --schedule "0 0 4 * * *"
+```
+
+<!-- prettier-ignore -->
+!!! tip "通知服务 URL 参考"
+    所有通知均通过 [shoutrrr](https://containrrr.dev/shoutrrr/v0.8/services/overview) 统一处理，支持以下服务格式：
+
+    | 服务 | URL 格式 |
+    |------|---------|
+    | Telegram | `telegram://BOT_TOKEN@telegram?chats=CHAT_ID` |
+    | Discord | `discord://WEBHOOK_ID@WEBHOOK_TOKEN` |
+    | Slack | `slack://TOKEN_A/TOKEN_B/TOKEN_C` |
+    | Bark | `bark://DEVICE_KEY@host` |
+    | Pushover | `pushover://USER_KEY@TOKEN` |
+    | Gotify | `gotify://host/TOKEN` |
+    | SMTP | `smtp://USERNAME:PASSWORD@host:25?from=FROM&to=TO` |
+
+    多个 URL 用空格分隔即可同时推送。
 
 #### Realm 转发
 

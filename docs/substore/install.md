@@ -387,20 +387,47 @@ https://sub.xxxxx.xyz?api=https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA
 
 ### 更新 Sub-Store
 
-和其他 Docker 服务一样，可使用 [watchtower](https://github.com/containrrr/watchtower) 自动更新：
+和其他 Docker 服务一样，可使用 [watchtower](https://watchtower.nickfedor.com/) 自动更新（原项目 `containrrr/watchtower` 已停止维护，此 fork 由 [nicholas-fedor](https://github.com/nicholas-fedor) 持续维护）：
+
+**基础自动更新：** 每 3600 秒检查 Sub-Store 镜像，自动更新并清理旧版本。
 
 ```bash
 docker run -d \
   --name watchtower \
-  --restart=always \
+  --restart unless-stopped \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  containrrr/watchtower \
+  nickfedor/watchtower \
   --interval 3600 \
   --cleanup \
   sub-store
 ```
 
-每 3600 秒检查一次 Sub-Store 是否有更新，自动更新并清理旧镜像。
+**更新后推送 Telegram 通知：** 配合 [shoutrrr](https://containrrr.dev/shoutrrr/v0.8/services/overview) 支持的任意服务。
+
+```bash
+docker run -d \
+  --name watchtower \
+  --restart unless-stopped \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e WATCHTOWER_NOTIFICATION_URL="telegram://BOT_TOKEN@telegram?chats=CHAT_ID" \
+  -e WATCHTOWER_NOTIFICATION_REPORT="true" \
+  nickfedor/watchtower \
+  --interval 3600 \
+  --cleanup \
+  sub-store
+```
+
+<!-- prettier-ignore -->
+!!! tip "通知服务 URL 参考"
+    | 服务 | URL 格式 |
+    |------|---------|
+    | Telegram | `telegram://BOT_TOKEN@telegram?chats=CHAT_ID` |
+    | Discord | `discord://WEBHOOK_ID@WEBHOOK_TOKEN` |
+    | Slack | `slack://TOKEN_A/TOKEN_B/TOKEN_C` |
+    | Bark | `bark://DEVICE_KEY@host` |
+    | Pushover | `pushover://USER_KEY@TOKEN` |
+    | Gotify | `gotify://host/TOKEN` |
+    | SMTP | `smtp://USERNAME:PASSWORD@host:25?from=FROM&to=TO` |
 
 ### 查看日志
 
