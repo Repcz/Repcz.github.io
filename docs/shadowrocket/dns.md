@@ -132,7 +132,3 @@ hijack-dns = 8.8.8.8
 | `always-ip-address` | 强制所有域名使用本地 DNS 解析 |
 | `allow-dns-svcb` | 允许 DNS SVCB 查询 |
 | `allow-dns-all` | 允许所有 DNS 查询类型正常转发 |
-
----
-
-> 继续阅读：[**高级功能** &rarr;](advance.md)

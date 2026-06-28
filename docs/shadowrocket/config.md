@@ -315,6 +315,3 @@ TUN 处理 DNS 请求时返回真实 IP。
 节点名称 = snell,地址,端口,password=密码,udp=1,obfs=http,obfs-host=example.com,obfs-uri=/abc
 ```
 
----
-
-> 继续阅读：[**规则系统** &rarr;](rule.md)
