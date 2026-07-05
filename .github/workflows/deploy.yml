@@ -46,10 +46,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@main
         with:
           python-version: '3.12'
           cache: pip
@@ -62,7 +62,7 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@main
 
       - name: Build MkDocs site
         run: mkdocs build --strict
@@ -70,7 +70,7 @@ jobs:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@main
         with:
           path: site
 
@@ -89,7 +89,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@main
 
   # ============================================================
   # 部署到 Cloudflare Pages (wiki.repcz.link)
@@ -103,7 +103,7 @@ jobs:
 
     steps:
       - name: Download built artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@main
         with:
           name: github-pages
           path: site-dl
