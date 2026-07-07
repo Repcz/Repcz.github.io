@@ -71,7 +71,17 @@ nav:
         - 高级功能: shadowrocket/advance.md
         - 常见问题与附录: shadowrocket/faq.md
     - Stash: stash/index.md
-    - Surge: surge/index.md
+    - Surge:
+      - 首页: surge/index.md
+      - 使用指北:
+        - 概述与核心概念: surge/overview.md
+        - 规则系统: surge/rule.md
+        - 策略: surge/policy.md
+        - 策略组: surge/policy-group.md
+        - DNS 设置: surge/dns.md
+        - HTTP 处理: surge/http-processing.md
+        - 脚本: surge/script.md
+        - 高级功能: surge/advance.md
     - Surfboard: surfboard/index.md
     - Sub Store: substore/use.md
     - sing-box: sing-box/index.md
