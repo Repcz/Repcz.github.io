@@ -2,7 +2,7 @@
 
 策略组用于将多个代理策略组合在一起，通过不同的选择策略决定最终使用的代理。策略组在 `[Proxy Group]` 段落中定义。
 
-## 手动选择组 (Select)
+## 手动选择组 (Select) {#select}
 
 在用户界面上手动选择要使用的策略：
 
@@ -14,7 +14,7 @@ SelectGroup = select, ProxyHTTP, ProxyHTTPS, DIRECT, REJECT
 - Surge iOS：使用小组件快速切换策略
 - Surge Mac：在菜单栏菜单中切换策略
 
-## 自动测试组 (URL-Test)
+## 自动测试组 (URL-Test) {#url-test}
 
 通过测试到目标 URL 的延迟，自动选择最优策略：
 
@@ -46,7 +46,7 @@ Auto = url-test, ProxyA, ProxyB, ProxyC, url=http://www.gstatic.com/generate_204
 - Surge Mac：主菜单中对应的组里找到覆盖选项
 - Surge iOS：策略组视图中长按对应策略的菜单找到覆盖选项
 
-## 降级组 (Fallback)
+## 降级组 (Fallback) {#fallback}
 
 根据优先级和可用性选择策略。定义在前面的策略具有更高优先级：
 
@@ -67,7 +67,7 @@ FallbackGroup = fallback, ProxySOCKS5, ProxySOCKS5TLS
 
 同自动测试组，可通过手动选择临时覆盖。
 
-## 负载均衡组 (Load Balance)
+## 负载均衡组 (Load Balance) {#load-balance}
 
 从可用的子策略中随机选择一个策略：
 
@@ -86,7 +86,7 @@ LoadBalanceGroup = load-balance, ProxyA, ProxyB, ProxyC
 LB = load-balance, ProxyA, ProxyB, persistent=true
 ```
 
-## 子网组 (Subnet)
+## 子网组 (Subnet) {#subnet-group}
 
 根据当前网络环境自动选择策略。使用子网表达式作为条件：
 
@@ -109,7 +109,7 @@ SubnetGroup = subnet, default=ProxyHTTP, TYPE:WIFI=ProxyHTTP, SSID:MyHome=ProxyS
 !!! note "兼容性"
     从 Surge iOS 4.12.0 / Surge Mac 4.5.0 起，SSID 组更名为子网组。依然支持旧语法 `ssid` 作为组类型关键字。
 
-## 包含策略 (Policy Including)
+## 包含策略 (Policy Including) {#policy-including}
 
 ### 从外部文件/URL 导入
 
@@ -148,7 +148,7 @@ GroupB = select, include-all-proxies=true, policy-regex-filter=^(?!.*REJECT).*$
 GroupC = select, include-other-group="GroupA,GroupB"
 ```
 
-## 通用策略组参数
+## 通用策略组参数 {#common-parameters}
 
 | 参数 | 说明 |
 |------|------|

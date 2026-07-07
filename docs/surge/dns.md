@@ -2,7 +2,7 @@
 
 Surge 使用自定义的 DNS 客户端实现，行为可能与操作系统的 DNS 客户端不同。
 
-## 上游 DNS 服务器
+## 上游 DNS 服务器 {#upstream-dns}
 
 ### 基本配置
 
@@ -25,7 +25,7 @@ dns-server = system, 8.8.8.8, 1.1.1.1
 - 重试四次后仍无响应则报告 DNS 错误
 - 当 IPv6 启用时，同时发送 A 和 AAAA 请求
 
-## 本地 DNS 映射
+## 本地 DNS 映射 {#local-dns-mapping}
 
 `[Host]` 段落用于本地 DNS 映射，功能比 `/etc/hosts` 更强大。
 
@@ -88,7 +88,7 @@ use-local-host-item-for-proxy=true
 
 启用后，对于符合本地 DNS 映射的请求，Surge 使用本地 IP 地址而非原始域名发送代理请求。仅对使用 IP 地址的记录有效。
 
-## 加密 DNS
+## 加密 DNS {#encrypted-dns}
 
 ### 支持的协议
 
@@ -129,7 +129,7 @@ PROTOCOL, DOH3, Proxy   # 匹配 DoH3 请求
 PROTOCOL, DOQ, Proxy    # 匹配 DoQ 请求
 ```
 
-## 虚假 IP (Fake IP)
+## 虚假 IP (Fake IP) {#fake-ip}
 
 Surge 在 VIF 模式下使用 `198.18.0.0/15` 地址段作为虚假 IP 地址。DNS 查询会被 Surge 的 DNS 客户端截获并返回虚假 IP，请求实际由 Surge 代理引擎处理。
 

@@ -1,6 +1,6 @@
 # HTTP 处理
 
-## HTTPS 解密 (MitM)
+## HTTPS 解密 (MitM) {#mitm}
 
 Surge 可以通过中间人攻击 (MitM) 解密 HTTPS 流量。证书生成器内置于 Surge Dashboard（Mac）和 Surge iOS 配置编辑器中，证书在本地生成。
 
@@ -46,7 +46,7 @@ hostname = *
 !!! warning "固定证书"
     某些应用使用固定证书 (Certificate Pinning)，对这类主机启用 MITM 可能导致连接问题。
 
-## URL 重写 (URL Rewrite)
+## URL 重写 (URL Rewrite) {#url-rewrite}
 
 重写请求的 URL 或根据 URL 拒绝请求。支持三种模式：
 
@@ -77,7 +77,7 @@ hostname = *
 ^http://ad\.com/ad\.png _ reject
 ```
 
-## 请求头重写 (Header Rewrite)
+## 请求头重写 (Header Rewrite) {#header-rewrite}
 
 重写请求头或响应头：
 
@@ -133,7 +133,7 @@ http-request ^http://example.com header-replace-regex User-Agent Safari Chrome
 ^http://example.com header-add DNT 1
 ```
 
-## 请求体重写 (Body Rewrite)（iOS 5.10.0+ / Mac 5.6.0+）
+## 请求体重写 (Body Rewrite)（iOS 5.10.0+ / Mac 5.6.0+） {#body-rewrite}
 
 使用正则表达式替换 HTTP 请求或响应的请求体内容：
 
@@ -164,7 +164,7 @@ http-response ^https?://example\.com/ regex1 replacement1 regex2 replacement2
 http-response-jq ^http://httpbingo.org/anything '.headers |= with_entries(select(.key | test("^X-") | not))'
 ```
 
-## 模拟响应 (Mock / Map Local)
+## 模拟响应 (Mock / Map Local) {#mock}
 
 模拟 HTTP 服务器并返回静态响应：
 

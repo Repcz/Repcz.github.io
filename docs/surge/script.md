@@ -2,7 +2,7 @@
 
 Surge 支持使用 JavaScript 扩展能力。脚本功能需要 Surge iOS 4 或 Surge Mac 3.3.0+。
 
-## 脚本段落
+## 脚本段落 {#script-section}
 
 ```ini
 [Script]
@@ -46,13 +46,13 @@ script6 = type=generic, script-path=panel.js
 | `max-size` | 请求/响应体的最大大小（默认 131072 字节/128KB） |
 | `binary-body-mode` | 原始二进制数据以 `Uint8Array` 形式传递 |
 
-## 基本限制
+## 基本限制 {#basic-limits}
 
 - 脚本支持异步操作
 - 必须调用 `$done(value)` 表示完成
 - 默认超时 5 秒
 
-## 公共 API
+## 公共 API {#public-api}
 
 ### 网络信息
 
@@ -151,7 +151,7 @@ $surge.setSelectGroupPolicy(groupName, policyName)
 console.log(message)
 ```
 
-## HTTP 请求脚本 (http-request)
+## HTTP 请求脚本 (http-request) {#http-request}
 
 在请求发送到服务器之前执行：
 
@@ -172,10 +172,26 @@ $done({headers});
 
 ### 返回参数
 
-- `body` — 新的请求体
+- `url` — 新的 URL（不会自动更新 Host 请求头）
 - `headers` — 新的请求头
+- `body` — 新的请求体（需 `requires-body=true`）
+- `response` — 直接返回 HTTP 响应而无需真实网络请求，包含 `status`、`headers`、`body`
 
-## HTTP 响应脚本 (http-response)
+调用 `$done();` 中止请求，`$done({});` 保持请求不变。
+
+示例 — 直接返回响应：
+
+```javascript
+$done({
+  response: {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+    body: '{"message": "OK"}'
+  }
+});
+```
+
+## HTTP 响应脚本 (http-response) {#http-response}
 
 在收到服务器响应后执行：
 
@@ -201,7 +217,7 @@ $done({headers});
 
 调用 `$done();` 中止请求，`$done({});` 保持响应不变。
 
-## 规则脚本 (rule)
+## 规则脚本 (rule) {#rule-script}
 
 使用脚本作为规则：
 
@@ -233,7 +249,7 @@ $done({matched: (hostnameMatched && ssidMatched)});
 SCRIPT, ssid-rule, DIRECT, requires-resolve
 ```
 
-## 事件脚本 (event)
+## 事件脚本 (event) {#event-script}
 
 在指定事件发生时执行脚本：
 
@@ -258,7 +274,7 @@ console.log($event.data);
 $done();
 ```
 
-## DNS 脚本 (dns)
+## DNS 脚本 (dns) {#dns-script}
 
 使用脚本作为 DNS 解析器：
 
@@ -291,7 +307,7 @@ $httpClient.get('http://119.29.29.29/d?dn=' + $domain, function(error, response,
 | `servers<Array>` | 通过多个 DNS 服务器解析 |
 | `ttl<Number>` | 缓存时间（秒） |
 
-## 计划任务脚本 (cron)
+## 计划任务脚本 (cron) {#cron-script}
 
 在指定时间执行脚本：
 

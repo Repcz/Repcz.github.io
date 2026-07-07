@@ -1,6 +1,6 @@
 # 高级功能
 
-## 增强模式（仅限 Mac）
+## 增强模式（仅限 Mac） {#enhanced-mode}
 
 增强模式通过创建一个虚拟网卡 (VIF) 接管设备的所有 TCP 和 UDP 流量，使不遵循系统代理设置的应用程序也能被 Surge 处理。
 
@@ -31,7 +31,7 @@ tun-included-routes = 0.0.0.0/1, 128.0.0.0/1
 
 支持 IPv6 CIDR 块。
 
-## 端口转发（iOS 5.14.3+ / Mac 5.10.0+）
+## 端口转发（iOS 5.14.3+ / Mac 5.10.0+） {#port-forwarding}
 
 监听特定本地端口并将 TCP 请求转发到特定主机。即使未启用系统代理或增强模式也可独立使用：
 
@@ -42,7 +42,7 @@ tun-included-routes = 0.0.0.0/1, 128.0.0.0/1
 
 `policy` 参数可选，未指定则使用标准代理匹配。
 
-## 信息面板（仅限 iOS 4.9.3+）
+## 信息面板（仅限 iOS 4.9.3+） {#panel}
 
 自定义信息面板显示相关信息。
 
@@ -87,7 +87,7 @@ PanelC = title="自定义", content="内容", icon="bolt.horizontal.circle.fill"
 - 传入 `icon-color`（HEX 颜色码）控制图标颜色
 - `update-interval` 使面板自动更新（秒）
 
-## 模块 (Module)
+## 模块 (Module) {#module}
 
 模块是一组配置片段的集合，用于扩展 Surge 功能。可通过 UI 安装和管理。
 
@@ -104,19 +104,26 @@ PanelC = title="自定义", content="内容", icon="bolt.horizontal.circle.fill"
 
 ### 模块包含的段落
 
-模块可包含以下段落：
-- `[General]` — 通用配置
-- `[Rule]` — 规则
-- `[Script]` — 脚本
-- `[MITM]` — HTTPS 解密
-- `[Host]` — DNS 映射
-- `[URL Rewrite]` — URL 重写
-- `[Header Rewrite]` — 请求头重写
-- `[Body Rewrite]` — 请求体重写
-- `[Panel]` — 信息面板
-- `[Map Local]` — 本地映射
+模块可覆盖以下段落：
 
-## 网关模式（仅限 Mac）
+- `[General]`、`[MITM]`：支持覆盖（`key = value`）、追加（`key = %APPEND% value`）、插入（`key = %INSERT% value`）
+- `[Rule]`、`[Script]`、`[URL Rewrite]`、`[Header Rewrite]`、`[Host]`：新行插入到原始内容顶部
+- `[Ruleset *]`：内联规则集补丁
+- `[WireGuard *]`：WireGuard 策略追加
+
+模块中的规则只能使用内部策略：`DIRECT`、`REJECT`、`REJECT-TINYGIF`。
+
+### 模块元数据
+
+```ini
+#!name=模块名称
+#!desc=模块描述
+#!system=mac        # 可选，限制生效平台
+#!arguments=hostname=example.com&enable_mitm=true  # 可选，自定义参数
+#!requirement=CORE_VERSION>=20  # 可选，版本要求
+```
+
+## 网关模式（仅限 Mac） {#gateway-mode}
 
 Surge Mac 可配置为三层网关，处理同一网络中其他设备的网络流量：
 
@@ -125,7 +132,7 @@ Surge Mac 可配置为三层网关，处理同一网络中其他设备的网络�
 gateway-mode = true
 ```
 
-## \[General\] 杂项选项
+## \[General\] 杂项选项 {#general-options}
 
 ### 日志与调试
 
@@ -176,7 +183,7 @@ proxy-test-url = http://www.gstatic.com/generate_204
 test-timeout = 5
 ```
 
-## Host List 参数类型
+## Host List 参数类型 {#host-list}
 
 Surge 中多处使用 Host List 类型参数（如 `skip-proxy`、`always-real-ip`、`hostname` 等）。
 
@@ -191,7 +198,7 @@ Surge 中多处使用 Host List 类型参数（如 `skip-proxy`、`always-real-i
 | CIDR | `192.168.2.0/24` | CIDR 表示法 |
 | 排除 | `-*.apple.com` | 以 `-` 为前缀排除 |
 
-## URL Scheme
+## URL Scheme {#url-scheme}
 
 Surge 支持 URL Scheme 用于外部调用。
 
@@ -206,7 +213,7 @@ surge://[action]/[parameters]
 - `surge://install-config?url=` — 安装配置文件
 - `surge://install-module?url=` — 安装模块
 
-## Surge Mac CLI
+## Surge Mac CLI {#surge-cli}
 
 Surge Mac 提供命令行工具，位于 `/Applications/Surge.app/Contents/Applications/surge-cli`。
 
@@ -246,7 +253,7 @@ surge-cli diagnostics
 - `--raw` — 以原始 JSON 格式输出
 - `--remote/-r` — 连接到远程 Surge 实例，如 `-r password@192.168.2.2:6170`
 
-## 托管配置 (Managed Profile)
+## 托管配置 (Managed Profile) {#managed-profile}
 
 托管配置允许配置文件由远程服务器管理，用户界面中的某些设置可被锁定，防止最终用户修改。
 
@@ -262,7 +269,7 @@ lock = General > skip-proxy
 hide = Proxy Group > Auto
 ```
 
-## HTTP API
+## HTTP API {#http-api}
 
 Surge 提供 HTTP API 用于远程控制。
 

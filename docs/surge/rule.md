@@ -12,7 +12,7 @@ GEOIP, CN, DIRECT
 FINAL, Proxy
 ```
 
-## 基于域名的规则
+## 基于域名的规则 {#domain-based-rule}
 
 ### DOMAIN
 
@@ -42,13 +42,19 @@ DOMAIN-KEYWORD, google, Proxy
 
 ### DOMAIN-SET
 
-匹配集合中的任意域名：
+专为大量域名设计，支持数千条记录的快速搜索。文件中的每一行都是一个域名，以 `.` 开头则匹配所有子域名及该域名本身：
 
 ```ini
 DOMAIN-SET, https://example.com/domains.txt, Proxy
 ```
 
-## 基于 IP 的规则
+支持 `extended-matching` 参数，同时匹配 SNI 和 HTTP Host 请求头（iOS 5.8.0+ / Mac 5.4.0+）：
+
+```ini
+DOMAIN-SET, https://example.com/domains.txt, Proxy, extended-matching
+```
+
+## 基于 IP 的规则 {#ip-based-rule}
 
 ### IP-CIDR
 
@@ -96,7 +102,7 @@ GEOIP, US, DIRECT, no-resolve
 IP-CIDR, 172.16.0.0/12, DIRECT, no-resolve
 ```
 
-## HTTP 规则
+## HTTP 规则 {#http-rule}
 
 ### USER-AGENT
 
@@ -120,7 +126,7 @@ URL-REGEX, ^http://google\.com, DIRECT
 URL-REGEX, ^https://example\.com, Proxy, extended-matching
 ```
 
-## 进程规则（仅限 Mac）
+## 进程规则（仅限 Mac） {#process-rule}
 
 ### PROCESS-NAME
 
@@ -131,7 +137,7 @@ PROCESS-NAME, Telegram, Proxy
 PROCESS-NAME, /Applications/Safari.app/Contents/MacOS/Safari, DIRECT
 ```
 
-## 逻辑规则
+## 逻辑规则 {#logical-rule}
 
 ### AND
 
@@ -163,7 +169,7 @@ NOT, ((SRC-IP, 192.168.1.110)), Proxy
 AND, ((NOT, ((SRC-IP, 192.168.1.110))), (DOMAIN, example.com)), DIRECT
 ```
 
-## 子网规则
+## 子网规则 {#subnet-rule}
 
 ### SUBNET
 
@@ -186,7 +192,7 @@ SUBNET, SSID:MyHome, Proxy
 | `TYPE:WIRED` | 匹配所有有线网络 |
 | `TYPE:CELLULAR` | 匹配所有蜂窝网络 |
 
-## 杂项规则
+## 杂项规则 {#misc-rule}
 
 ### 端口规则
 
@@ -260,7 +266,7 @@ DEVICE-NAME, My-Phone, DIRECT
 MAC-ADDRESS, aa:bb:cc:dd:ee:ff, DIRECT
 ```
 
-## 规则集 (Ruleset)
+## 规则集 (Ruleset) {#ruleset}
 
 ### 内部规则集
 
@@ -300,19 +306,19 @@ RULE-SET, https://example.com/social.list, Proxy, no-resolve, extended-matching
 
 ### 内联规则集（Mac 5.3.1+）
 
-直接在配置文件中嵌入规则集：
+直接在配置文件中嵌入规则。内联规则集与独立文件共享相同的语法，并受益于相同的预处理/索引优化。
 
 ```ini
-[Rule Set Streaming]
-DOMAIN-SUFFIX, netflix.com
-DOMAIN-SUFFIX, netflix.net
-DOMAIN, netflixdnstest0.com
+[Ruleset Streaming]
+DOMAIN-SUFFIX,netflix.com
+DOMAIN-SUFFIX,netflix.net
+DOMAIN,netflixdnstest0.com
 
 [Rule]
-RULE-SET, __rule_set_Streaming, Proxy
+RULE-SET,Streaming,StreamingProxy
 ```
 
-## 最终规则 (FINAL)
+## 最终规则 (FINAL) {#final-rule}
 
 `FINAL` 规则必须写在所有其他规则之后，作为默认策略：
 

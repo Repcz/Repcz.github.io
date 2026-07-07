@@ -1,6 +1,6 @@
 # 概述与核心概念
 
-## 核心工作流
+## 核心工作流 {#workflow}
 
 Surge 的核心工作流由四项主要能力组成：
 
@@ -9,7 +9,7 @@ Surge 的核心工作流由四项主要能力组成：
 - **转发**：网络请求被接管后，可将其转发到其他代理服务器。转发可以是全局的，也可使用灵活的规则系统确定出站策略。
 - **截获**：截获并保存网络请求和响应中的特定数据，通过 MITM 解密 HTTPS 流量。
 
-## 特性
+## 特性 {#features}
 
 - **高性能、稳定、高效**：以工业级稳定性、最少系统资源处理所有网络流量
 - **灵活的规则系统**：基于域名、IP-CIDR、GeoIP 等编写转发规则
@@ -33,7 +33,7 @@ Surge 的核心工作流由四项主要能力组成：
 - 覆盖系统 DNS 设置，同时查询所有 DNS 服务器提升性能
 - 通过 Wi-Fi 或 USB 连接 Surge Dashboard
 
-## 组件
+## 组件 {#components}
 
 ### 代理服务器 (Proxy Server)
 
@@ -54,7 +54,7 @@ Surge 拥有自己的 DNS 客户端实现：
 - 支持 DNS over HTTPS (DoH)、DNS over HTTP/3 (DoH3)、DNS over QUIC (DoQ)
 - 通过虚假 IP (198.18.0.0/15) 实现 DNS 劫持
 
-## 配置文件结构
+## 配置文件结构 {#profile-structure}
 
 Surge 使用 INI 风格的配置文件，包含多个段落：
 
@@ -131,11 +131,10 @@ Info = title="面板", content="内容", style=info
 | `[Panel]` | 信息面板（iOS） |
 | `[Map Local]` | 本地模拟响应 |
 | `[Port Forwarding]` | 端口转发 |
-| `[Rule Set]` | 规则集引用 |
-| `[Replica]` | 配置复制 |
-| `[Gateway]` | 网关设置 |
+| `[Managed]` | 托管配置锁定 |
+| `[Keystore]` | 密钥和证书存储 |
 
-## 配置管理
+## 配置管理 {#config-management}
 
 ### 托管配置 (Managed Profile)
 
