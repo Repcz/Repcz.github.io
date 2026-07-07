@@ -93,7 +93,7 @@ GEOIP, CN, DIRECT
 IP-ASN, 1234, DIRECT
 ```
 
-### no-resolve 参数
+### no-resolve 参数 {#no-resolve}
 
 当遇到 `GEOIP` 或 `IP-CIDR` 规则时，Surge 会发送 DNS 查询以检查请求的主机名是否为域名。使用 `no-resolve` 选项跳过 DNS 解析：
 
@@ -194,7 +194,7 @@ SUBNET, SSID:MyHome, Proxy
 
 ## 杂项规则 {#misc-rule}
 
-### 端口规则
+### 端口规则 {#port-rules}
 
 ```ini
 DEST-PORT, 80-81, DIRECT        # 目标端口范围
@@ -236,7 +236,7 @@ PROTOCOL, STUN, DIRECT
 SCRIPT, ScriptName, DIRECT
 ```
 
-### CELLULAR-RADIO（仅限 iOS）
+### CELLULAR-RADIO（仅限 iOS） {#cellular-radio}
 
 匹配当前蜂窝网络无线电技术：
 
@@ -257,7 +257,7 @@ HOSTNAME-TYPE, DOMAIN, Proxy
 
 支持的关键字：`IPv4`、`IPv6`、`DOMAIN`、`SIMPLE`（不含点的主机名，如 `localhost`）。
 
-### DEVICE-NAME / MAC-ADDRESS
+### DEVICE-NAME / MAC-ADDRESS {#device-name-mac}
 
 匹配客户端设备名称或 MAC 地址（Mac 6.1.0+）：
 
@@ -268,7 +268,7 @@ MAC-ADDRESS, aa:bb:cc:dd:ee:ff, DIRECT
 
 ## 规则集 (Ruleset) {#ruleset}
 
-### 内部规则集
+### 内部规则集 {#internal-ruleset}
 
 Surge 提供两个内置规则集：
 
@@ -284,7 +284,7 @@ RULE-SET, SYSTEM, DIRECT
 RULE-SET, LAN, DIRECT
 ```
 
-### 外部规则集
+### 外部规则集 {#external-ruleset}
 
 引用远程或本地文件中的规则列表。规则集文件每行包含一个不带策略的规则声明：
 
@@ -301,10 +301,11 @@ RULE-SET, https://example.com/social.list, Proxy, no-resolve, extended-matching
 ```
 
 支持可选参数：
+
 - `no-resolve`：跳过 DNS 解析
 - `extended-matching`：域名规则同时匹配 SNI 和 HTTP Host
 
-### 内联规则集（Mac 5.3.1+）
+### 内联规则集（Mac 5.3.1+） {#inline-ruleset}
 
 直接在配置文件中嵌入规则。内联规则集与独立文件共享相同的语法，并受益于相同的预处理/索引优化。
 
@@ -330,7 +331,7 @@ GEOIP, US, DIRECT
 FINAL, ProxyB
 ```
 
-### 选项: dns-failed
+### 选项: dns-failed {#dns-failed}
 
 当 DNS 查询失败时使用 `FINAL` 规则：
 

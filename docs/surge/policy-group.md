@@ -23,7 +23,7 @@ SelectGroup = select, ProxyHTTP, ProxyHTTPS, DIRECT, REJECT
 AutoTestGroup = url-test, ProxySOCKS5, ProxySOCKS5TLS
 ```
 
-### 参数
+### 参数 {#url-test-params}
 
 | 参数 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
@@ -39,7 +39,7 @@ AutoTestGroup = url-test, ProxySOCKS5, ProxySOCKS5TLS
 Auto = url-test, ProxyA, ProxyB, ProxyC, url=http://www.gstatic.com/generate_204, interval=600, tolerance=50, timeout=5, evaluate-before-use=true
 ```
 
-### 临时覆盖
+### 临时覆盖 {#url-test-override}
 
 手动选择策略可临时覆盖自动测试结果：
 
@@ -55,7 +55,7 @@ Auto = url-test, ProxyA, ProxyB, ProxyC, url=http://www.gstatic.com/generate_204
 FallbackGroup = fallback, ProxySOCKS5, ProxySOCKS5TLS
 ```
 
-### 参数
+### 参数 {#fallback-params}
 
 | 参数 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
@@ -63,7 +63,7 @@ FallbackGroup = fallback, ProxySOCKS5, ProxySOCKS5TLS
 | `interval` | 秒 | 600 | 测试结果有效期 |
 | `timeout` | 秒 | 5 | 测试超时 |
 
-### 临时覆盖
+### 临时覆盖 {#fallback-override}
 
 同自动测试组，可通过手动选择临时覆盖。
 
@@ -76,7 +76,7 @@ FallbackGroup = fallback, ProxySOCKS5, ProxySOCKS5TLS
 LoadBalanceGroup = load-balance, ProxyA, ProxyB, ProxyC
 ```
 
-### 参数
+### 参数 {#load-balance-params}
 
 | 参数 | 说明 |
 |------|------|
@@ -95,7 +95,7 @@ LB = load-balance, ProxyA, ProxyB, persistent=true
 SubnetGroup = subnet, default=ProxyHTTP, TYPE:WIFI=ProxyHTTP, SSID:MyHome=ProxySOCKS5
 ```
 
-### 参数
+### 参数 {#subnet-params}
 
 | 参数 | 必填 | 说明 |
 |------|------|------|
@@ -109,9 +109,43 @@ SubnetGroup = subnet, default=ProxyHTTP, TYPE:WIFI=ProxyHTTP, SSID:MyHome=ProxyS
 !!! note "兼容性"
     从 Surge iOS 4.12.0 / Surge Mac 4.5.0 起，SSID 组更名为子网组。依然支持旧语法 `ssid` 作为组类型关键字。
 
+## 智能策略组 (Smart) {#smart}
+
+Smart 策略组由 Surge 自研算法引擎驱动，自动从子策略中选择最优策略，旨在取代 url-test / fallback / load-balance。该功能为 Surge iOS 订阅功能，Surge Mac 5 可免费使用。
+
+```ini
+[Proxy Group]
+SmartGroup = smart, ProxyA, ProxyB, ProxyC
+```
+
+**特性：**
+
+- **实时动态优化**：收集握手延迟、丢包率、连通性、RTT 等多维度信息动态决策
+- **自适应重试**：连接故障时立即切换到备选策略完成连接，上层连接无感知；以历史数据判定线路异常，可在极短时间内触发切换
+- **站点调优**：记录各子策略访问不同站点的连通性和延迟表现，针对性调整策略选择
+- **测试优化**：根据使用情况选取部分策略重测，避免大量策略同时测试产生开销
+
+### 策略优先级
+
+可通过 `policy-priority` 参数为子策略设置权重，干涉算法决策（无特别需求无需配置）。
+
+```ini
+SmartGroup = smart, ProxyA, ProxyB, policy-priority="Premium:0.9"
+```
+
+- 参数格式：对策略名匹配正则表达式的策略，将其延迟乘以指定系数
+- 系数 `< 1` 为提高优先级，`> 1` 为降低优先级，默认 `1`
+- 可连续重复配置，单个策略只匹配一次：
+
+```ini
+SmartGroup = smart, ProxyA, ProxyB, policy-priority="Premium:0.9;SG:1.3"
+```
+
+- 系数设为 `0` 表示总是优先使用该策略，失败后再尝试其他（不推荐）
+
 ## 包含策略 (Policy Including) {#policy-including}
 
-### 从外部文件/URL 导入
+### 从外部文件/URL 导入 {#external-policy}
 
 ```ini
 [Proxy Group]
@@ -125,7 +159,7 @@ Proxy-A = https, example1.com, 443
 Proxy-B = https, example2.com, 443
 ```
 
-#### 参数
+#### 参数 {#external-policy-params}
 
 | 参数 | 说明 |
 |------|------|
@@ -135,7 +169,7 @@ Proxy-B = https, example2.com, 443
 | `external-policy-modifier` | 修改外部策略参数，如 `test-url=http://apple.com/,tfo=true` |
 | `external-policy-name-prefix` | 为外部策略名增加前缀 |
 
-### 包含现有策略
+### 包含现有策略 {#include-existing}
 
 ```ini
 # 包含 [Proxy] 中定义的所有代理

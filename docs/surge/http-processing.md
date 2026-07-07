@@ -4,7 +4,7 @@
 
 Surge 可以通过中间人攻击 (MitM) 解密 HTTPS 流量。证书生成器内置于 Surge Dashboard（Mac）和 Surge iOS 配置编辑器中，证书在本地生成。
 
-### 基本配置
+### 基本配置 {#basic-config}
 
 ```ini
 [MITM]
@@ -14,7 +14,7 @@ hostname = *                       # 需要解密的主机名
 h2 = true                          # 启用 HTTP/2 MITM
 ```
 
-### hostname 参数
+### hostname 参数 {#hostname-param}
 
 `hostname` 为 Host List 类型，指定需要解密的主机名：
 
@@ -26,7 +26,7 @@ hostname = -*.apple.com, -*.icloud.com, *
 hostname = *google.com, *youtube.com
 ```
 
-### 选项
+### 选项 {#mitm-options}
 
 | 参数 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
@@ -50,7 +50,7 @@ hostname = *
 
 重写请求的 URL 或根据 URL 拒绝请求。支持三种模式：
 
-### Header 模式
+### Header 模式 {#header-mode}
 
 修改请求头并将请求重定向到新主机。客户端无感知：
 
@@ -59,7 +59,7 @@ hostname = *
 ^http://www\.google\.cn http://www.google.com header
 ```
 
-### 302 模式
+### 302 模式 {#mode-302}
 
 直接返回 302 重定向响应。HTTPS 请求需启用 MitM：
 
@@ -68,7 +68,7 @@ hostname = *
 ^http://yachen\.com https://yach.me 302
 ```
 
-### Reject 模式
+### Reject 模式 {#reject-mode}
 
 匹配时拒绝请求。HTTPS 请求需启用 MitM：
 
@@ -89,7 +89,7 @@ http-request ^http://example.com header-replace User-Agent Unknown  # 替换值
 http-response ^http://example.com header-replace-regex Date 2022 2023  # 正则替换
 ```
 
-### 语法
+### 语法 {#header-rewrite-syntax}
 
 ```
 [HTTP走向] [URL正则] [动作] [字段名] [值]
@@ -98,7 +98,7 @@ http-response ^http://example.com header-replace-regex Date 2022 2023  # 正则�
 - HTTP 走向：`http-request` 或 `http-response`（省略时默认为 `http-request`）
 - 动作类型：`header-add`、`header-del`、`header-replace`、`header-replace-regex`
 
-### header-add 示例
+### header-add 示例 {#header-add-example}
 
 ```ini
 [Header Rewrite]
@@ -116,7 +116,7 @@ http-request ^http://example.com header-add DNT 1
 # DNT: 1
 ```
 
-### header-replace-regex 示例
+### header-replace-regex 示例 {#header-replace-regex-example}
 
 ```ini
 [Header Rewrite]
@@ -125,7 +125,7 @@ http-request ^http://example.com header-replace-regex User-Agent Safari Chrome
 # User-Agent 中的 "Safari" 被替换为 "Chrome"
 ```
 
-### 组合使用
+### 组合使用 {#combined-usage}
 
 ```ini
 [Header Rewrite]
@@ -143,7 +143,7 @@ http-request ^http(s)?://example\.com value abc
 http-response ^http(s)?://example\.com documents Surge
 ```
 
-### 语法
+### 语法 {#body-rewrite-syntax}
 
 ```
 http-request [URL正则] [搜索正则] [替换内容]
@@ -156,7 +156,7 @@ http-response [URL正则] [搜索正则] [替换内容]
 http-response ^https?://example\.com/ regex1 replacement1 regex2 replacement2
 ```
 
-### JQ 请求体重写（iOS 5.14.0+ / Mac 5.9.0+）
+### JQ 请求体重写（iOS 5.14.0+ / Mac 5.9.0+） {#jq-body-rewrite}
 
 使用 JQ 表达式操作 JSON 请求体：
 
@@ -176,7 +176,7 @@ http-response-jq ^http://httpbingo.org/anything '.headers |= with_entries(select
 ^http://surgetest\.com/base64 data="dGVzdA==" data-type=base64
 ```
 
-### data-type 参数
+### data-type 参数 {#data-type-param}
 
 | 类型 | 说明 |
 |------|------|
@@ -185,7 +185,7 @@ http-response-jq ^http://httpbingo.org/anything '.headers |= with_entries(select
 | `tiny-gif` | 返回 1 像素 GIF |
 | `base64` | 返回 Base64 编码的二进制数据 |
 
-### 其他参数
+### 其他参数 {#other-params}
 
 - `status-code`：自定义 HTTP 状态码
 - `header`：自定义响应头，使用 `|` 分隔多个键值对

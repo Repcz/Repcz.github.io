@@ -20,13 +20,13 @@ Surge 的核心工作流由四项主要能力组成：
 - **远程面板**：Dashboard 可通过 USB 或网络连接远程 Surge 实例
 - **完整的 IPv6 支持**
 
-### Surge Mac 独占特性
+### Surge Mac 独占特性 {#mac-features}
 
 - **增强模式**：通过虚拟网络接口处理所有网络流量
 - **计费网络模式**：控制允许哪些应用访问互联网
 - **网关模式**：配置为三层网关，处理同一网络中其他设备的流量
 
-### Surge iOS 独占特性
+### Surge iOS 独占特性 {#ios-features}
 
 - 所有功能均可在蜂窝网络上使用
 - 捕获所有 HTTP/HTTPS/TCP 流量，即使应用不遵循系统代理设置
@@ -35,18 +35,18 @@ Surge 的核心工作流由四项主要能力组成：
 
 ## 组件 {#components}
 
-### 代理服务器 (Proxy Server)
+### 代理服务器 (Proxy Server) {#proxy-server}
 
 Surge 内置一个多功能的代理服务器，支持 HTTP/HTTPS/SOCKS5/SOCKS5-TLS 协议，可监听多个端口为局域网设备提供代理服务。
 
-### 虚拟网卡 (Virtual Interface, VIF)
+### 虚拟网卡 (Virtual Interface, VIF) {#vif}
 
 Surge 创建一个虚拟网卡来接管设备的所有网络流量。该虚拟网卡由 Surge 完全控制，支持：
 
 - **增强模式**（仅限 Mac）：创建虚拟网卡处理所有 TCP/UDP 流量
 - **TUN 模式**（仅限 iOS）：创建虚拟网卡处理流量
 
-### DNS 解析器
+### DNS 解析器 {#dns-resolver}
 
 Surge 拥有自己的 DNS 客户端实现：
 
@@ -114,7 +114,7 @@ Info = title="面板", content="内容", style=info
 ^http://example\.com/api data-type=text data="{}" status-code=200
 ```
 
-### 段落说明
+### 段落说明 {#sections}
 
 | 段落 | 描述 |
 |------|------|
@@ -136,10 +136,10 @@ Info = title="面板", content="内容", style=info
 
 ## 配置管理 {#config-management}
 
-### 托管配置 (Managed Profile)
+### 托管配置 (Managed Profile) {#managed-profile}
 
 托管配置允许配置文件由远程服务器管理，用户界面中的某些设置可以被锁定，防止最终用户修改。相关设置可在 `[Managed]` 段落中配置。
 
-### 模块 (Module)
+### 模块 (Module) {#module-overview}
 
 模块是一组配置片段的集合，包含 `[General]`、`[Rule]`、`[Script]`、`[MITM]`、`[Host]`、`[URL Rewrite]`、`[Header Rewrite]`、`[Body Rewrite]`、`[Panel]`、`[Map Local]` 等段落。模块可通过 UI 安装和管理，用于扩展 Surge 的功能。

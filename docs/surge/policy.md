@@ -16,23 +16,23 @@ DIRECT
 
 拒绝请求。详见 [REJECT 策略](#reject-policy)。
 
-### CELLULAR（仅限 iOS）
+### CELLULAR（仅限 iOS） {#cellular}
 
 优先使用蜂窝网络而非 Wi-Fi。
 
-### CELLULAR-ONLY（仅限 iOS）
+### CELLULAR-ONLY（仅限 iOS） {#cellular-only}
 
 仅使用蜂窝网络，蜂窝网络不可用时连接失败。
 
-### HYBRID（仅限 iOS）
+### HYBRID（仅限 iOS） {#hybrid}
 
 尝试同时通过 Wi-Fi 和蜂窝网络建立连接。
 
-### NO-HYBRID（仅限 iOS）
+### NO-HYBRID（仅限 iOS） {#no-hybrid}
 
 如果 Wi-Fi 可用，则不尝试蜂窝网络。
 
-### 别名
+### 别名 {#alias}
 
 内置策略可直接使用，也可在 `[Proxy]` 段落中定义别名：
 
@@ -44,7 +44,7 @@ Off = reject
 
 ## 代理策略
 
-### 代理类型
+### 代理类型 {#proxy-types}
 
 Surge 支持以下代理协议：
 
@@ -65,9 +65,9 @@ Surge 支持以下代理协议：
 | SSH | 相当于 `ssh -D`，详见 [SSH 策略](#ssh) |
 | External | 外部代理程序（仅限 Mac），详见 [外部代理程序](#external-proxy-program) |
 
-### 通用参数
+### 通用参数 {#proxy-params}
 
-#### 代理链 (Proxy Chain)
+#### 代理链 (Proxy Chain) {#proxy-chain}
 
 使用 `underlying-proxy` 参数指定一个代理作为底层传输：
 
@@ -75,7 +75,7 @@ Surge 支持以下代理协议：
 ProxyVia = https, proxy.example.com, 443, username, password, underlying-proxy=ProxyA
 ```
 
-#### TLS 通用参数
+#### TLS 通用参数 {#tls-params}
 
 ```ini
 # 跳过证书验证
@@ -91,27 +91,27 @@ ProxyHTTPS = https, 1.2.3.4, 443, username, password, sni=off
 ProxyHTTPS = https, 1.2.3.4, 443, skip-cert-verify=false, server-cert-fingerprint-sha256=xxxx
 ```
 
-#### HTTP/HTTPS 专用参数
+#### HTTP/HTTPS 专用参数 {#http-params}
 
 ```ini
 # 始终使用 CONNECT 方法
 ProxyHTTP = http, 1.2.3.4, 443, username, password, always-use-connect=true
 ```
 
-#### SOCKS5 专用参数
+#### SOCKS5 专用参数 {#socks5-params}
 
 ```ini
 # 启用 UDP 转发
 ProxySOCKS5 = socks5, 1.2.3.4, 443, username, password, udp-relay=true
 ```
 
-#### Snell 参数
+#### Snell 参数 {#snell-params}
 
 ```ini
 ProxySnell = snell, 1.2.3.4, 8000, psk=password, version=4, reuse=true, obfs=http, obfs-host=example.com, obfs-uri=/path
 ```
 
-#### Shadowsocks 参数
+#### Shadowsocks 参数 {#shadowsocks-params}
 
 ```ini
 ProxySS = ss, 1.2.3.4, 8000, encrypt-method=chacha20-ietf-poly1305, password=1234, udp-relay=true, obfs=tls, obfs-host=example.com
@@ -120,7 +120,7 @@ ProxySS = ss, 1.2.3.4, 8000, encrypt-method=chacha20-ietf-poly1305, password=123
 ProxySS = ss, 1.2.3.4, 8000, encrypt-method=chacha20-ietf-poly1305, password=1234, udp-relay=true, udp-port=8001
 ```
 
-#### VMess 参数
+#### VMess 参数 {#vmess-params}
 
 ```ini
 ProxyVMess = vmess, 1.2.3.4, 8000, username=uuid, ws=true, ws-path=/path, ws-headers=X-Header:value, tfo=true
@@ -132,13 +132,13 @@ ProxyVMess = vmess, 1.2.3.4, 8000, username=uuid, ws=true, ws-path=/path, ws-hea
 - `encrypt-method`：可选，`chacha20-ietf-poly1305` 或 `aes-128-gcm`
 - `vmess-aead`：可选
 
-#### Trojan 参数
+#### Trojan 参数 {#trojan-params}
 
 ```ini
 ProxyTrojan = trojan, 1.2.3.4, 443, password=password1, tfo=true
 ```
 
-#### TUIC 参数
+#### TUIC 参数 {#tuic-params}
 
 ```ini
 ProxyTUIC = tuic, 1.2.3.4, 443, token=pwd, alpn=h3, udp-relay=true, skip-cert-verify=true
@@ -149,7 +149,7 @@ ProxyTUIC = tuic, 1.2.3.4, 443, token=pwd, alpn=h3, udp-relay=true, skip-cert-ve
 - `port-hopping`：可选，配置端口跳跃列表（如 `1234;5000-6000`）
 - `port-hopping-interval`：可选，跳跃间隔，默认 30 秒
 
-#### Hysteria 2 参数（iOS 5.8.0+ / Mac 5.4.0+）
+#### Hysteria 2 参数（iOS 5.8.0+ / Mac 5.4.0+） {#hysteria2-params}
 
 ```ini
 ProxyHysteria = hysteria2, 1.2.3.4, 443, password=pwd, download-bandwidth=100, upload-bandwidth=50, udp-relay=true, skip-cert-verify=true, sni=example.com
@@ -160,7 +160,7 @@ ProxyHysteria = hysteria2, 1.2.3.4, 443, password=pwd, download-bandwidth=100, u
 - `port-hopping`：可选，以分号分隔的端口或范围列表
 - `port-hopping-interval`：可选，跳跃间隔，默认 30 秒
 
-#### AnyTLS v2 参数（iOS 5.17.0+ / Mac 6.4.3+）
+#### AnyTLS v2 参数（iOS 5.17.0+ / Mac 6.4.3+） {#anytls-params}
 
 ```ini
 # iOS 5.17.0+ / Mac 6.4.3+
@@ -169,7 +169,7 @@ ProxyAnyTLS = anytls, 1.2.3.4, 443, password=pwd, skip-cert-verify=true, sni=exa
 
 - `reuse`：可选，默认启用连接复用，可设为 `false` 关闭
 
-#### Shadow TLS
+#### Shadow TLS {#shadow-tls}
 
 Shadow TLS 是一种代理混淆器，可与任何基于 TCP 的代理一起使用。
 
@@ -184,11 +184,11 @@ STLS-SNELL = snell, 1.2.3.4, 443, psk=pwd1, version=4, reuse=true, shadow-tls-pa
 - `shadow-tls-sni`：可选，TLS 握手时发送的 SNI
 - `shadow-tls-version`：可选，2 或 3，默认 2
 
-### UDP 转发
+### UDP 转发 {#udp-forward}
 
 Surge 支持 SOCKS5、Snell v4/v5、Shadowsocks、Trojan、WireGuard、Hysteria 2 和 TUIC 协议的 UDP 转发。Shadowsocks 和 SOCKS5 需手动开启 `udp-relay=true`。
 
-### 用于 TLS 代理的客户端证书
+### 用于 TLS 代理的客户端证书 {#client-cert}
 
 Surge 支持对基于 TLS 的代理进行客户端证书验证：
 
@@ -200,7 +200,7 @@ Proxy = https, example.com, 443, client-cert=cert1
 cert1 = base64=<P12 的 Base64 字符串>, password=123456
 ```
 
-### 测试 URL
+### 测试 URL {#test-url-section}
 
 ```ini
 # 为单个代理覆盖测试 URL
@@ -229,7 +229,7 @@ ProxyA = https, example.com, 443, username, password, test-url=http://www.gstati
 DOMAIN, example.com, REJECT-TINYGIF
 ```
 
-### 预匹配拒绝 (Pre-matching Reject)（iOS 5.14.0+ / Mac 5.9.0+）
+### 预匹配拒绝 (Pre-matching Reject)（iOS 5.14.0+ / Mac 5.9.0+） {#pre-matching-reject}
 
 在 DNS 解析和 TCP SYN 阶段以低开销快速拒绝请求，避免不必要的开销。
 
@@ -266,7 +266,7 @@ WG = wireguard, interface-ip=10.0.0.2, interface-ipv6=fd00::2, dns=8.8.8.8, mtu=
 WG = wireguard, peer=(public-key=<key>, allowed-ips=0.0.0.0/0, endpoint=example.com:51820, pre-shared-key=<key>, client-id=83/12/235)
 ```
 
-### 参数说明
+### 参数说明 {#wg-params}
 
 | 参数 | 说明 |
 |------|------|
@@ -288,14 +288,14 @@ WG = wireguard, peer=(public-key=<key>, allowed-ips=0.0.0.0/0, endpoint=example.
 
 Surge 支持 SSH 作为代理策略，相当于 `ssh -D`。
 
-### 密码认证
+### 密码认证 {#ssh-password}
 
 ```ini
 [Proxy]
 proxy = ssh, 1.2.3.4, 22, username=root, password=pw
 ```
 
-### 公钥认证
+### 公钥认证 {#ssh-key}
 
 ```ini
 [Proxy]
@@ -305,13 +305,13 @@ proxy = ssh, 1.2.3.4, 22, username=root, private-key=key1
 key1 = type=openssh-private-key, base64=[私钥文件Base64编码]
 ```
 
-### 指纹验证
+### 指纹验证 {#ssh-fingerprint}
 
 ```ini
 proxy = ssh, 1.2.3.4, 22, username=root, password=pw, server-fingerprint="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBk2No6..."
 ```
 
-### 空闲超时
+### 空闲超时 {#ssh-idle}
 
 ```ini
 proxy = ssh, 1.2.3.4, 22, username=root, password=pw, idle-timeout=180
@@ -337,11 +337,11 @@ external = external, exec="/usr/bin/ssh", args="-D", args="127.0.0.1:1080", args
 
 ## 通用策略参数
 
-### 出站参数
+### 出站参数 {#outbound-params}
 
 以下参数对内置策略和代理策略均可用。
 
-#### `interface`
+#### `interface` {#interface}
 
 强制使用指定的出站网络接口：
 
@@ -350,7 +350,7 @@ ProxyHTTP = http, 1.2.3.4, 443, username, password, interface=en2
 Corp-VPN = direct, interface=utun0
 ```
 
-#### `allow-other-interface`
+#### `allow-other-interface` {#allow-other-interface}
 
 当所需接口不可用时，允许使用默认接口（默认 false）：
 
@@ -358,15 +358,15 @@ Corp-VPN = direct, interface=utun0
 ProxyHTTP = http, 1.2.3.4, 443, username, password, interface=en2, allow-other-interface=true
 ```
 
-#### `dns-follow-interface`（iOS 5.15.2+ / Mac 5.2.0+）
+#### `dns-follow-interface`（iOS 5.15.2+ / Mac 5.2.0+） {#dns-follow-interface}
 
 让 `interface` 参数对 DNS 查询也生效。
 
-#### `no-error-alert`
+#### `no-error-alert` {#no-error-alert}
 
 不显示该策略的错误警告。
 
-#### `ip-version`
+#### `ip-version` {#ip-version}
 
 选择 IPv4/IPv6 协议行为（仅对代理服务器连接有效）：
 
@@ -374,11 +374,11 @@ ProxyHTTP = http, 1.2.3.4, 443, username, password, interface=en2, allow-other-i
 - `v4-only`、`v6-only`
 - `prefer-v4`、`prefer-v6`
 
-#### `hybrid`（仅限 iOS）
+#### `hybrid`（仅限 iOS） {#hybrid-param}
 
 同时建立蜂窝数据和 Wi-Fi 连接，使用较快链路。
 
-#### `tfo`
+#### `tfo` {#tfo}
 
 启用 TCP Fast Open：
 
@@ -386,15 +386,15 @@ ProxyHTTP = http, 1.2.3.4, 443, username, password, interface=en2, allow-other-i
 ProxyA = https, example.com, 443, username, password, tfo=true
 ```
 
-#### `tos`
+#### `tos` {#tos}
 
 自定义 IP TOS 值（十进制或十六进制，默认 0）。
 
-#### `ecn`（iOS 5.8.0+ / Mac 5.4.0+）
+#### `ecn`（iOS 5.8.0+ / Mac 5.4.0+） {#ecn}
 
 启用显式拥塞通知，高丢包环境下可提升性能。
 
-#### `block-quic`（iOS 5.8.0+ / Mac 5.4.0+）
+#### `block-quic`（iOS 5.8.0+ / Mac 5.4.0+） {#block-quic}
 
 阻断 QUIC 流量，使客户端回退到 HTTPS/TCP：
 
@@ -402,9 +402,9 @@ ProxyA = https, example.com, 443, username, password, tfo=true
 - `on`：阻断
 - `off`：不阻断
 
-### 测试参数
+### 测试参数 {#test-params}
 
-#### `test-url`
+#### `test-url` {#test-url-param}
 
 覆盖默认的连通性测试 URL：
 
@@ -412,11 +412,11 @@ ProxyA = https, example.com, 443, username, password, tfo=true
 ProxyA = https, example.com, 443, username, password, test-url=http://www.gstatic.com/generate_204
 ```
 
-#### `test-timeout`
+#### `test-timeout` {#test-timeout}
 
 覆盖全局测试超时时间（秒）。
 
-#### `test-udp`
+#### `test-udp` {#test-udp}
 
 通过 DNS 查询测试 UDP 中继：
 

@@ -9,7 +9,7 @@
 enhanced-mode = true
 ```
 
-### 相关选项
+### 相关选项 {#related-options}
 
 #### tun-excluded-routes
 
@@ -46,7 +46,7 @@ tun-included-routes = 0.0.0.0/1, 128.0.0.0/1
 
 自定义信息面板显示相关信息。
 
-### 静态模式
+### 静态模式 {#static-mode}
 
 ```ini
 [Panel]
@@ -55,7 +55,7 @@ PanelA = title="面板标题", content="面板内容\n第二行", style=info
 
 支持 `style`：`good`、`info`、`alert`、`error`。
 
-### 动态模式
+### 动态模式 {#dynamic-mode}
 
 通过脚本更新面板内容：
 
@@ -76,7 +76,7 @@ $httpClient.get("https://api.my-ip.io/ip", function(error, response, data) {
 });
 ```
 
-### 更多自定义
+### 更多自定义 {#more-customization}
 
 ```ini
 [Panel]
@@ -91,7 +91,7 @@ PanelC = title="自定义", content="内容", icon="bolt.horizontal.circle.fill"
 
 模块是一组配置片段的集合，用于扩展 Surge 功能。可通过 UI 安装和管理。
 
-### 安装模块
+### 安装模块 {#install-module}
 
 1. **首页** → **通用** → **模块** → 点击 **模块** 按钮
 2. 下滑至 **安装的模块** 最下方，点击 **安装新模块**
@@ -102,7 +102,7 @@ PanelC = title="自定义", content="内容", icon="bolt.horizontal.circle.fill"
 !!! tip "注意"
     新安装模块不会自动启用，需手动勾选。
 
-### 模块包含的段落
+### 模块包含的段落 {#module-sections}
 
 模块可覆盖以下段落：
 
@@ -113,7 +113,7 @@ PanelC = title="自定义", content="内容", icon="bolt.horizontal.circle.fill"
 
 模块中的规则只能使用内部策略：`DIRECT`、`REJECT`、`REJECT-TINYGIF`。
 
-### 模块元数据
+### 模块元数据 {#module-metadata}
 
 ```ini
 #!name=模块名称
@@ -134,7 +134,7 @@ gateway-mode = true
 
 ## \[General\] 杂项选项 {#general-options}
 
-### 日志与调试
+### 日志与调试 {#logging}
 
 ```ini
 loglevel = notify          # verbose / info / notify / warning
@@ -142,7 +142,7 @@ show-error-page = true     # Mac 5.8.0+，显示错误页面
 show-error-page-for-reject = true  # 为 REJECT 显示错误页面
 ```
 
-### 网络
+### 网络 {#network-settings}
 
 ```ini
 ipv6 = true                # 启用完整 IPv6 支持
@@ -160,13 +160,13 @@ hijack-dns = *:53          # 劫持 DNS 查询
 use-local-host-item-for-proxy = true  # 代理请求使用本地 DNS
 ```
 
-### HTTP
+### HTTP {#http-settings}
 
 ```ini
 full-header-mode = true    # 暴露完整请求头数组
 ```
 
-### 远程访问
+### 远程访问 {#remote-access}
 
 ```ini
 external-controller-access = key@0.0.0.0:6165
@@ -175,7 +175,7 @@ http-api-tls = true        # 使用 HTTPS
 http-api-web-dashboard = true  # 启用 Web Dashboard
 ```
 
-### 测试
+### 测试 {#testing-settings}
 
 ```ini
 internet-test-url = http://www.gstatic.com/generate_204
@@ -187,7 +187,7 @@ test-timeout = 5
 
 Surge 中多处使用 Host List 类型参数（如 `skip-proxy`、`always-real-ip`、`hostname` 等）。
 
-### 语法规则
+### 语法规则 {#syntax-rules}
 
 | 模式 | 示例 | 说明 |
 |------|------|------|
@@ -202,13 +202,13 @@ Surge 中多处使用 Host List 类型参数（如 `skip-proxy`、`always-real-i
 
 Surge 支持 URL Scheme 用于外部调用。
 
-### 通用格式
+### 通用格式 {#url-format}
 
 ```
 surge://[action]/[parameters]
 ```
 
-### 支持的 Action
+### 支持的 Action {#supported-actions}
 
 - `surge://install-config?url=` — 安装配置文件
 - `surge://install-module?url=` — 安装模块
@@ -217,7 +217,7 @@ surge://[action]/[parameters]
 
 Surge Mac 提供命令行工具，位于 `/Applications/Surge.app/Contents/Applications/surge-cli`。
 
-### 常用命令
+### 常用命令 {#common-commands}
 
 ```bash
 # 重新加载配置
@@ -248,7 +248,7 @@ surge-cli set-log-level verbose
 surge-cli diagnostics
 ```
 
-### 参数
+### 参数 {#cli-params}
 
 - `--raw` — 以原始 JSON 格式输出
 - `--remote/-r` — 连接到远程 Surge 实例，如 `-r password@192.168.2.2:6170`
@@ -273,7 +273,7 @@ hide = Proxy Group > Auto
 
 Surge 提供 HTTP API 用于远程控制。
 
-### 端点
+### 端点 {#api-endpoints}
 
 | 端点 | 说明 |
 |------|------|
@@ -285,7 +285,7 @@ Surge 提供 HTTP API 用于远程控制。
 | `GET /v1/requests/active` | 获取活动请求 |
 | `POST /v1/requests/kill` | 终止活动请求 |
 
-### 示例
+### 示例 {#api-example}
 
 ```bash
 curl -X GET "http://key@127.0.0.1:6166/v1/policies"

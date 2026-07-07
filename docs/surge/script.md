@@ -25,7 +25,7 @@ script5 = type=rule, script-path=rule.js
 script6 = type=generic, script-path=panel.js
 ```
 
-### 公共参数
+### 公共参数 {#common-params}
 
 | 参数 | 说明 |
 |------|------|
@@ -37,7 +37,7 @@ script6 = type=generic, script-path=panel.js
 | `argument` | 通过 `$argument` 传递给脚本 |
 | `engine` | JavaScript 引擎选择 |
 
-### HTTP 脚本专用参数
+### HTTP 脚本专用参数 {#http-script-params}
 
 | 参数 | 说明 |
 |------|------|
@@ -54,7 +54,7 @@ script6 = type=generic, script-path=panel.js
 
 ## 公共 API {#public-api}
 
-### 网络信息
+### 网络信息 {#network-info}
 
 ```javascript
 $network          // 网络环境详细信息
@@ -62,7 +62,7 @@ $network.wifi.ssid // 当前 Wi-Fi SSID
 $network.dns       // DNS 服务器列表
 ```
 
-### 脚本信息
+### 脚本信息 {#script-info}
 
 ```javascript
 $script.name          // 脚本名称
@@ -70,7 +70,7 @@ $script.startTime     // 脚本开始时间
 $script.type          // 脚本类型
 ```
 
-### 环境信息
+### 环境信息 {#environment-info}
 
 ```javascript
 $environment.system          // "iOS" 或 "macOS"
@@ -80,7 +80,7 @@ $environment.language        // Surge UI 语言
 $environment.device-model    // 设备型号
 ```
 
-### 持久化存储
+### 持久化存储 {#persistent-store}
 
 ```javascript
 // 写入数据
@@ -95,7 +95,7 @@ $persistentStore.read([key])
 !!! tip "Mac 持久化存储路径"
     `~/Library/Application Support/com.nssurge.surge-mac/SGJSVMPersistentStore/`
 
-### 控制 Surge
+### 控制 Surge {#control-surge}
 
 ```javascript
 $httpAPI(method, path, body, callback)
@@ -103,7 +103,7 @@ $httpAPI(method, path, body, callback)
 
 无需鉴权参数，可调用所有 HTTP API 控制 Surge。
 
-### HTTP 客户端
+### HTTP 客户端 {#http-client}
 
 ```javascript
 $httpClient.get(url, callback)
@@ -132,7 +132,7 @@ $httpClient.post({
 });
 ```
 
-### 通知
+### 通知 {#notification}
 
 ```javascript
 // 推送通知
@@ -141,7 +141,7 @@ $notification.post(title, subtitle, content)
 $notification.post(title, subtitle, content, url)
 ```
 
-### 其他工具
+### 其他工具 {#other-utils}
 
 ```javascript
 // 策略组控制
@@ -162,7 +162,7 @@ headers['X-Modified-By'] = 'Surge';
 $done({headers});
 ```
 
-### 输入参数
+### 输入参数 {#http-request-input}
 
 - `$request.url` — 请求 URL
 - `$request.method` — HTTP 方法
@@ -170,7 +170,7 @@ $done({headers});
 - `$request.headers` — 请求头
 - `$request.body` — 请求体（需 `requires-body=true`）
 
-### 返回参数
+### 返回参数 {#http-request-return}
 
 - `url` — 新的 URL（不会自动更新 Host 请求头）
 - `headers` — 新的请求头
@@ -202,14 +202,14 @@ headers['X-Modified-By'] = 'Surge';
 $done({headers});
 ```
 
-### 输入参数
+### 输入参数 {#http-response-input}
 
 - `$request.url`、`$request.method`、`$request.id`、`$request.headers`
 - `$response.status` — HTTP 状态码
 - `$response.headers` — 响应头
 - `$response.body` — 响应体（需 `requires-body=true`）
 
-### 返回参数
+### 返回参数 {#http-response-return}
 
 - `body` — 新的响应体
 - `headers` — 新的响应头
@@ -236,7 +236,7 @@ var ssidMatched = ($network.wifi.ssid === 'My Home');
 $done({matched: (hostnameMatched && ssidMatched)});
 ```
 
-### 输入参数
+### 输入参数 {#rule-script-input}
 
 - `$request.hostname`、`$request.destPort`、`$request.processPath`
 - `$request.userAgent`、`$request.url`、`$request.sourceIP`
@@ -258,7 +258,7 @@ SCRIPT, ssid-rule, DIRECT, requires-resolve
 network-changed = type=event, event-name=network-changed, script-path=network-changed.js
 ```
 
-### 事件类型
+### 事件类型 {#event-types}
 
 **network-changed** — 系统网络变化时触发：
 
@@ -297,7 +297,7 @@ $httpClient.get('http://119.29.29.29/d?dn=' + $domain, function(error, response,
 });
 ```
 
-### 返回值
+### 返回值 {#dns-return-values}
 
 | 返回值 | 说明 |
 |--------|------|
@@ -321,7 +321,7 @@ $surge.setSelectGroupPolicy('Group', 'Proxy');
 $done();
 ```
 
-### cron 表达式示例
+### cron 表达式示例 {#cron-examples}
 
 | 表达式 | 说明 |
 |--------|------|
