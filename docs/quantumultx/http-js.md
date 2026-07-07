@@ -98,7 +98,20 @@ $task.fetch(myRequest).then(response => {
 | `headers` | object | 请求头，可选 |
 | `body` | string | 请求体，可选 |
 | `opts.redirection` | bool | 是否自动跟随重定向，可选，默认 true |
+| `opts.skip-cert-verify` | bool | 跳过证书验证，可选，默认 false（自 build 649+ 支持） |
+| `opts.auto-cookie` | bool | 是否启用自动 Cookie 管理，可选，默认 false（自 build 934+ 支持）。**注意：** build 934 之前此字段无效（始终等效 true）；build 934 起默认关闭，需开启时设为 `true` |
 | `opts.policy` | string | 指定策略发送请求，如 `"direct"`，可选。注意：每次请求都会独立完成 TCP + TLS 握手，不会复用连接 |
+
+<!-- prettier-ignore -->
+!!! 注意 "Cookie 自动管理变更（build 934+）"
+    自 build 934 起，`$task.fetch` **默认禁用**自动 Cookie 管理。若脚本依赖自动 Cookie 处理（如登录态保持），需在 `opts` 中显式开启：
+    ```javascript
+    const myRequest = {
+        url: "https://example.com/api",
+        opts: { 'auto-cookie': true }
+    };
+    ```
+    完整示例见 [sample-task.js](https://github.com/crossutility/Quantumult-X/blob/master/sample-task.js)。
 
 **响应 `response` 对象：**
 

@@ -52,7 +52,7 @@
   - `script-analyze-echo-response`：同 `script-echo-response`，但会等待请求正文
   - `bodyBytes` 二进制重写：`$done({bodyBytes: buffer})`（需 iOS 14.0+ / QX v1.0.19+）
 - 脚本 URL 支持通过 `#` 附加自定义参数，脚本内使用 `$environment.sourcePath` 获取完整路径。
-- `$task.fetch()` 支持通过 `opts.policy` 指定策略发送请求：`{url: url, opts: {policy: "direct"}}`
+- `$task.fetch()` 支持通过 `opts` 设置请求选项，如 `{url: url, opts: {policy: "direct"}}`。自 build 934+ 起 `auto-cookie` 默认关闭，需开启时可设置 `opts: {'auto-cookie': true}`
 - 完整示例可在 [crossutility/Quantumult-X](https://github.com/crossutility/Quantumult-X) 找到。
 
 #### 7.1.2 配置文件添加
