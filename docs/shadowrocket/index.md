@@ -35,9 +35,6 @@ https://raw.githubusercontent.com/Repcz/Tool/X/Shadowrocket/Shadowrocket.conf
 
 点击 **规则集URL** ，确保都下载成功（有绿色`√`）
 
-
-![3](Photo/3.webp){: width=900}
-
 <!-- prettier-ignore -->
 !!! 提示
     如有下载失败的，可点击该链接再次下载
