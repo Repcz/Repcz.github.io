@@ -72,7 +72,7 @@ https://github.com/Masaiki/GeoIP2-CN/raw/release/Country.mmdb
     如果你是小白用户，只需要翻墙代理功能，以下操作可以忽略。
 
 <!-- prettier-ignore -->
-!!! tip 安装证书后，如更换配置文件，须重新执行以下步骤
+!!! tip "安装证书后，如更换配置文件，须重新执行以下步骤"
 
 ### 生成证书
 
