@@ -122,6 +122,9 @@ $notification.post("title","subtitle","content",attach)
     body-base64:true,//当有该字段时，会将body当做base64的格式解析成二进制，如果body参数不是base64后的二进制，请不要设定该值（build 612版本后有效）
     node:"HK - v1.0",//指定该请求使用哪一个节点或者策略组（可以使节点名称、策略组名称，也可以说是一个Loon格式的节点描述，如：node:"shadowsocksr,example.com,1070,chacha20-ietf,"password",protocol=auth_aes128_sha1,protocol-param=test,obfs=plain,obfs-param=edge.microsoft.com"）
     binary-mode:true,//请求响应返回二进制格式
+    "auto-redirect":true,//自动处理重定向，默认true（build 660版本后有效）
+    "auto-cookie":true,//自动保存并使用Cookie，默认true（build 662版本后有效）
+    alpn:"h2",//使用h1或h2，默认h1（build 715版本后有效），同一脚本并发请求相同Host时可用h2提高并发效率
 }
 
 //回调参数
@@ -131,9 +134,12 @@ response: js对象
     status:200,
     headers:{
         content-length:200
-    }
+    },
+    h2_trailers: {
+        "grpc-status": "0"
+    }//HTTP/2 Trailers（build 931版本后有效）
 }
-data: String类型，响应body
+data: String类型，响应body；启用binary-mode或内容无法转换为UTF-8时返回二进制
 
 ```
 
@@ -148,6 +154,18 @@ data: String类型，响应body
 `$httpClient.options(params, function(errormsg,response,data){})`: 发起options请求，参数、callback参数同get
 
 `$httpClient.patch(params, function(errormsg,response,data){})`: 发起patch请求，参数、callback参数同get
+
+### 工具
+
+- **$utils**
+
+`$utils.geoip(ip)`: 查询 ISO 3166 国家或地区代码
+
+`$utils.ipasn(ip)`: 查询 ASN
+
+`$utils.ipaso(ip)`: 查询 ASO
+
+`$utils.ungzip(binary)`: 解压 Gzip 格式的 `Uint8Array`
 
 ### 其他
 

@@ -24,8 +24,12 @@
 
 ##### IP 查询模式 `ip-mode`
 
+<!-- prettier-ignore -->
+!!! 提示
+    早期版本中并发查询的值写作 `auto`，自 Loon 3.2.3 起官方更名为 `dual`，两者等价。旧配置中的 `ip-mode = auto` 仍可正常识别，无需修改。
+
 - `ipv4-only`: 只使用 `IPv4` 进行请求，不发起 `AAAA` 的 DNS 查询，拒绝所有 `IPv6` 连接；
-- `auto`: 并发发起 `A` 和 `AAAA` 的 DNS 查询，优先使用响应速度更快的结果；
+- `dual`: 并发发起 `A` 和 `AAAA` 的 DNS 查询，优先使用响应速度更快的结果；
 - `ipv4-preferred`: 并发发起 `A` 和 `AAAA` 的 DNS 查询，优先使用 `IPv4` 结果，如无 `IPv4` 记录则切换到 `IPv6` 结果。
 - `ipv6-preferred`: 并发发起 `A` 和 `AAAA` 的 DNS 查询，优先使用 `IPv6` 结果，如无 `IPv6` 记录则切换到 `IPv4` 结果；
 
@@ -165,6 +169,22 @@ resource-parser = https://gitlab.com/sub-store/Sub-Store/-/releases/permalink/la
 real-ip = *.apple.com,*.icloud.com
 ```
 
+#### 11.1.12.1 DNS 劫持 `hijack-dns`
+
+<!-- prettier-ignore -->
+!!! 注意
+    适用于 Loon 3.2.5 (789) 及以上版本
+
+劫持指定目标的 UDP DNS 查询，并返回 Fake IP：
+
+```
+[General]
+# *:53 表示所有目标的 53 端口
+# *:0 表示所有目标和端口
+# 8.8.8.8 表示该 IP 的所有查询
+hijack-dns = *:53,8.8.8.8
+```
+
 #### 11.1.13 UDP 设置
 
 <!-- prettier-ignore -->
@@ -293,6 +313,17 @@ eg：
 [General]
 dns-reject-mode = LOOPBACKIP
 ```
+
+#### 11.1.20 已弃用参数
+
+以下参数仅用于识别旧配置，新配置不应继续使用：
+
+| 参数 | 说明 |
+|---|---|
+| `ipv6` | 从 Loon 3.2.3 (754) 起由 `ip-mode` 替代 |
+| `switch-node-after-failure-times` | Loon 现已自动检测节点可用性 |
+| `force-http-engine-hosts` | 从 Loon 3.2.3 (787) 起弃用 |
+| `skip-first-packet` | 从 Loon 3.5.0 (968) 起由 Loon 自动识别相关服务 |
 
 ### 11.2 外部资源
 

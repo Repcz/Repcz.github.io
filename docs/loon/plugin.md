@@ -25,18 +25,24 @@
 
 ### 7.1 插件可包含的配置模块
 
-```
-#!name= 插件名称
-#!desc= 这是一个带有配置项的插件，input代表输入，select代表选择（select的第一项为名称，后面为可选值），用户所填或者选择的值都可以在脚本中用$persistentStore.read进行读取，如$persistentStore.read(appName)
-#!author= 插件作者
-#!homepage= 插件首页，可在插件页面进行跳转
-#!icon= 插件的图标
-#!author = Loon0x00
-#!input = appName
-#!input = author
-#!select = appType,tool,social,health,sport
-#!select = price,0.99,1.99,4.99
+#### 完整示例
 
+```
+#!name = 示例插件
+#!desc = 展示插件信息和用户参数
+#!author = Loon
+#!homepage = https://example.com
+#!icon = https://example.com/icon.png
+#!system = iOS,iPadOS,tvOS,macOS
+#!system_version = 15
+#!loon_version = 3.5.1(978)
+#!tag = 示例,工具
+#!type = normal
+
+[Argument]
+name = input,"Loon",tag=名称,desc=输入一个名称
+region = select,"CN","US","JP",tag=地区
+enabled = switch,true,tag=启用
 
 [General]
 bypass-tun =
@@ -44,17 +50,88 @@ skip-proxy =
 real-ip =
 dns-server =
 
-[rule]
+[Rule]
 
-[rewrite]
+[Rewrite]
 
-[host]
+[Host]
 
-[script]
+[Script]
+http-response ^https?:\/\/example\.com\/conf\/server-mapping script-path=remove_ads.js,requires-body=true,tag=移除广告,argument=[{name},{region},{enabled}]
 
-[mitm]
+[Mitm]
+hostname = example.com
+```
+
+#### 插件信息
+
+以 `#!` 开头的字段用于描述插件：
+
+| 字段 | 说明 |
+|---|---|
+| `#!name` | 插件名称 |
+| `#!desc` | 功能说明 |
+| `#!author` | 作者 |
+| `#!homepage` | 主页地址 |
+| `#!icon` | 图标地址 |
+| `#!system` | 支持的系统，不区分大小写；未填写表示全部支持 |
+| `#!system_version` | 最低系统版本，如 `15.0` |
+| `#!loon_version` | 最低 Loon 版本，如 `3.5.1(978)` |
+| `#!tag` | 分类标签 |
+| `#!type` | 插件类型 |
+
+Loon 3.5.0 (969) 支持以下插件类型：
+
+- `normal`：普通插件。
+- `parser`：资源解析器，可在节点、规则和配置订阅页面中选择。
+
+#### 插件参数 `[Argument]`
+
+<!-- prettier-ignore -->
+!!! 注意
+    适用于 Build 733 及以上版本。该模块声明需要用户填写或选择的参数，Loon 会自动生成对应界面。
+
+<!-- prettier-ignore -->
+!!! 提示
+    早期插件使用 `#!input = 参数名` / `#!select = 参数名,可选值1,可选值2` 声明参数，Loon 仍兼容该旧语法以加载旧插件，但新插件请使用 `[Argument]` 模块。
+
+基本格式：
+
+```text
+参数名 = 控件类型,默认值或可选值,tag=标题,desc=说明
+```
+
+支持的控件：
+
+| 类型 | 说明 |
+|---|---|
+| `input` | 文本输入；默认值可省略 |
+| `select` | 单选列表；第一个值为默认值 |
+| `switch` | 开关；默认值为 `false` |
 
 ```
+[Argument]
+name = input,"Loon",tag=名称
+region = select,"CN","US","JP",tag=地区
+enabled = switch,true,tag=启用
+```
+
+在脚本中使用 `$argument.name`、`$argument.region` 和 `$argument.enabled` 读取参数：
+
+```
+[Script]
+http-request ^https:\/\/example\.com script-path=request.js,argument=[{name},{region},{enabled}]
+```
+
+参数也可以用于 Cron 表达式；`switch` 参数可以控制脚本是否启用：
+
+```
+[Script]
+cron {cronExpression} script-path=task.js,timeout=300,tag=自动运行
+http-request ^https:\/\/example\.com script-path=request.js,enable={enabled}
+```
+
+在新版 Rewrite 中通过 `${参数名}` 引用插件参数。
 
 ### 7.2 插件中规则的策略
 
@@ -85,4 +162,4 @@ https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Tool/Loon/Plugin/LoonGallery.p
 
 ### 7.4 插件推荐
 
-- [可莉插件大全](https://getupnote.com/share/notes/zSn1ShBmzNYISKcTgjXE5oHMrNf2/4a3b6152-3dd3-46da-b479-8c30ef6ef8d1)
+- [可莉插件大全](https://hub.kelee.one/)

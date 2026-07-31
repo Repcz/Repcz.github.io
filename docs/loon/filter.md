@@ -342,6 +342,17 @@ FINAL,DIRECT
 
 订阅规则是一系列规则的集合，只要是满足Loon类型的规则都可以放入规则集中，Loon目前可以承载百万级别数量的规则，无须担心性能和耗时问题。
 
+Loon 使用 LRU 缓存近期规则匹配结果，缓存命中时查询耗时接近 0 ms。以下数据来自 iPhone 15 Pro、Loon 3.2.0 (712)，实际耗时会受设备状态和并发请求影响：
+
+| 规则类型 | 耗时 | 数量 |
+|---|---:|---:|
+| `DOMAIN`、`DOMAIN-SUFFIX` | 1 ms 内 | 20 万 |
+| `IP-CIDR` | 1 ms 内 | 10 万 |
+| `IP-CIDR6` | 1–2 ms | 4 千 |
+| `IP-ASN` | 1 ms 内 | 5 千 |
+
+`DOMAIN`、`DOMAIN-SUFFIX`、`IP-CIDR`、`IP-CIDR6`、`GEOIP`、`IP-ASN`、端口和协议规则受数量影响较小。`DOMAIN-KEYWORD`、`USER-AGENT` 和 `URL-REGEX` 会随规则数量和表达式复杂度增加耗时，建议优先使用前一类规则。
+
 
 <!-- prettier-ignore -->
 !!! 注意

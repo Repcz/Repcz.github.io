@@ -29,8 +29,10 @@
     - Trojan + HTTP
 - HTTP
 - HTTPS
+- SOCKS5
 - Wireguard
 - Hysteria2
+- AnyTLS（需 Build 945+）
 - Custom by JS
 
 同时，Loon也支持使用JavaScript进行自定义代理协议，可参考[使用JS自定义HTTP代理](https://github.com/Loon0x00/LoonExampleConfig/blob/master/Script/http.js)
@@ -64,6 +66,22 @@ ss1 = Shadowsocks,example.com,443,aes-128-gcm,"password",fast-open=false,udp=tru
 ss2 = Shadowsocks,example2.com,443,chacha20,"password",fast-open=true,udp=true
 ```
 
+
+- ss2022
+
+```
+[Proxy]
+# 节点名称 = 协议，服务器地址，端口，加密方式（2022-blake3-aes-128-gcm 等），密码（需为 Base64 格式），fast-open=是否开启fast open（需要节点支持），udp=是否在UDP中使用（需要节点支持）
+ss2022 = Shadowsocks,example.com,443,2022-blake3-aes-128-gcm,"MjdlZmY4YWIyZDU0OGNkNw==:YmY2N2QzZjctMjYxMi00MA==",fast-open=true,udp=true
+```
+
+- ss + shadow-tls
+
+```
+[Proxy]
+# 节点名称 = 协议，服务器地址，端口，加密方式，密码，shadow-tls-password=shadow-tls 密码，shadow-tls-sni=shadow-tls SNI，shadow-tls-version=版本(2/3)，udp-port=UDP 端口，udp=是否在UDP中使用
+ssShadowTLS = Shadowsocks,example.com,443,2022-blake3-aes-128-gcm,"password",shadow-tls-password="shadow-password",shadow-tls-sni=douyin.com,shadow-tls-version=3,udp-port=8396,udp=true
+```
 
 - ss+simple obfs
 
@@ -106,6 +124,15 @@ http2 = http,example.com,80,username,"password"
 https1 = https,example.com,443
 https2 = https,example.com,443,username,"password"
 https3 = https,example.com,443,username,"password",skip-cert-verify=true,tls-name=example.com
+```
+
+##### SOCKS5 类型
+
+```
+[Proxy]
+# 节点名称 = 协议，服务器地址，端口，用户名，密码，sni=SNI，skip-cert-verify=是否跳过证书校验（默认否），udp=是否在UDP中使用（需要节点支持）
+socks1 = socks5,example.com,443,username,"password",sni=example.com,skip-cert-verify=true,udp=true
+socks2 = socks5,example.com,8080,"user,name","password"
 ```
 
 ##### vmess 类型
@@ -213,6 +240,18 @@ VLESS5 = VLESS,example.com,10086,"52396e06-041a-4cc2-be5c-8525eb457809",transpor
 VLESS6 = VLESS,example.com,10086,"52396e06-041a-4cc2-be5c-8525eb457809",transport=http,path=/,host=v3-dy-y.ixigua.com,over-tls=true,tls-name=example.com,skip-cert-verify=true
 ```
 
+##### VLESS + Reality
+
+<!-- prettier-ignore -->
+!!! 注意
+    Reality 需要服务端支持，`flow` 为 `xtls-rprx-vision`，`public-key` 为服务端公钥，`short-id` 为短 ID
+
+```
+[Proxy]
+# 节点名称 = 协议，服务器地址，端口，UUID，transport(传输方式)=tcp，flow=流控，public-key=Reality公钥，short-id=短ID，over-tls=是否启用TLS，sni=SNI，udp=是否在UDP中使用
+vlessReality = VLESS,example.com,443,"ae521383-9375-2e0d-c347-48cf3d98eb6e",transport=tcp,flow=xtls-rprx-vision,public-key="LgJ9bNTyUqBLFkDA12-QgEL7c1yQ1ztk-V1Q-3OLXSk",short-id=164168844958a16d,over-tls=true,sni=douyin.com,udp=true
+```
+
 ##### trojan 类型
 
 - trojan
@@ -251,8 +290,20 @@ wireguardNode = wireguard,interface-ip=192.168.2.2,interface-ipV6=2402:4e00:1200
 
 ```
 [Proxy]
-# 节点名称 = 协议，服务器地址，端口，密码，skip-cert-verify=是否跳过证书校验（默认否），tls-name=SNI，udp=是否在UDP中使用（需要节点支持），fast-open=是否开启fast open
-hysteria2Node = Hysteria2,example.com,9898,"password",skip-cert-verify=true,tls-name=example.com,udp=true,fast-open=true
+# 节点名称 = 协议，服务器地址，端口，密码，sni=SNI，skip-cert-verify=是否跳过证书校验（默认否），fast-open=是否开启fast open，salamander-password=obfs混淆密码（需服务端支持），udp=是否在UDP中使用（需要节点支持）
+hysteria2Node = Hysteria2,example.com,9898,"password",sni=example.com,skip-cert-verify=true,fast-open=true,salamander-password="obfs-password",udp=true
+```
+
+##### AnyTLS
+
+<!-- prettier-ignore -->
+!!! 注意
+    AnyTLS 需 Loon Build 945+
+
+```
+[Proxy]
+# 节点名称 = 协议，服务器地址，端口，密码，sni=SNI，skip-cert-verify=是否跳过证书校验（默认否），udp=是否在UDP中使用（需要节点支持），block-quic=是否拦截 QUIC（默认否）
+anytlsNode = AnyTLS,example.com,8449,"password",sni=example.com,skip-cert-verify=true,udp=true,block-quic=false
 ```
 
 ##### js custom
@@ -261,6 +312,31 @@ hysteria2Node = Hysteria2,example.com,9898,"password",skip-cert-verify=true,tls-
 [Proxy]
 # 节点名称 = 协议，服务器地址，端口，script-path=脚本路径（本地脚本直接为文件名，远端脚本为url）
 jsHTTP = custom,192.168.1.139,6152,script-path=http.js
+```
+
+#### 2.2.1.1 TLS 参数
+
+| 参数 | 说明 |
+|---|---|
+| `skip-cert-verify` | 是否跳过证书验证，默认 `false` |
+| `sni` | TLS 握手发送的 SNI；未填写时使用服务器主机名 |
+| `tls-cert-sha256` | 服务器证书 SHA-256 指纹 |
+| `tls-pubkey-sha256` | 服务器证书公钥 SHA-256 指纹；配置后优先使用 |
+| `tls-profile` | TLS 指纹，如 `safari`、`chrome`，适用于 Build 964+ |
+
+`skip-cert-verify=false` 时，Loon 会检查证书信任链、有效期和主机名。使用自签名证书时，建议将证书安装并信任，而不是关闭验证。
+
+生成证书指纹：
+
+```bash
+openssl x509 -noout -fingerprint -sha256 -inform pem -in your-cert.pem
+```
+
+生成公钥指纹：
+
+```bash
+openssl x509 -pubkey -noout -in your-cert.pem > server_pubkey.pem
+openssl pkey -pubin -in server_pubkey.pem -outform DER | openssl dgst -sha256
 ```
 
 
@@ -278,6 +354,16 @@ jsHTTP = custom,192.168.1.139,6152,script-path=http.js
 ### 2.3 添加远程订阅
 
 除了可以解析官方定义的节点格式，Loon也可以解析大部分服务提供商所提供的订阅节点，如遇到不支持的情况可以使用节点订阅解析脚本进行解析，目前常用的解析脚本由[SubStore](https://github.com/sub-store-org)提供，可在配置文件的[general]模块下进行如下配置，在之后的添加订阅节点页面开启解析器即可。
+
+<!-- prettier-ignore -->
+!!! 提示
+    订阅节点由服务提供商维护，Loon 只负责下载和解析，不能在 App 中直接修改订阅内容。
+
+Loon 会读取订阅响应 Header 中的 `Subscription-Userinfo`，用于在 App 中显示流量和到期时间：
+
+```http
+Subscription-Userinfo: upload=1111; download=111; total=123456; expire=1614527045
+```
 
 
 ```

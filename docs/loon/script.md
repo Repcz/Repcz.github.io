@@ -38,6 +38,7 @@ http-request ^https?:\/\/(www.)?(example)\.com script-path=localscript.js,tag = 
     - `$request.method`: String类型，请求方法
     - `$request.headers`: js对象，请求头
     - `$request.body`: String或者Uint8Array类型，当`requires-body = true`时才有值，请求的body
+    - `$request.h2_trailers`: HTTP/2 Trailers（Build 927+）
 - `$response`: undefined
 - `$done()`方法参数说明：
     - `$done()`: 不传任何参数，表示放弃该请求，请求连接会直接断开
@@ -76,6 +77,7 @@ http-response ^https?:\/\/(www.)?(example)\.com script-path=https://example.com/
     - `$response.status`: 响应状态
     - `$response.headers`: 响应头
     - `$response.body`: String或者Uint8Array类型，如果响应带有body，并且requires-body = true时此参数才有值
+    - `$response.h2_trailers`: HTTP/2 Trailers（Build 927+）
 - `$done()`方法参数说明：
     - `$done()`: 不传任何参数，表示放弃该请求，请求连接会直接断开
     - `$done({})`: 空js对象，请求继续，任何请求参数不会有任何变化

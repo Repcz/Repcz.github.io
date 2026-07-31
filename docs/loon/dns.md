@@ -159,3 +159,12 @@ ssid:LOON's WIFI = server:system
 ssid:LOON WIFI = server:https://example.com/dns-query
 
 ```
+
+#### 域名指定 IP 模式
+
+为特定域名指定 IP 查询模式，`ip-mode` 支持 `ipv4-only`、`dual`、`ipv4-preferred` 和 `ipv6-preferred`，详见[通用配置](general.md)
+
+```
+[Host]
+example.com = ip-mode:ipv4-only
+```
