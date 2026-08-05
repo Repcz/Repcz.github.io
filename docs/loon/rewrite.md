@@ -152,6 +152,42 @@ response.body.mock(String, String[, Number[, Boolean]])
 response.body.mock_file(String, String[, Number[, Boolean]])
 ```
 
+##### 批量数组参数
+
+Header 修改、Body 正则替换和 JSON 修改支持在一个 Action 中配置多组参数：
+
+```
+[Rewrite]
+request if ${url} ~= /api/ then request.header.set(["X-A", "X-B"], ["1", "2"])
+response if ${url} ~= /api/ then response.body.replace([/false/, /disabled/], ["true", "enabled"])
+response if ${url} ~= /api/ then response.json.add(["data.a", "data.b"], [1, true])
+```
+
+支持批量参数的 Action：
+
+- `request/response.header.add/set/del/replace`
+- `request/response.body.replace`
+- `request/response.json.add/delete/replace`
+
+单值写法继续有效。使用数组时需遵守以下规则：
+
+1. 同一个 Action 的所有参数都必须使用数组，不能混用单值和数组。
+2. 各参数数组长度必须一致，参数按照相同下标配对并依次执行。
+3. 数组不能为空，也不能嵌套数组。
+4. 每个元素仍需符合该位置要求的 String、Regex、RegexReplacement 或 Any 类型。
+5. 每个 JSON Key Path 都会单独校验。
+
+例如：
+
+```
+[Rewrite]
+request if ${url} ~= /api/ then request.header.del(["Cookie", "Referer"])
+request if ${url} ~= /api/ then request.header.replace(["X-A", "X-B"], [/old-a/, /old-b/i], ["new-a", "new-b"])
+response if ${url} ~= /api/ then response.json.delete(["data.ads", "data.tracking"])
+```
+
+批量写法在执行效果上等价于按相同顺序填写多个同类 Action，但配置会保留为一条批量指令。
+
 ##### 示例
 
 ```text
@@ -192,6 +228,44 @@ response.body.mock_file("json", "response_body.json", 200)
 <!-- prettier-ignore -->
 !!! 提示
     以下 **5.1 及以后** 为 **旧版语法**（Loon 3.5.1 (978) 之前），仅用于维护旧配置，不再扩展。新配置请使用本文 5.0 的新版语法。
+
+#### 新旧语法混用
+
+旧语法仍然兼容，可以与新语法混用：
+
+```
+[Rewrite]
+^https://example\.com header-add X-Order old
+request if ${url} ~= /^https:\/\/example\.com/ then request.header.set("X-Order", "new")
+```
+
+新旧语法解析后进入同一个执行序列，并按照配置文件中的顺序处理，不会因为语法新旧改变优先级。旧语法只用于输入兼容，Rewrite 的生成、保存和完整配置展示统一输出新语法。
+
+常用迁移关系：
+
+| 旧 Action | 新 Action |
+|---|---|
+| `header` | `url.replace(...)` |
+| `302`、`307` | `redirect(...)` |
+| `reject`、`reject-200` | `reject(...)` |
+| `reject-img` | `reject_img(...)` |
+| `reject-dict` | `reject_dict(...)` |
+| `reject-array` | `reject_array(...)` |
+| `reject-video` | `reject_video(...)` |
+| `header-add`、`header-replace`、`header-del` | `request.header.*` |
+| `response-header-*` | `response.header.*` |
+| `request-body-replace-regex` | `request.body.replace(...)` |
+| `response-body-replace-regex` | `response.body.replace(...)` |
+| `request-body-json-*` | `request.json.*` |
+| `response-body-json-*` | `response.json.*` |
+| `mock-request-body` | `request.body.mock(...)` |
+| `mock-response-body` | `response.body.mock(...)` |
+
+旧 `header`、`302`、`307` 替换内容中的 `$n` 来自行首 URL 正则，转换为新语法时 Loon 会为该正则生成捕获名称并把 `$n` 转换为 `${名称.n}`；Header/Body 正则替换 Action 自带的 `$n` 仍保持为 Action 局部捕获。
+
+旧语法一行中连续填写的多组同类操作会在转换时合并为**批量数组参数**；只有一组参数时仍输出单值写法。
+
+开发阶段曾使用过但未正式发布的 `http-request`、`http-response` 阶段名和命名参数写法不属于兼容范围。
 
 ### 5.1 URL 类型复写
 
