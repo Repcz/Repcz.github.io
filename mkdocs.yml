@@ -97,6 +97,7 @@ nav:
       - anyTLS 部署: vps/anyTLS.md
       - Hysteria2 部署: vps/hysteira2.md
       - Snell v6 部署: vps/snell.md
+      - usque 部署: vps/usque.md
   - 正则表达: 
       - 正则语法: regex/doc.md
       - 常用地区节点表达式: regex/use.md
