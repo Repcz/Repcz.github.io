@@ -6,8 +6,15 @@
 
 #### NodeQuality 多维度检测
 
-```
+```bash
 bash <(curl -sL https://run.NodeQuality.com)
+```
+
+#### TCP 质量检测脚本
+
+```bash
+# bash / zsh
+bash <(curl -fsSL https://raw.githubusercontent.com/ibsgss/TcpQuality/main/runTcpQuality.sh)
 ```
 
 #### nexttrace 路由测试
