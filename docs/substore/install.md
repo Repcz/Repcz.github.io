@@ -112,12 +112,20 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 ### 部署 `SubStore`
 
 <!-- prettier-ignore -->
+!!! warning "BREAKING CHANGE：`2.38.0` 起需设置 CORS allowlist"
+    1. Node.js 后端现在要求设置 CORS allowlist（`SUB_STORE_CORS_ALLOWED_ORIGINS`），例如 `https://sub-store-frontend.a.com` 或 `*`（不安全）。
+    2. 如果使用官方前端，也可不设置，默认为 `https://sub-store.vercel.app,http://substore.stash,https://substore.stash`。
+    3. 脚本操作、脚本过滤和修改响应，必须设置 `SUB_STORE_FRONTEND_BACKEND_PATH` 才能生效；若不想改变当前 path，可设置 `SUB_STORE_FRONTEND_BACKEND_PATH=/`（不安全）。
+
+<!-- prettier-ignore -->
 !!! 注意 "重要变更"
-    后端版本 `2.14.376` 起使用 `SUB_STORE_BACKEND_SYNC_CRON`，旧的 `SUB_STORE_CRON` 已弃用，Docker 版将不再支持。
+    后端版本 `2.14.376` 起使用 `SUB_STORE_BACKEND_SYNC_CRON`，旧的 `SUB_STORE_BACKEND_CRON`（Node 版）已弃用；Docker 版旧的 `SUB_STORE_CRON` 将不再支持。Docker 版此定时任务将使用 Node 版 `node-cron`。
 
 <!-- prettier-ignore -->
 !!! 注意
     `SUB_STORE_FRONTEND_BACKEND_PATH=/` 后的字段（此处是 `2cXaAxRGfddmGz2yx1wA`）表示 API 路径，需自行设置并保存好；**不要使用特殊符号**，防止出现意外问题。
+
+下面的示例均加入了官方默认 CORS allowlist（涵盖官方前端与代理 App 模块）。
 
 - 全功能带推送（Bark）
 
@@ -126,6 +134,7 @@ docker run -it -d --restart=always \
   -e "SUB_STORE_PUSH_SERVICE=https://api.day.app/XXXXXXXXXXXX/[推送标题]/[推送内容]?group=SubStore&autoCopy=1&isArchive=1&sound=shake&level=timeSensitive&icon=https%3A%2F%2Fraw.githubusercontent.com%2F58xinian%2Ficon%2Fmaster%2FSub-Store1.png" \
   -e "SUB_STORE_BACKEND_SYNC_CRON=55 23 * * *" \
   -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA \
+  -e "SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store.vercel.app,http://substore.stash,https://substore.stash" \
   -p 127.0.0.1:3001:3001 \
   -v /root/sub-store-data:/opt/app/data \
   --name sub-store \
@@ -138,6 +147,7 @@ docker run -it -d --restart=always \
 docker run -it -d --restart=always \
   -e "SUB_STORE_BACKEND_SYNC_CRON=55 23 * * *" \
   -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA \
+  -e "SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store.vercel.app,http://substore.stash,https://substore.stash" \
   -p 127.0.0.1:3001:3001 \
   -v /root/sub-store-data:/opt/app/data \
   --name sub-store \
@@ -153,6 +163,7 @@ docker run -d \
   -p 127.0.0.1:3001:3001 \
   -v /root/sub-store-data:/opt/app/data \
   -e SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA \
+  -e "SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store.vercel.app,http://substore.stash,https://substore.stash" \
   -e SUB_STORE_BACKEND_SYNC_CRON="30 3 * * *" \
   -e SUB_STORE_BACKEND_UPLOAD_CRON="20 3 * * *" \
   -e SUB_STORE_PUSH_SERVICE="telegram://BOT_TOKEN@telegram?chats=CHAT_ID" \
@@ -160,11 +171,25 @@ docker run -d \
 ```
 
 <!-- prettier-ignore -->
+!!! tip "关于 CORS allowlist"
+    若通过自己独立部署/非同源的前端域名访问后端 API，请将对应 origin 追加到 `SUB_STORE_CORS_ALLOWED_ORIGINS`（多个 origin 用英文逗号分隔，无空格）。
+    示例：`SUB_STORE_CORS_ALLOWED_ORIGINS="https://sub.xxxxx.xyz,https://sub-store.vercel.app,http://substore.stash,https://substore.stash"`
+
+<!-- prettier-ignore -->
 !!! info "推送服务说明"
-    新版已支持 [shoutrrr](https://containrrr.dev/shoutrrr/v0.8/services/telegram) URL 格式，Telegram 示例：`telegram://BOT_TOKEN@telegram?chats=CHAT_ID`  
-    也支持 Bark / PushPlus 等服务，格式为 `https://api.day.app/XXXXXXXXX/[推送标题]/[推送内容]?...`  
-    或 Telegram Bot：`https://api.telegram.org/botAPI_KEY/sendMessage?chat_id=CHAT_ID&text=[推送标题][推送内容]`  
-    其中 `[推送标题]` 和 `[推送内容]` 会被自动替换。
+    新版已支持 [shoutrrr](https://containrrr.dev/shoutrrr/v0.8/services/telegram) URL 格式，常见示例：
+
+    | 服务 | URL 格式示例 |
+    |------|-------------|
+    | Telegram（shoutrrr） | `telegram://XXXXXXXXX@telegram?chats=-1001771725356` |
+    | Bark | `https://api.day.app/XXXXXXXXXXXX/[推送标题]/[推送内容]?group=SubStore&autoCopy=1&isArchive=1&sound=shake&level=timeSensitive&icon=...` |
+    | PushPlus | `http://www.pushplus.plus/send?token=XXXXXXXXX&title=[推送标题]&content=[推送内容]&channel=wechat` |
+    | Telegram Bot | `https://api.telegram.org/botAPI_KEY/sendMessage?chat_id=CHAT_ID&text=[推送标题][推送内容]` |
+
+    其中 `[推送标题]` 和 `[推送内容]` 会被自动替换。若使用 Telegram Bot，请自行修改 `API_KEY` 和 `CHAT_ID`，可先用 `curl` 测试：
+    ```console
+    curl "https://api.telegram.org/botAPI_KEY/sendMessage?chat_id=CHAT_ID&text=test"
+    ```
 
 如果不知道 API 路径密码怎么生成，可以用科技 lion 的脚本：`13系统工具 → 14密码生成`
 
@@ -182,20 +207,21 @@ FinalShell 中，复制可以在选中后，点击按钮复制
 
 可以合并端口，这样配置：
 
-```
+```env
 HOST=127.0.0.1
 PORT=9876
 SUB_STORE_BACKEND_API_PORT=3000
 SUB_STORE_BACKEND_API_HOST=127.0.0.1
 SUB_STORE_BACKEND_MERGE=true
 SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA
+SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store.vercel.app,http://substore.stash,https://substore.stash
 ```
 
 此时仅暴露端口 `3000`，带路径访问。
 
 或按需拆分前后端端口：
 
-```
+```env
 HOST=127.0.0.1
 PORT=9876
 SUB_STORE_BACKEND_API_PORT=3000
@@ -203,58 +229,75 @@ SUB_STORE_BACKEND_API_HOST=127.0.0.1
 SUB_STORE_FRONTEND_PORT=3001
 SUB_STORE_FRONTEND_HOST=127.0.0.1
 SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA
+SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store.vercel.app,http://substore.stash,https://substore.stash
 ```
 
 <!-- prettier-ignore -->
-!!! warning "端口说明"
+!!! warning "端口与监听说明"
     - `SUB_STORE_BACKEND_API_HOST` **永远不应暴露**，这是内部裸后端
-    - `SUB_STORE_BACKEND_API_PORT` 默认为 `3000`
-    - `SUB_STORE_FRONTEND_PORT` 默认为 `3001`
-    - `HOST` / `PORT` 是 HTTP-META 的配置，`9876` 可能与其他服务冲突（如 `ddns-go`），可自行调整
+    - `SUB_STORE_BACKEND_API_PORT` 后端监听端口，默认为 `3000`
+    - `SUB_STORE_FRONTEND_HOST` 可按需开放（默认仅内网）
+    - `SUB_STORE_FRONTEND_PORT` 前端监听端口，默认为 `3001`
+    - `HOST` / `PORT` 是 `http-meta` 的监听配置，`9876` 可能与其他服务冲突（如 `ddns-go`），可自行调整
 
 ### 更多环境变量
 
 Sub-Store 支持通过 `.env` 文件或 `-e` 参数设置以下环境变量：
 
-| 环境变量 | 说明 | 默认值 |
-|---------|------|--------|
-| `SUB_STORE_BACKEND_SYNC_CRON` | 定时同步订阅/文件到私有 Gist（替代已弃用的 `SUB_STORE_CRON`） | - |
-| `SUB_STORE_BACKEND_UPLOAD_CRON` | 定时备份全部数据到 Gist | - |
-| `SUB_STORE_BACKEND_DOWNLOAD_CRON` | 定时从 Gist 恢复全部数据 | - |
-| `SUB_STORE_FRONTEND_BACKEND_PATH` | 前端访问后端的 API 路径前缀 | - |
-| `SUB_STORE_BACKEND_MERGE` | 合并前后端端口，后端同时处理 API 和前端资源 | - |
-| `SUB_STORE_BACKEND_PREFIX` | 后端（`SUB_STORE_BACKEND_API_PORT`）也加上路径前缀，防扫 | - |
+| 环境变量 | 说明 | 默认值 / 示例 |
+|---------|------|------|
+| `SUB_STORE_FRONTEND_PATH` | 前端文件夹路径。Docker 版自带默认内部路径，无需设置；非 Docker 版可按需设置 | - |
+| `SUB_STORE_BACKEND_SYNC_CRON` | 定时同步订阅/文件到私有 Gist（替代已弃用的 `SUB_STORE_BACKEND_CRON` / `SUB_STORE_CRON`），使用 Node 版 `node-cron` | `55 23 * * *` |
+| `SUB_STORE_BACKEND_UPLOAD_CRON` | 定时备份全部数据到 Gist（前端对应 `我的` → `Gist 同步` → `上传`） | - |
+| `SUB_STORE_BACKEND_DOWNLOAD_CRON` | 定时从 Gist 恢复全部数据（前端对应 `我的` → `Gist 同步` → `下载`） | - |
+| `SUB_STORE_FRONTEND_BACKEND_PATH` | 前端访问后端的 API 路径前缀；**脚本操作/过滤/修改响应必须设置此变量**才能生效 | `/2cXaAxRGfddmGz2yx1wA` |
+| `SUB_STORE_BACKEND_MERGE` | 合并前后端端口：后端同时处理 API 和前端资源请求，不再分前后端两个端口 | `true` |
+| `SUB_STORE_BACKEND_PREFIX` | 后端（`SUB_STORE_BACKEND_API_PORT`）也加上 `SUB_STORE_FRONTEND_BACKEND_PATH` 前缀，适用于同主机防扫 | - |
 | `SUB_STORE_PUSH_SERVICE` | 推送服务 URL（支持 shoutrrr / Bark / PushPlus / Telegram Bot） | - |
-| `SUB_STORE_MAX_HEADER_SIZE` | 设置 undici header 大小限制（单位 bytes） | `32768` |
-| `SUB_STORE_BODY_JSON_LIMIT` | 自定义 JSON Body 大小限制 | `1mb` |
-| `SUB_STORE_CORS_ALLOWED_ORIGINS` | CORS 允许的域名 | `*` |
-| `SUB_STORE_BACKEND_DEFAULT_PROXY` | 默认代理（SOCKS5/HTTP/HTTPS），例如 `socks5://a:b@127.0.0.1:7890` | - |
+| `SUB_STORE_MAX_HEADER_SIZE` | 设置 `undici` header 大小限制（单位 bytes）；订阅响应头过大报 `Headers Overflow Error` 时可调大 | `32768` |
+| `SUB_STORE_BODY_JSON_LIMIT` | 自定义 JSON Body 大小限制（`HTTP-META` 也有类似变量 `BODY_JSON_LIMIT`） | `1mb`，例：`10mb` |
+| `SUB_STORE_CORS_ALLOWED_ORIGINS` | CORS allowlist（逗号分隔，无空格）。`2.38.0` 起 Node.js 必须显式设置，使用官方前端也可不设 | 默认 `https://sub-store.vercel.app,http://substore.stash,https://substore.stash` |
+| `SUB_STORE_BACKEND_DEFAULT_PROXY` | 默认代理（SOCKS5/HTTP/HTTPS），例如 `socks5://a:b@127.0.0.1:7890`、`http://127.0.0.1:7890` | - |
 | `SUB_STORE_MMDB_COUNTRY_PATH` | MaxMind GeoLite2 Country 数据库路径 | - |
 | `SUB_STORE_MMDB_ASN_PATH` | MaxMind GeoLite2 ASN 数据库路径 | - |
 | `SUB_STORE_MMDB_CRON` | 定时更新 MMDB 数据库（后端 >=2.19.30） | - |
 | `SUB_STORE_MMDB_COUNTRY_URL` | Country 数据库下载 URL（配合 `SUB_STORE_MMDB_CRON`） | - |
 | `SUB_STORE_MMDB_ASN_URL` | ASN 数据库下载 URL（配合 `SUB_STORE_MMDB_CRON`） | - |
-| `SUB_STORE_DATA_URL` | 远程数据文件链接，启动时自动拉取并恢复数据 | - |
+| `SUB_STORE_DATA_URL` | 远程数据文件链接，每次启动自动拉取并恢复数据 | - |
 | `SUB_STORE_DATA_URL_POST` | 拉取远程数据后执行的自定义命令，例如 `content.settings.gistToken='xxxxxxxxx'` | - |
 | `SUB_STORE_BACKEND_CUSTOM_NAME` | 自定义前端显示的运行环境名称 | - |
 | `SUB_STORE_BACKEND_CUSTOM_ICON` | 自定义前端显示的运行环境图标 | - |
 | `SUB_STORE_X_POWERED_BY` | 自定义响应头 `X-Powered-By` | - |
-| `SUB_STORE_PRODUCE_CRON` | 后台定时处理订阅（配合脚本缓存），格式：`cron,类型,名称;...` | - |
+| `SUB_STORE_PRODUCE_CRON` | 后台定时处理订阅（配合脚本缓存，需在脚本参数开启缓存），格式：`cron,类型,名称;...` | - |
+
+<!-- prettier-ignore -->
+!!! info "MMDB 使用说明"
+    搭配 [检测落地脚本](https://telegram.me/zhetengsha/1269) 和 [检测入口脚本](https://telegram.me/zhetengsha/1358) 使用时，数据来自本地，可在脚本中节约大量请求时间：
+    ```bash
+    -e "SUB_STORE_MMDB_COUNTRY_PATH=/opt/app/data/GeoLite2-Country.mmdb" \
+    -e "SUB_STORE_MMDB_ASN_PATH=/opt/app/data/GeoLite2-ASN.mmdb"
+    ```
 
 <!-- prettier-ignore -->
 !!! info "`SUB_STORE_PRODUCE_CRON` 格式说明"
     格式：`cron,类型,名称` 分号连接多个。`sub` = 单条订阅，`col` = 组合订阅。
     
-    示例：`0 */2 * * *,sub,a;0 */3 * * *,col,b`  
+    示例：`0 */2 * * *,sub,a;0 */3 * * *,col,b`
     即每 2 小时处理单条订阅 a，每 3 小时处理组合订阅 b。
     
     目的是定时处理订阅并生成脚本缓存，缓存有效期内 Surge 等 App 拉取订阅不会超时。
 
 <!-- prettier-ignore -->
 !!! info "`SUB_STORE_DATA_URL` 使用说明"
-    如果要从 Gist 恢复，使用 Raw 链接 + `noCache` 参数：  
-    `https://gist.githubusercontent.com/[username]/[gist_id]/raw/[filename]#noCache`  
+    如果要从 Gist 恢复，使用 Raw 链接，并建议使用固定的最新版本链接；可加上 `#noCache` 避免缓存：
+    `https://gist.githubusercontent.com/[username]/[gist_id]/raw/[filename]#noCache`
     示例：`SUB_STORE_DATA_URL="https://gist.githubusercontent.com/username/id/raw/Sub-Store#noCache"`
+
+<!-- prettier-ignore -->
+!!! tip "镜像 tag 与其它安装方式"
+    - 默认镜像 tag：`latest`（Node.js 后端 + 前端）；需要 [HTTP-META](#http-meta) 功能时使用 `latest-http-meta`（见下文）。
+    - 🆕 实验性支持 [GitHub Package](https://github.com/users/xream/packages/container/package/sub-store) 安装方式。
+    - 其它平台 / 非 Docker 安装方式请参考 [Sub-Store Wiki - 安装](https://github.com/sub-store-org/Sub-Store/wiki#%E5%AE%89%E8%A3%85)。
 
 
 ### 反向代理
@@ -370,7 +413,7 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 
 此时，SubStore 地址为：`https://sub.xxxxx.xyz`
 
-其 API 为 
+其 API 为：
 ```
 https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA
 ```
@@ -380,9 +423,19 @@ https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA
 https://sub.xxxxx.xyz?api=https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA
 ```
 
+后端地址可用于简单验证：
+```text
+https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA/api/utils/env
+```
+
+这个 URL 可以看到版本信息，也可以作为健康检查 URL。
+
 <!-- prettier-ignore -->
-!!! tip "健康检查"
-    访问 `https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA/api/utils/env` 可查看版本信息，也可用作健康检查 URL
+!!! info "使用官方前端访问（Vercel）"
+    Sub-Store 官方前端托管于 `https://sub-store.vercel.app`。若后端设置了 `SUB_STORE_FRONTEND_BACKEND_PATH=/2cXaAxRGfddmGz2yx1wA`，可直接打开
+    `https://sub-store.vercel.app?api=https://sub.xxxxx.xyz/2cXaAxRGfddmGz2yx1wA` 使用，此时无需（也不应）在自建前端域名上反代前端页面。
+
+    使用官方前端时无需修改 `SUB_STORE_CORS_ALLOWED_ORIGINS`（默认已包含 `https://sub-store.vercel.app`）；若从自建域名 `https://sub.xxxxx.xyz` 访问，则需把该 origin 加入 CORS allowlist。
 
 
 ### 更新 Sub-Store
@@ -419,6 +472,8 @@ docker run -d \
 
 <!-- prettier-ignore -->
 !!! tip "通知服务 URL 参考"
+    以下为 [shoutrrr](https://containrrr.dev/shoutrrr/v0.8/services/overview) 常用格式，供 `SUB_STORE_PUSH_SERVICE` / `WATCHTOWER_NOTIFICATION_URL` 使用：
+
     | 服务 | URL 格式 |
     |------|---------|
     | Telegram | `telegram://BOT_TOKEN@telegram?chats=CHAT_ID` |
@@ -434,6 +489,8 @@ docker run -d \
 ```bash
 docker logs -f -t --tail 100 sub-store
 ```
+
+也可在前端右上角直接查看后端日志。
 
 
 ### 备份注意事项
