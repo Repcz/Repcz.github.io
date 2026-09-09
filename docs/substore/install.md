@@ -242,6 +242,10 @@ SUB_STORE_CORS_ALLOWED_ORIGINS=https://sub-store.vercel.app,http://substore.stas
 
 ### 更多环境变量
 
+<!-- prettier-ignore -->
+!!! warning "以 Docker Hub 说明为准"
+    本文档可能未及时跟进，最新的环境变量应**总是以** [Docker 版官方说明](https://hub.docker.com/r/xream/sub-store) 为准。
+
 Sub-Store 支持通过 `.env` 文件或 `-e` 参数设置以下环境变量：
 
 | 环境变量 | 说明 | 默认值 / 示例 |
