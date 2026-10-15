@@ -4,6 +4,25 @@ Sub Store 是一款用于管理节点订阅的工具，可通过代理软件/VPS
 
 其基本逻辑是：机场订阅/自建节点导入Sub Store中 → 经过 Sub Store 处理后(重命名/筛选等操作) → 输出对应软件格式的链接 → 导入至对应的软件中使用。
 
+
+## 视频教程
+
+<!-- prettier-ignore -->
+!!! 提示
+    以下视频演示 Sub Store 的基本使用流程，可直接从对应进度开始观看
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe
+    src="https://www.youtube.com/embed/Qtf6U8Rx95o?start=454"
+    title="Sub Store 视频教程"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div>
+
 以下仅展示一些基本的操作
 
 ## iOS代理软件部署
