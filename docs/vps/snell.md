@@ -50,7 +50,7 @@ curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 
 ### 写入配置文件
 
-本仓库提供了现成的 [Snell v6 服务端配置](https://github.com/Repcz/Tool/raw/X/sing-box/v1.14.x/Server/Snell/config.json)：
+本仓库提供了现成的 [Snell v6 服务端配置](https://github.com/Repcz/Tool/blob/X/sing-box/v1.14.x/Server/sing-box.json)：
 
 请下载配置后修改并保持上传至 `/etc/sing-box/`，以下内容仅做示例，不定期更新：
 
@@ -64,23 +64,17 @@ curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
 
     "dns": {
         "servers": [
-            {
-                "tag": "cloudflare",
-                "type": "udp",
-                "server": "1.1.1.1"
-            }
+            {"tag": "cloudflare","type": "udp","server": "1.1.1.1"},
+            {"tag": "google","type": "udp","server": "8.8.8.8"}
         ],
         "rules": [
-            {
-                "query_type": [
-                    "A",
-                    "AAAA"
-                ],
-                "action": "route",
-                "server": "cloudflare"
-            }
+            {"action": "evaluate","server": "cloudflare","tag": "cf"},
+            {"action": "evaluate","server": "google","tag": "gg"},
+            {"match_response": "cf","response_rcode": "NOERROR","action": "respond","race": true},
+            {"match_response": "gg","response_rcode": "NOERROR","action": "respond","race": true}
         ],
         "strategy": "prefer_ipv4",
+        "optimistic": true,
         "final": "cloudflare"
     },
 
@@ -90,9 +84,12 @@ curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
             "tag": "snell-in",
             "listen": "::",
             "listen_port": 443,
+            "tcp_fast_open": true,
+            "tcp_multi_path": true,
             "version": 6,
             "psk": "",
             "mode": "default"
+        }
         }
     ],
 
@@ -103,14 +100,25 @@ curl -fsSL https://sing-box.app/install.sh | sh -s -- --beta
                     "snell-in"
                 ],
                 "action": "sniff"
+            },
+            {
+                "inbound": [
+                    "snell-in"
+                ],
+                "action": "route-options",
+                "udp_disable_domain_unmapping": true
             }
         ],
-        "default_domain_resolver": "cloudflare"
+        "final": "direct",
+        "default_domain_resolver": {
+            "server": "cloudflare"
+        }
     },
 
     "outbounds": [
         {
-            "type": "direct"
+            "type": "direct",
+            "tag": "direct"
         }
     ],
 
